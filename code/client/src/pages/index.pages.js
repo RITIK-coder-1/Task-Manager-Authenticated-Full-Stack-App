@@ -9,7 +9,7 @@ import Logout from "./auth/Logout";
 import Profile from "./users/Profile";
 import UpdateDetails from "./users/UpdateDetails";
 import UpdatePassword from "./users/UpdatePassword";
-import UpdatePic from "./users/UpdatePic";
+import UpdateAppearance from "./users/UpdateAppearance";
 import Dashboard from "./ui/Dashboard";
 import TaskDetails from "./tasks/TaskDetails";
 import Home from "./ui/Home";
@@ -21,7 +21,7 @@ export {
   Profile,
   UpdateDetails,
   UpdatePassword,
-  UpdatePic,
+  UpdateAppearance,
   Dashboard,
   TaskDetails,
   Home,

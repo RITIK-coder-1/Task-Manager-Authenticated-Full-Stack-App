@@ -3,7 +3,7 @@ import { Button } from "../../components/index.components";
 import { useDispatch, useSelector } from "react-redux";
 import { get, profileUpdate } from "../../features/userSlice.js";
 
-function UpdatePic() {
+function UpdateAppearance() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(get());
@@ -51,4 +51,4 @@ function UpdatePic() {
   );
 }
 
-export default UpdatePic;
+export default UpdateAppearance;
