@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Input, AuthCard, Button } from "../../components/index.components.js";
 import { useDispatch, useSelector } from "react-redux";
-import { register } from "../../features/userSlice.js";
+import { register } from "../../features/index.features.js";
 
 // UI IN DEVELOPMENT
 

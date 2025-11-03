@@ -11,8 +11,19 @@ import authReducer from "./authSlice.js";
 
 // The functions for task, user and auth slices
 
-import { getUser, updateUser, updatePassword, updatePic } from "./userSlice.js";
-import { create, update, remove, displayAll, get } from "./taskSlice.js";
+import {
+  get as getUser,
+  userUpdate,
+  passwordUpdate,
+  profileUpdate,
+} from "./userSlice.js";
+import {
+  create,
+  update,
+  remove,
+  displayAll,
+  get as getTask,
+} from "./taskSlice.js";
 import { register, login, logout } from "./authSlice.js";
 
 export {
@@ -20,14 +31,14 @@ export {
   userReducer,
   authReducer,
   getUser,
-  updateUser,
-  updatePassword,
-  updatePic,
+  userUpdate,
+  passwordUpdate,
+  profileUpdate,
   create,
   update,
   remove,
   displayAll,
-  get,
+  getTask,
   register,
   login,
   logout,

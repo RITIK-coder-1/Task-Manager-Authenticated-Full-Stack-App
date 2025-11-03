@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { AuthCard, Input, Button } from "../../components/index.components.js";
-import { login } from "../../features/userSlice.js";
+import { login } from "../../features/index.features.js";
 import { useDispatch, useSelector } from "react-redux";
 
 function Login() {

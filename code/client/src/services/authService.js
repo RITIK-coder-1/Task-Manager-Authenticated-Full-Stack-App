@@ -18,7 +18,7 @@ The function to register a user
 ------------------------------------------------------------------------------ */
 const registerUser = async (userData) => {
   try {
-    const response = await userAxios.post(
+    const response = await authAxios.post(
       "/register",
       userData, // The file data payload
       {
@@ -47,7 +47,7 @@ const registerUser = async (userData) => {
   ------------------------------------------------------------------------------ */
 const loginUser = async (userData) => {
   try {
-    const response = await userAxios.post("/login", userData);
+    const response = await authAxios.post("/login", userData);
     console.log("User successfully logged in!", response.data);
     return response.data;
   } catch (error) {
@@ -65,7 +65,7 @@ const loginUser = async (userData) => {
 
 const logoutUser = async () => {
   try {
-    const response = await userAxios.post("/logout");
+    const response = await authAxios.post("/logout");
     console.log("The user has been successfully logged out: ", response.data);
     return response.data;
   } catch (error) {

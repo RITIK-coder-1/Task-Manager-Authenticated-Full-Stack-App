@@ -1,6 +1,6 @@
 import React from "react";
 import { Button } from "../../components/index.components";
-import { logout } from "../../features/userSlice.js";
+import { logout } from "../../features/index.features.js";
 import { useDispatch, useSelector } from "react-redux";
 
 function Logout() {

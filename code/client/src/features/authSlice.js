@@ -92,8 +92,8 @@ The Slice
 const authSlice = createSlice({
   name: "auth",
   initialState: {
-    accessToken: JSON.parse(localStorage.getItem("accessToken")) || null,
-    isAuthenticated: !!JSON.parse(localStorage.getItem("accessToken")),
+    accessToken: localStorage.getItem("accessToken") || null,
+    isAuthenticated: !!localStorage.getItem("accessToken"),
     status: "idle", // idle, pending, succeeded, failed
     error: null,
   },
