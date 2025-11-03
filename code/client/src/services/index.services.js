@@ -3,10 +3,12 @@ index.service.js
 This script exports all the user and task related API calls from a single place
 ------------------------------------------------------------------------------ */
 
+// auth API calls
+import { registerUser } from "./authService";
+import { loginUser } from "./authService";
+import { logoutUser } from "./authService";
+
 // user API calls
-import { registerUser } from "./userService";
-import { loginUser } from "./userService";
-import { logoutUser } from "./userService";
 import { getUser } from "./userService";
 import { updateUser } from "./userService";
 import { updatePassword } from "./userService";
