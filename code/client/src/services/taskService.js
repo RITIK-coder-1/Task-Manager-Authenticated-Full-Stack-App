@@ -38,9 +38,9 @@ taskAxios.interceptors.request.use(
 The function to create a task
 ------------------------------------------------------------------------------ */
 
-const createTask = async (userId, formData) => {
+const createTask = async (formData) => {
   try {
-    const response = await taskAxios.post(`${userId}/tasks/create`, formData);
+    const response = await taskAxios.post("/", formData);
     console.log("Task successfully created!: ", response.data);
     return response.data; // the response sent by the backend
   } catch (error) {
@@ -56,9 +56,9 @@ const createTask = async (userId, formData) => {
 The function to display all the tasks
 ------------------------------------------------------------------------------ */
 
-const displayAllTasks = async (userId) => {
+const displayAllTasks = async () => {
   try {
-    const response = await taskAxios.get(`/${userId}/tasks`);
+    const response = await taskAxios.get("/");
     console.log("Tasks successfully retrieved!: ", response.data);
     return response.data;
   } catch (error) {
@@ -74,9 +74,9 @@ const displayAllTasks = async (userId) => {
 The function to get a specific task
 ------------------------------------------------------------------------------ */
 
-const getTask = async (userId, taskId) => {
+const getTask = async (taskId) => {
   try {
-    const response = await taskAxios.get(`/${userId}/tasks/${taskId}`);
+    const response = await taskAxios.get(`/${taskId}`);
     console.log("Task successfully retrieved!: ", response.data);
     return response.data;
   } catch (error) {
@@ -92,9 +92,9 @@ const getTask = async (userId, taskId) => {
 The function to update a task
 ------------------------------------------------------------------------------ */
 
-const updateTask = async (userId, taskId, formData) => {
+const updateTask = async (taskId, formData) => {
   try {
-    const response = await taskAxios.patch(`${userId}/${taskId}`, formData);
+    const response = await taskAxios.patch(`/${taskId}`, formData);
     console.log("Task successfully updated!: ", response.data);
     return response.data;
   } catch (error) {
@@ -110,9 +110,9 @@ const updateTask = async (userId, taskId, formData) => {
 The function to delete a task
 ------------------------------------------------------------------------------ */
 
-const deleteTask = async (userId, taskId) => {
+const deleteTask = async (taskId) => {
   try {
-    const response = await taskAxios.delete(`${userId}/${taskId}`);
+    const response = await taskAxios.delete(`/${taskId}`);
     console.log("Task successfully deleted!: ", response.data);
     return response.data;
   } catch (error) {
