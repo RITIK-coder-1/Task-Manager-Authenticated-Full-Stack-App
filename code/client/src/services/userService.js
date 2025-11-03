@@ -165,7 +165,7 @@ The function to update a user's profile pic
 const updatePic = async (profileFormData) => {
   try {
     const response = await userAxios.patch(
-      "/me/profile",
+      "/me/appearance",
       profileFormData, // The file data payload
       {
         headers: {

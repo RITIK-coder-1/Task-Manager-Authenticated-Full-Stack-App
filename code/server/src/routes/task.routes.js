@@ -24,11 +24,11 @@ const taskRouter = Router();
 // - Delete
 // ----------------------------------------------
 
-taskRouter.route("/create").post(verifyJwt, createTask); // route to create new tasks
+taskRouter.route("/").post(verifyJwt, createTask); // route to create new tasks
 taskRouter.route("/").get(verifyJwt, displayAllTasks); // route to display all the tasks
 taskRouter.route("/:taskId").get(verifyJwt, retrieveTask); // route to get a particular task
 
-taskRouter.route("/:taskId").patch(verifyJwt, updateTask); // route to update a particular task (The patch method automatically adds "/update")
+taskRouter.route("/:taskId").patch(verifyJwt, updateTask); // route to update a particular task
 taskRouter.route("/:taskId").delete(verifyJwt, deleteTask); // route to delete a particular task
 
 export default taskRouter;
