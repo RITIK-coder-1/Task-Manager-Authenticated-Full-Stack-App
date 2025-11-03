@@ -20,7 +20,6 @@ import mongoose from "mongoose";
 const createTaskFunction = async (req, res) => {
   // taking all the input fields from the client request
   const { title, description, priority, isCompleted, category } = req.body;
-  const { path: imagePath } = req.file || ""; // the image uploaded
   const ownerId = req.user._id; // the owner of the task
 
   if (!ownerId) {
@@ -45,8 +44,6 @@ const createTaskFunction = async (req, res) => {
     );
   }
 
-  console.log(req.body);
-
   // checking if isCompleted a boolean or not
 
   const booleanIsCompleted = Boolean(isCompleted); // because I'm sending "" for false and "true" for true from the frontend
@@ -57,17 +54,6 @@ const createTaskFunction = async (req, res) => {
   // The title is compulsory and all the other fields have default values if not customized by the User
   // Once it is validated, we need to save the data in the database
 
-  // uploading the image on cloudinary
-  let uploadedImage = "";
-  if (imagePath) {
-    // Because image is optional, we're uploading it only when it given by the user
-    uploadedImage = await uploadOnCloudinary(imagePath);
-
-    if (!uploadedImage) {
-      throw new ApiError(500, "The image wasn't uploaded!"); // if cloudinary returns null, the pic wasn't uploaded
-    }
-  }
-
   // creating a new task to save the details
   const task = await Task.create({
     title,
@@ -75,7 +61,6 @@ const createTaskFunction = async (req, res) => {
     priority,
     isCompleted: booleanIsCompleted,
     category: category || "unspecified",
-    image: uploadedImage?.url,
     owner: ownerId,
   });
 
@@ -152,7 +137,6 @@ const updateTaskFunction = async (req, res) => {
   const taskId = req.params?.taskId; // the task id
   const userId = req.user?._id; // the user id
   const existingTask = await Task.findOne({ _id: taskId, owner: userId }); // the current task
-  const oldImage = existingTask.image; // the old image to be deleted after the new image is uploaded
 
   // checking if the task belongs to the user
   if (!existingTask) {
@@ -191,20 +175,6 @@ const updateTaskFunction = async (req, res) => {
     }
   }
 
-  // updating the image
-
-  let newImage = oldImage;
-  if (req.file !== undefined) {
-    const imagePath = req.file.path;
-    if (imagePath !== undefined) {
-      // update the image only if a new image is sent
-      newImage = await uploadOnCloudinary(imagePath);
-      if (!newImage) {
-        throw new ApiError(500, "The image could not be uploaded!");
-      }
-    }
-  }
-
   // updating the entire task
   const updatedTask = {};
 
@@ -228,13 +198,6 @@ const updateTaskFunction = async (req, res) => {
   // checking if the task is valid
   if (!task) {
     throw new ApiError(400, "The task could not be updated!");
-  }
-
-  // deleting the old image from cloudinary
-  try {
-    await deleteFromCloudinary(oldImage); // Utility function runs and handles error internally
-  } catch (error) {
-    console.error("Non-critical cleanup failure:", error);
   }
 
   return res
@@ -273,17 +236,6 @@ const deleteTaskFunction = async (req, res) => {
       404,
       `The particular task: ${taskId} by the user: ${userId} doesn't exist!`
     );
-  }
-  const image = task.image; // the deleted document is returned
-
-  // once the task is deleted, we need to delete any associated image on cloudinary too
-  // using 'image' to check if a URL exists
-  if (image && image.trim() !== "") {
-    try {
-      await deleteFromCloudinary(image);
-    } catch (error) {
-      console.error("Non-critical cleanup failure:", error);
-    }
   }
 
   return res

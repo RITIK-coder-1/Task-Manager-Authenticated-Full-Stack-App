@@ -40,10 +40,7 @@ The function to create a task
 
 const createTask = async (userId, formData) => {
   try {
-    const response = await taskAxios.post(`${userId}/tasks/create`, formData, {
-      headers: { "Content-Type": "multipart/form-data" }, // because users can attach an image to tasks
-      timeout: 30000, // custom timeout for file upload
-    });
+    const response = await taskAxios.post(`${userId}/tasks/create`, formData);
     console.log("Task successfully created!: ", response.data);
     return response.data; // the response sent by the backend
   } catch (error) {

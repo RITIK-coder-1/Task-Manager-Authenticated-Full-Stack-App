@@ -72,7 +72,7 @@ app.use("/api/v1", statusRouter);
 app.use("/api/v1/users", userRouter);
 
 // Task routes
-app.use("/api/v1/users/:userId/tasks", taskRouter);
+app.use("/api/v1/users/:userId/dashboard", taskRouter);
 
 // ----------------------------------------------
 // Error Handlers
