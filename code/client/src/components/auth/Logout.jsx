@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "../../components/index.components";
+import { Button } from "../index.components.js";
 import { logout } from "../../features/index.features.js";
 import { useDispatch, useSelector } from "react-redux";
 

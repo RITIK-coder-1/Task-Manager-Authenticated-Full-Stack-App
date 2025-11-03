@@ -8,8 +8,12 @@ function Home() {
       <section className="w-full h-full flex justify-center items-center">
         This is the home page
       </section>
-      <Button content={"Register"} />
-      <Button content={"Log in"} />
+      <Link to={"/users/register"}>
+        <Button content={"Register"} />
+      </Link>
+      <Link to={"/users/login"}>
+        <Button content={"Log in"} />
+      </Link>
     </>
   );
 }

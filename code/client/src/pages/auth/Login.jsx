@@ -4,9 +4,8 @@ import { login } from "../../features/index.features.js";
 import { useDispatch, useSelector } from "react-redux";
 
 function Login() {
-  const success = useSelector((state) => state.users?.user?.data);
-  const status = useSelector((state) => state.users?.status);
-  const error = useSelector((state) => state.users?.error);
+  const status = useSelector((state) => state.auth.status);
+  const error = useSelector((state) => state.auth.error);
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
@@ -25,7 +24,7 @@ function Login() {
     if (status === "pending") {
       return <span>Checking...</span>;
     } else if (status === "succeeded") {
-      return <span>{success}</span>;
+      return <span>The user has been successfully logged in!</span>;
     } else if (status === "failed") {
       return <span>{error}</span>;
     }

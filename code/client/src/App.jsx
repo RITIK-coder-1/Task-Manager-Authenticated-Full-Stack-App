@@ -20,17 +20,9 @@ import {
 import { Header } from "./components/index.components.js";
 import { Route, Routes } from "react-router-dom";
 import { useSelector } from "react-redux";
+import ProtectedRoute from "./utils/ProtectedRoute.jsx";
 
 function App() {
-  const ProtectedRoute = () => {
-    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
-
-    if (!isAuthenticated) {
-      return <Navigate to="/users/login" replace />;
-    }
-
-    return <Outlet />;
-  };
   return (
     <>
       <Routes>
