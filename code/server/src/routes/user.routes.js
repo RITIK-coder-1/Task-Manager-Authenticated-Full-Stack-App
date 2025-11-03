@@ -39,7 +39,7 @@ userRouter.route("/login").post(loginUser); // login the user on the login path
 
 userRouter.route("/logout").post(verifyJWT, logoutUser); // log the user out on this path
 
-userRouter.route("/me").get(verifyJWT, getCurrentUser); // getting the current user
+userRouter.route("/me").get(verifyJWT, getCurrentUser); // getting the current user (User profile)
 
 userRouter.route("/me/token/refresh").post(verifyJWT, newAccessToken); // to issue a new access token end point
 
@@ -48,7 +48,7 @@ userRouter.route("/me/details").patch(verifyJWT, updateAccount); // to update th
 userRouter.route("/me/password").patch(verifyJWT, updatePassword); // to update the password
 
 userRouter
-  .route("/me/profile")
+  .route("/me/appearance")
   .patch(verifyJWT, upload.single("profilePic"), updateFile); // to update the profie image
 
 export default userRouter; // exporting as default
