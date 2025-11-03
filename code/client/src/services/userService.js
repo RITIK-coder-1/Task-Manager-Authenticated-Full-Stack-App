@@ -128,12 +128,4 @@ const updatePic = async (profileFormData) => {
   }
 };
 
-export {
-  registerUser,
-  loginUser,
-  logoutUser,
-  getUser,
-  updateUser,
-  updatePassword,
-  updatePic,
-};
+export { getUser, updateUser, updatePassword, updatePic };
