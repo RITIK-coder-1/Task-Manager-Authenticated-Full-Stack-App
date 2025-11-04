@@ -6,13 +6,13 @@ const ProtectedRoute = () => {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
   const location = useLocation();
 
-  // If user is not logged in, redirect to homepage
+  // If user is not logged in, redirect to the homepage
   if (!isAuthenticated) {
-    return <Navigate to="/api/v1" state={{ from: location }} replace />;
+    return <Navigate to="/" state={{ from: location }} replace />;
+  } else {
+    // If logged in, render the requested route
+    return <Outlet />;
   }
-
-  // If logged in, render the requested route
-  return <Outlet />;
 };
 
 export default ProtectedRoute;

@@ -59,6 +59,8 @@ const handleAuthFulfilled = (state, action) => {
   state.status = "succeeded";
   state.accessToken = token;
   state.isAuthenticated = true;
+
+  console.log("The state: ", state.isAuthenticated);
 };
 
 /* ---------------------------------------------------------------------------
