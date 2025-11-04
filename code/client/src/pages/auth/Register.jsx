@@ -1,3 +1,8 @@
+/* ---------------------------------------------------------------------------
+Register.jsx
+This is the register page for registering a new user 
+------------------------------------------------------------------------------ */
+
 import React, { useState } from "react";
 import { Input, AuthCard, Button } from "../../components/index.components.js";
 import { useDispatch, useSelector } from "react-redux";

@@ -1,3 +1,8 @@
+/* ---------------------------------------------------------------------------
+Login.jsx
+This is the login page for logging in an existing user
+------------------------------------------------------------------------------ */
+
 import React, { useState, useEffect } from "react";
 import { AuthCard, Input, Button } from "../../components/index.components.js";
 import { login } from "../../features/index.features.js";

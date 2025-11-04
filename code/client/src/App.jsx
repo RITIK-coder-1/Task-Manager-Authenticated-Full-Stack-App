@@ -19,8 +19,17 @@ import {
 } from "./pages/index.pages";
 import { Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./utils/ProtectedRoute.jsx";
+import { useSelector } from "react-redux";
+import { useEffect } from "react";
 
 function App() {
+  const auth = useSelector((state) => {
+    return state.auth.isAuthenticated;
+  });
+  useEffect(() => {
+    console.log(auth);
+  }, [auth]);
+
   return (
     <>
       <Routes>
