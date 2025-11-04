@@ -17,14 +17,12 @@ import {
   TaskDetails,
   Home,
 } from "./pages/index.pages";
-import { Header } from "./components/index.components.js";
 import { Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./utils/ProtectedRoute.jsx";
 
 function App() {
   return (
     <>
-      <Header />
       <Routes>
         {/* PUBLIC ROUTES: Accessible to everyone */}
         <Route path="/" element={<Home />} />
