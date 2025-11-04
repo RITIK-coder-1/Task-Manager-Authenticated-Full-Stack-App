@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { AuthCard, Input, Button } from "../../components/index.components.js";
 import { login } from "../../features/index.features.js";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
 
 function Login() {
   const status = useSelector((state) => state.auth.status);
@@ -9,6 +10,10 @@ function Login() {
   const [credential, setCredential] = useState("");
   const [password, setPassword] = useState("");
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const fromPath = location.state?.from?.pathname || "/users/me/dashboard";
 
   const handleSubmit = (e) => {
     e.preventDefault(); // prevent page reloads
@@ -19,6 +24,17 @@ function Login() {
 
     dispatch(login(userData));
   };
+
+  // Use useEffect to handle the redirect after successful login
+  useEffect(() => {
+    if (status === "succeeded" && !error) {
+      // 3. Navigate the user to the intended protected page
+      navigate(fromPath, { replace: true });
+    }
+
+    // Cleanup function (optional but good practice)
+    // return () => { dispatch(clearError()); };
+  }, [status, error, navigate, fromPath, dispatch]);
 
   const conditionalMessage = () => {
     if (status === "pending") {
