@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import Logout from "../auth/Logout";
 
 function Header() {
   return (
@@ -24,6 +25,7 @@ function Header() {
           Profile
         </NavLink>
       </nav>
+      <Logout />
     </header>
   );
 }

@@ -3,8 +3,6 @@ import { Input, AuthCard, Button } from "../../components/index.components.js";
 import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../features/index.features.js";
 
-// UI IN DEVELOPMENT
-
 function Register() {
   const status = useSelector((state) => state.users.status);
   const error = useSelector((state) => state.users.error);
