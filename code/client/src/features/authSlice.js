@@ -96,7 +96,7 @@ const authSlice = createSlice({
   initialState: {
     accessToken: localStorage.getItem("accessToken") || null,
     isAuthenticated: !!localStorage.getItem("accessToken"),
-    status: "idle", // // for every non-navigation related status updates (idle, pending, succeeded, failed)
+    status: "idle", // for every non-navigation related status updates (idle, pending, succeeded, failed)
     error: null,
     navigationStatus: "idle", // this is a unqiue status that is for navigation related status updates only (idle, succeeded, failed)
   },
