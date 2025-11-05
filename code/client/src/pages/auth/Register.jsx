@@ -7,8 +7,10 @@ import React, { useState } from "react";
 import { Input, AuthCard, Button } from "../../components/index.components.js";
 import { useDispatch } from "react-redux";
 import { register } from "../../features/index.features.js";
-import useConditionalRendering from "../../hooks/useConditionalRendering.js";
-import useNavigation from "../../hooks/useNavigation.js";
+import {
+  useConditionalRendering,
+  useNavigation,
+} from "../../hooks/index.hooks.js";
 
 function Register() {
   // ----------------------------------------------------------------------------------
