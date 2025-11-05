@@ -13,20 +13,36 @@ import {
 } from "../services/index.services.js";
 
 /* ---------------------------------------------------------------------------
-Function to create a task
+Function to display all the tasks
 ------------------------------------------------------------------------------ */
 
-const create = createAsyncThunk(
-  "tasks/create",
-  async (formData, { rejectWithValue }) => {
+const displayAll = createAsyncThunk(
+  "tasks/displayAll",
+  async (_, { rejectWithValue }) => {
     try {
-      const response = await createTask(formData);
+      const response = await displayAllTasks();
       return response; // the data sent by the backend
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || error.message);
     }
   }
 );
+
+/* ---------------------------------------------------------------------------
+Function to create a task
+------------------------------------------------------------------------------ */
+
+const create = createAsyncThunk("tasks/create", async (formData, thunkAPI) => {
+  try {
+    const response = await createTask(formData);
+    thunkAPI.dispatch(displayAll()); // once a new task is created, re-render the entire task list
+    return response; // the data sent by the backend
+  } catch (error) {
+    return thunkAPI.rejectWithValue(
+      error.response?.data?.message || error.message
+    );
+  }
+});
 
 /* ---------------------------------------------------------------------------
 Function to update a task
@@ -77,22 +93,6 @@ const remove = createAsyncThunk(
 );
 
 /* ---------------------------------------------------------------------------
-Function to display all the tasks
------------------------------------------------------------------------------- */
-
-const displayAll = createAsyncThunk(
-  "tasks/displayAll",
-  async (_, { rejectWithValue }) => {
-    try {
-      const response = await displayAllTasks();
-      return response; // the data sent by the backend
-    } catch (error) {
-      return rejectWithValue(error.response?.data?.message || error.message);
-    }
-  }
-);
-
-/* ---------------------------------------------------------------------------
 This is a custom error message for better user experience (Purely for UX)
 ------------------------------------------------------------------------------ */
 
@@ -130,7 +130,7 @@ const taskSlice = createSlice({
     // the success case
     builder.addCase(create.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.tasks.push(action.payload);
+      state.tasks += action.payload;
     });
 
     // the failure case

@@ -5,41 +5,33 @@ This is the modal to create a task on the dashboard
 
 import React, { useEffect, useState } from "react";
 import { AuthCard, Button, Input } from "../index.components";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { create } from "../../features/taskSlice.js";
 import { get } from "../../features/userSlice.js";
+import useConditionalRendering from "../../hooks/useConditionalRendering.js";
 
-function CreateTaskModal() {
+function CreateTaskModal({ onClick }) {
   const dispath = useDispatch();
+  const { status, error } = useConditionalRendering("tasks");
 
   useEffect(() => {
     dispath(get());
-  }, []);
+  }, [dispath]);
 
-  const user = useSelector((state) => state.users.user?.message?.user);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("Low");
   const [isCompleted, setIsCompleted] = useState("");
   const [category, setCategory] = useState("unspecified");
-  const status = useSelector((state) => state.tasks.status);
-  const error = useSelector((state) => state.tasks.error);
 
   const handleSubmit = (e) => {
     e.preventDefault(); // for preventing page reload
-    const payload = {};
-    // const payload = new FormData();
-    payload.append("title", title);
-    payload.append("description", description);
-    payload.append("priority", priority);
-
-    payload.append("isCompleted", isCompleted);
-
-    payload.append("category", category);
 
     const dataObject = {
-      userId: user?._id,
-      taskData: payload,
+      title: title,
+      description: description,
+      priority: priority,
+      category: category,
     };
 
     dispath(create(dataObject));
@@ -111,7 +103,12 @@ function CreateTaskModal() {
             }
           }}
         />
-        <Button content={"Create"} />
+        <Button
+          content={"Create"}
+          type={"submit"}
+          // onClick={!error && onClick}
+        />
+        <Button content={"Cancel"} onClick={onClick} />
       </AuthCard>
       {conditionalMessage()}
     </>
