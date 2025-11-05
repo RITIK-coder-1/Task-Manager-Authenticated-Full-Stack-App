@@ -5,9 +5,8 @@ This is the dashboad page where a logged in user lands at
 
 import React, { useEffect, useState } from "react";
 import { displayAll } from "../../features/taskSlice.js";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Button, CreateTaskModal } from "../../components/index.components.js";
-import useConditionalRendering from "../../hooks/useConditionalRendering.js";
 
 function Dashboard() {
   // ----------------------------------------------------------------------------------
@@ -21,7 +20,7 @@ function Dashboard() {
   // ----------------------------------------------------------------------------------
   // All the variables of the script
   // ----------------------------------------------------------------------------------
-  const tasks = useConditionalRendering("tasks").tasks?.message;
+  const tasks = useSelector((state) => state.tasks.tasks?.message);
   const [isModalOpen, setIsModalOpen] = useState(false); // the condition for opening the create task modal
 
   // ----------------------------------------------------------------------------------

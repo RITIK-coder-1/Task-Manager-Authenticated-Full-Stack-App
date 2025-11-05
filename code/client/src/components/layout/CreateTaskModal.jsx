@@ -119,11 +119,7 @@ function CreateTaskModal({ onClick }) {
         />
 
         {/* The button to create the task */}
-        <Button
-          content={"Create"}
-          type={"submit"}
-          // onClick={!error && onClick}
-        />
+        <Button content={"Create"} type={"submit"} />
 
         {/* The button to cancel the modal */}
         <Button content={"Cancel"} onClick={onClick} />
