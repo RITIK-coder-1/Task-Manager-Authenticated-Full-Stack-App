@@ -1,18 +1,38 @@
-import React, { useEffect } from "react";
+/* ---------------------------------------------------------------------------
+Dashboard.jsx
+This is the dashboad page where a logged in user lands at
+------------------------------------------------------------------------------ */
+
+import React, { useEffect, useState } from "react";
 import { displayAll } from "../../features/taskSlice.js";
 import { get } from "../../features/userSlice.js";
 import { useDispatch, useSelector } from "react-redux";
+import { Button, CreateTaskModal } from "../../components/index.components.js";
+import useConditionalRendering from "../../hooks/useConditionalRendering.js";
 
 function Dashboard() {
+  // ----------------------------------------------------------------------------------
+  // All the variables of the script
+  // ----------------------------------------------------------------------------------
   const dispatch = useDispatch();
+  const user = useConditionalRendering("users").message?.user;
+  const tasks = useConditionalRendering("tasks").message;
+
   useEffect(() => {
     dispatch(get());
-  }, []);
-  const user = useSelector((state) => state.users.user?.message?.user);
-  const tasks = useSelector((state) => state.tasks.tasks?.message);
-  useEffect(() => {
     dispatch(displayAll(user?._id));
-  }, []);
+  }, [get, dispatch, displayAll, user]);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
   const displayTasks = () => {
     return tasks?.map((ele) => {
       return (
@@ -28,13 +48,19 @@ function Dashboard() {
 
   return (
     <>
-      <div className="flex flex-wrap gap-3">
-        {tasks?.length === 0 ? (
+      <div className="flex flex-wrap flex-col gap-3">
+        <Button
+          content={"Create a task"}
+          styles="w-28 h-12"
+          onClick={openModal}
+        />
+        {!tasks || tasks?.length === 0 ? (
           <span>No tasks to display!</span>
         ) : (
           displayTasks()
         )}
       </div>
+      {isModalOpen && <CreateTaskModal />}
     </>
   );
 }

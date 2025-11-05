@@ -1,3 +1,8 @@
+/* ---------------------------------------------------------------------------
+CreateTaskModal.jsx
+This is the modal to create a task on the dashboard
+------------------------------------------------------------------------------ */
+
 import React, { useEffect, useState } from "react";
 import { AuthCard, Button, Input } from "../index.components";
 import { useDispatch, useSelector } from "react-redux";
@@ -16,14 +21,14 @@ function CreateTaskModal() {
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("Low");
   const [isCompleted, setIsCompleted] = useState("");
-  const [imagePath, setImagePath] = useState("");
   const [category, setCategory] = useState("unspecified");
   const status = useSelector((state) => state.tasks.status);
   const error = useSelector((state) => state.tasks.error);
 
   const handleSubmit = (e) => {
     e.preventDefault(); // for preventing page reload
-    const payload = new FormData();
+    const payload = {};
+    // const payload = new FormData();
     payload.append("title", title);
     payload.append("description", description);
     payload.append("priority", priority);
@@ -31,10 +36,6 @@ function CreateTaskModal() {
     payload.append("isCompleted", isCompleted);
 
     payload.append("category", category);
-
-    if (imagePath && imagePath instanceof File) {
-      payload.append("image", imagePath);
-    }
 
     const dataObject = {
       userId: user?._id,
@@ -56,7 +57,7 @@ function CreateTaskModal() {
 
   return (
     <>
-      <AuthCard onSubmit={handleSubmit}>
+      <AuthCard onSubmit={handleSubmit} styles="border items-center">
         <label htmlFor="title">Enter the title of the task: (Required)</label>
         <Input
           name={"title"}
@@ -108,16 +109,6 @@ function CreateTaskModal() {
             } else if (isCompleted === "true") {
               setIsCompleted("");
             }
-          }}
-        />
-        <label htmlFor="imagePath">You can add an image (optional)</label>
-        <input
-          type="file"
-          name="imagePath"
-          id="imagePath"
-          className="outline"
-          onChange={(e) => {
-            setImagePath(e.target.files[0]);
           }}
         />
         <Button content={"Create"} />

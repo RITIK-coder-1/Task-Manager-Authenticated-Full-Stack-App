@@ -18,9 +18,9 @@ Function to create a task
 
 const create = createAsyncThunk(
   "tasks/create",
-  async ({ userId, taskData }, { rejectWithValue }) => {
+  async (formData, { rejectWithValue }) => {
     try {
-      const response = await createTask(userId, taskData);
+      const response = await createTask(formData);
       return response; // the data sent by the backend
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || error.message);
@@ -34,9 +34,9 @@ Function to update a task
 
 const update = createAsyncThunk(
   "tasks/update",
-  async ({ userId, taskId, taskData }, { rejectWithValue }) => {
+  async ({ taskId, taskData }, { rejectWithValue }) => {
     try {
-      const response = await updateTask(userId, taskId, taskData);
+      const response = await updateTask(taskId, taskData);
       return response; // the data sent by the backend
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || error.message);
@@ -50,9 +50,9 @@ Function to get a task
 
 const get = createAsyncThunk(
   "tasks/get",
-  async ({ userId, taskId }, { rejectWithValue }) => {
+  async (taskId, { rejectWithValue }) => {
     try {
-      const response = await getTask(userId, taskId);
+      const response = await getTask(taskId);
       return response;
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || error.message);
@@ -66,9 +66,9 @@ Function to remove a task
 
 const remove = createAsyncThunk(
   "tasks/remove",
-  async ({ userId, taskId }, { rejectWithValue }) => {
+  async (taskId, { rejectWithValue }) => {
     try {
-      const response = await deleteTask(userId, taskId);
+      const response = await deleteTask(taskId);
       return response; // the data sent by the backend
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || error.message);
@@ -82,9 +82,9 @@ Function to display all the tasks
 
 const displayAll = createAsyncThunk(
   "tasks/displayAll",
-  async (userId, { rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
-      const response = await displayAllTasks(userId);
+      const response = await displayAllTasks();
       return response; // the data sent by the backend
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || error.message);
