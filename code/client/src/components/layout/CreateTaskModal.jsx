@@ -3,27 +3,27 @@ CreateTaskModal.jsx
 This is the modal to create a task on the dashboard
 ------------------------------------------------------------------------------ */
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { AuthCard, Button, Input } from "../index.components";
 import { useDispatch } from "react-redux";
 import { create } from "../../features/taskSlice.js";
-import { get } from "../../features/userSlice.js";
 import useConditionalRendering from "../../hooks/useConditionalRendering.js";
 
 function CreateTaskModal({ onClick }) {
+  // ----------------------------------------------------------------------------------
+  // All the variables of the script
+  // ----------------------------------------------------------------------------------
   const dispath = useDispatch();
   const { status, error } = useConditionalRendering("tasks");
-
-  useEffect(() => {
-    dispath(get());
-  }, [dispath]);
-
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("Low");
   const [isCompleted, setIsCompleted] = useState("");
   const [category, setCategory] = useState("unspecified");
 
+  // ----------------------------------------------------------------------------------
+  // The function to create a new task
+  // ----------------------------------------------------------------------------------
   const handleSubmit = (e) => {
     e.preventDefault(); // for preventing page reload
 
@@ -32,11 +32,15 @@ function CreateTaskModal({ onClick }) {
       description: description,
       priority: priority,
       category: category,
+      isCompleted: isCompleted,
     };
 
     dispath(create(dataObject));
   };
 
+  // ----------------------------------------------------------------------------------
+  // The conditional message on the status of the tasks
+  // ----------------------------------------------------------------------------------
   const conditionalMessage = () => {
     if (status === "pending") {
       return <span>Checking...</span>;
@@ -49,7 +53,9 @@ function CreateTaskModal({ onClick }) {
 
   return (
     <>
+      {/* The auth card */}
       <AuthCard onSubmit={handleSubmit} styles="border items-center">
+        {/* The name of the tasks */}
         <label htmlFor="title">Enter the title of the task: (Required)</label>
         <Input
           name={"title"}
@@ -58,6 +64,8 @@ function CreateTaskModal({ onClick }) {
             setTitle(e.target.value);
           }}
         />
+
+        {/* The additional notes */}
         <label htmlFor="description">Add any notes (optional): </label>
         <Input
           name={"description"}
@@ -68,6 +76,8 @@ function CreateTaskModal({ onClick }) {
             setDescription(e.target.value);
           }}
         />
+
+        {/* The priority */}
         <label htmlFor="priority">Select priority: (optional)</label>
         <select
           className="outline-1"
@@ -81,6 +91,8 @@ function CreateTaskModal({ onClick }) {
           <option>High</option>
           <option>Urgent</option>
         </select>
+
+        {/* The category */}
         <label htmlFor="category">Any category: (optional)</label>
         <Input
           name={"category"}
@@ -89,6 +101,8 @@ function CreateTaskModal({ onClick }) {
             setCategory(e.target.value);
           }}
         />
+
+        {/* The completion */}
         <label htmlFor="isCompleted">Completion: (optional)</label>
         <input
           type="checkbox"
@@ -103,13 +117,19 @@ function CreateTaskModal({ onClick }) {
             }
           }}
         />
+
+        {/* The button to create the task */}
         <Button
           content={"Create"}
           type={"submit"}
           // onClick={!error && onClick}
         />
+
+        {/* The button to cancel the modal */}
         <Button content={"Cancel"} onClick={onClick} />
       </AuthCard>
+
+      {/* The conditional message */}
       {conditionalMessage()}
     </>
   );
