@@ -36,9 +36,6 @@ function Login() {
       // 3. Navigate the user to the intended protected page
       navigate(fromPath, { replace: true });
     }
-
-    // Cleanup function (optional but good practice)
-    // return () => { dispatch(clearError()); };
   }, [status, error, navigate, fromPath, dispatch]);
 
   const conditionalMessage = () => {

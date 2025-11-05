@@ -5,16 +5,18 @@ This is the register page for registering a new user
 
 import React, { useState } from "react";
 import { Input, AuthCard, Button } from "../../components/index.components.js";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { register } from "../../features/index.features.js";
+import useConditionalRendering from "../../hooks/useConditionalRendering.js";
 
 function Register() {
   // ----------------------------------------------------------------------------------
   // All the variables of the script
   // ----------------------------------------------------------------------------------
-  const status = useSelector((state) => state.users.status);
-  const error = useSelector((state) => state.users.error);
+  const { status, error } = useConditionalRendering("auth");
   const dispatch = useDispatch();
+
+  // the local state variables for data holding
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -28,7 +30,10 @@ function Register() {
 
   const handleOnSubmit = (e) => {
     e.preventDefault(); // prevent page re-load
-    const payload = new FormData();
+
+    const payload = new FormData(); // creating the new FormData
+
+    // The fullName is an object with two nested objects and FormData only accepts a string. I need to stringify them.
     const fullNameString = JSON.stringify({
       firstName: firstName,
       lastName: lastName,
@@ -39,7 +44,7 @@ function Register() {
     payload.append("username", username);
 
     if (profile && profile instanceof File) {
-      payload.append("profilePic", profile);
+      payload.append("profilePic", profile); // only if the profile is uploaded
     }
 
     dispatch(register(payload));

@@ -15,7 +15,7 @@ function useConditionalRendering(slice) {
     return { status: "idle", error: null, user: null }; // Fallback
   }
 
-  const { status, error, user } = { sliceState };
+  const { status, error, user } = { sliceState }; // deconstructing the state object for immediate access
   return { status, error, user };
 }
 
