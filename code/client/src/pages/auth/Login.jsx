@@ -38,7 +38,7 @@ function Login() {
   };
 
   // ----------------------------------------------------------------------------------
-  // Once the user registers, they should automatically be navigated to the dashboard
+  // Once the user logs in, they should automatically be navigated to the dashboard
   // ----------------------------------------------------------------------------------
 
   useNavigation("/users/me/dashboard");
