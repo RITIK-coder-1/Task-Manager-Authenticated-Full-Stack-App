@@ -7,7 +7,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import useConditionalRendering from "./useConditionalRendering";
 import { useEffect } from "react";
 import { resetNavStatus } from "../features/authSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 const useNavigation = (url) => {
   const dispatch = useDispatch();
@@ -16,10 +16,10 @@ const useNavigation = (url) => {
   const { error, navigationStatus } = useConditionalRendering("auth");
   const fromPath = location.state?.from?.pathname || url; // either visit the page the user intended to, or visit the specific URL
 
-  // // Use useEffect to handle the redirect after successful login
+  // useEffect to handle the redirect after successful login
   useEffect(() => {
     if (navigationStatus === "succeeded" && !error) {
-      // 3. Navigate the user to the intended page
+      // Navigate the user to the intended page
       navigate(fromPath, { replace: true }); // replace is true so that the user can't press the back button to visit the protected routes once prohibited
     }
     dispatch(resetNavStatus());

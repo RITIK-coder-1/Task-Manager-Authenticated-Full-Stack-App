@@ -60,8 +60,6 @@ const handleAuthFulfilled = (state, action) => {
   state.accessToken = token;
   state.isAuthenticated = true;
   state.navigationStatus = "succeeded";
-
-  console.log("The state: ", state.isAuthenticated);
 };
 
 /* ---------------------------------------------------------------------------
@@ -106,7 +104,6 @@ const authSlice = createSlice({
     // action to reset the state of the user once an action is done
     resetNavStatus: (state) => {
       state.navigationStatus = "idle";
-      state.error = null;
     },
   },
   extraReducers: (builder) => {
