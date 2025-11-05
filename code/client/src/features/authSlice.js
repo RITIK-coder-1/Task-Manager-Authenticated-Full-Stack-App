@@ -56,9 +56,10 @@ const logout = createAsyncThunk(
 const handleAuthFulfilled = (state, action) => {
   const token = action.payload.message.accessToken;
   localStorage.setItem("accessToken", token);
-  state.status = "succeeded";
+  state.status = "succeeded"; // for every non-navigation related status updates
   state.accessToken = token;
   state.isAuthenticated = true;
+  state.navigationStatus = "succeeded"; // this is a unqiue status that is for navigation only
 
   console.log("The state: ", state.isAuthenticated);
 };
@@ -72,6 +73,7 @@ const handleAuthRejected = (state, action) => {
   state.isAuthenticated = false;
   state.accessToken = null;
   localStorage.removeItem("accessToken");
+  state.navigationStatus = "failed";
 };
 
 /* ---------------------------------------------------------------------------
@@ -98,21 +100,12 @@ const authSlice = createSlice({
     isAuthenticated: !!localStorage.getItem("accessToken"),
     status: "idle", // idle, pending, succeeded, failed
     error: null,
+    navigationStatus: "idle", // idle, pending, succeeded, failed
   },
   reducers: {
-    // Simple synchronous action for client-side logout
-    logoutSync: (state) => {
-      // Remove user data from client storage
-      localStorage.removeItem("accessToken");
-
-      // Reset state
-      state.accessToken = null;
-      state.isAuthenticated = false;
-      state.status = "idle";
-      state.error = null;
-    },
-    // Action to clear any previous error messages
-    clearError: (state) => {
+    // action to reset the state of the user once an action is done
+    resetNavStatus: (state) => {
+      state.navigationStatus = "idle";
       state.error = null;
     },
   },
@@ -165,16 +158,20 @@ const authSlice = createSlice({
       state.accessToken = null;
       state.isAuthenticated = false;
       localStorage.removeItem("accessToken"); // removing the access token for credentials
+      state.navigationStatus = "succeeded";
     });
 
     // the failure case
     builder.addCase(logout.rejected, (state, action) => {
       state.status = "failed";
       state.error = uxErrorMessage(action.payload);
+      state.navigationStatus = "failed";
     });
   },
 });
 
-export { register, login, logout };
+export const { resetNavStatus } = authSlice.actions; // synchronous actions
+
+export { register, login, logout }; // asynchronous actions
 
 export default authSlice.reducer;

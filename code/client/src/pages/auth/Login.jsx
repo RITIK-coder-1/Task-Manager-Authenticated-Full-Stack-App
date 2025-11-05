@@ -38,12 +38,6 @@ function Login() {
   };
 
   // ----------------------------------------------------------------------------------
-  // Once the user logs in, they should automatically be navigated to the dashboard
-  // ----------------------------------------------------------------------------------
-
-  useNavigation("/users/me/dashboard");
-
-  // ----------------------------------------------------------------------------------
   // This is the conditional rendering message based on the status of the state
   // ----------------------------------------------------------------------------------
 
@@ -59,6 +53,12 @@ function Login() {
     // Handle the default/idle state
     return null;
   };
+
+  // ----------------------------------------------------------------------------------
+  // Once the user logs in, they should automatically be navigated to the dashboard
+  // ----------------------------------------------------------------------------------
+  useNavigation("/users/me/dashboard");
+
   return (
     // ----------------------------------------------------------------------------------
     // The Auth form

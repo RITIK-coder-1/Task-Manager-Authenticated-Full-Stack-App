@@ -17,6 +17,7 @@ import {
   passwordUpdate,
   profileUpdate,
 } from "./userSlice.js";
+
 import {
   create,
   update,
@@ -24,7 +25,8 @@ import {
   displayAll,
   get as getTask,
 } from "./taskSlice.js";
-import { register, login, logout } from "./authSlice.js";
+
+import { register, login, logout, resetNavStatus } from "./authSlice.js";
 
 export {
   taskReducer,
@@ -42,4 +44,5 @@ export {
   register,
   login,
   logout,
+  resetNavStatus,
 };

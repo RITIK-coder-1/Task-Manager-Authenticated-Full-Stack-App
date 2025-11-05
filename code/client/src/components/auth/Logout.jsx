@@ -6,7 +6,7 @@ This button logs out a user
 import React from "react";
 import { Button } from "../index.components.js";
 import { logout } from "../../features/index.features.js";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   useConditionalRendering,
   useNavigation,
@@ -18,10 +18,9 @@ function Logout() {
   // ----------------------------------------------------------------------------------
   const { status, error } = useConditionalRendering("auth");
   const dispatch = useDispatch();
-
-  // ----------------------------------------------------------------------------------
-  // Once the user logs out, they should automatically be navigated to the homepage
-  // ----------------------------------------------------------------------------------
+  const onLogout = () => {
+    dispatch(logout());
+  };
 
   // ----------------------------------------------------------------------------------
   // This is the conditional rendering message based on the status of the state
@@ -37,16 +36,14 @@ function Logout() {
     }
   };
 
+  // ----------------------------------------------------------------------------------
+  // Once the user logs out, they should automatically be navigated to the homepage
+  // ----------------------------------------------------------------------------------
+  useNavigation("/");
+
   return (
     <>
-      <Button
-        content={"Log out"}
-        onClick={() => {
-          dispatch(logout());
-
-          useNavigation("/");
-        }}
-      />
+      <Button content={"Log out"} onClick={onLogout} />
       {conditionalMessage()}
     </>
   );
