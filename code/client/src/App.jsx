@@ -3,8 +3,6 @@ App.jsx
 This is the root application that hosts all the app pages 
 ------------------------------------------------------------------------------ */
 
-// CURRENTLY IN DEVELOPMENT!
-
 import "./styles/App.css";
 import {
   Register,
@@ -19,26 +17,18 @@ import {
 } from "./pages/index.pages";
 import { Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./utils/ProtectedRoute.jsx";
-import { useSelector } from "react-redux";
-import { useEffect } from "react";
 
 function App() {
-  const auth = useSelector((state) => {
-    return state.auth.isAuthenticated;
-  });
-  useEffect(() => {
-    console.log(auth);
-  }, [auth]);
-
   return (
     <>
+      {/* The Routing System */}
       <Routes>
         {/* PUBLIC ROUTES: Accessible to everyone */}
         <Route path="/" element={<Home />} />
         <Route path="/users/register" element={<Register />} />
         <Route path="/users/login" element={<Login />} />
 
-        {/* PROTECTED AREA: Uses the wrapper to secure all child routes */}
+        {/* PROTECTED AREA: Uses the wrapper to secure all the child routes */}
         <Route element={<ProtectedRoute />}>
           {/* All the renders for /users/me */}
           <Route path="/users/me">

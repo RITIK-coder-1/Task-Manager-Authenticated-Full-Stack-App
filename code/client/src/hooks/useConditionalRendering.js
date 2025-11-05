@@ -1,10 +1,22 @@
+/* ---------------------------------------------------------------------------
+useConditionalRendering.js
+This is a custom hook for providing the state status, the error message and the user value
+------------------------------------------------------------------------------ */
+
 import { useSelector } from "react-redux";
-function useConditionalRendering() {
-  const success = useSelector((state) => state.users?.user?.data);
-  const status = useSelector((state) => state.users?.status);
-  const error = useSelector((state) => state.users?.error);
-  const user = useSelector((state) => state.users.user);
-  return { success, status, error, user };
+function useConditionalRendering(slice) {
+  // the slice is dynamic (auth, users or tasks)
+  // Because an object expects a string, I'm using the square notation
+  const sliceState = useSelector((state) => state[slice]);
+
+  // Check if the slice exists before accessing properties
+  if (!sliceState) {
+    console.error(`Redux slice with name '${slice}' not found.`);
+    return { status: "idle", error: null, user: null }; // Fallback
+  }
+
+  const { status, error, user } = { sliceState };
+  return { status, error, user };
 }
 
 export default useConditionalRendering;

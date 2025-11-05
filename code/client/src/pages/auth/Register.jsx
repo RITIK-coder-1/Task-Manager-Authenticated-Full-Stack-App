@@ -9,6 +9,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { register } from "../../features/index.features.js";
 
 function Register() {
+  // ----------------------------------------------------------------------------------
+  // All the variables of the script
+  // ----------------------------------------------------------------------------------
   const status = useSelector((state) => state.users.status);
   const error = useSelector((state) => state.users.error);
   const dispatch = useDispatch();
@@ -18,6 +21,10 @@ function Register() {
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState("");
   const [profile, setProfile] = useState(null);
+
+  // ----------------------------------------------------------------------------------
+  // The function to dispatch the register action
+  // ----------------------------------------------------------------------------------
 
   const handleOnSubmit = (e) => {
     e.preventDefault(); // prevent page re-load
@@ -38,6 +45,10 @@ function Register() {
     dispatch(register(payload));
   };
 
+  // ----------------------------------------------------------------------------------
+  // This is the conditional rendering message based on the status of the state
+  // ----------------------------------------------------------------------------------
+
   const renderStatusMessage = () => {
     if (status === "pending") {
       return <span>Checking...</span>;
@@ -51,7 +62,12 @@ function Register() {
   };
 
   return (
+    // ----------------------------------------------------------------------------------
+    // The Auth form
+    // ----------------------------------------------------------------------------------
+
     <AuthCard onSubmit={handleOnSubmit}>
+      {/* The fullname */}
       <div className="flex gap-2">
         <label>Enter Your Full Name: </label>
         <Input
@@ -71,6 +87,8 @@ function Register() {
           }}
         />
       </div>
+
+      {/* The username */}
       <div className="flex gap-2">
         <label>Enter a username: </label>
         <Input
@@ -82,6 +100,8 @@ function Register() {
           }}
         />
       </div>
+
+      {/* The email */}
       <div className="flex gap-2">
         <label>Enter Your Email: </label>
         <Input
@@ -93,6 +113,8 @@ function Register() {
           }}
         />
       </div>
+
+      {/* The password */}
       <div className="flex gap-2">
         <label>Enter Your password: </label>
         <Input
@@ -104,6 +126,8 @@ function Register() {
           }}
         />
       </div>
+
+      {/* The profile pic */}
       <div className="flex gap-2">
         <label>Choose an image for your profile (optional): </label>
         <input
@@ -115,7 +139,11 @@ function Register() {
           }}
         />
       </div>
+
+      {/* The button to submit the data */}
       <Button content={"Register"} type={"submit"} />
+
+      {/* The status message */}
       {renderStatusMessage()}
     </AuthCard>
   );
