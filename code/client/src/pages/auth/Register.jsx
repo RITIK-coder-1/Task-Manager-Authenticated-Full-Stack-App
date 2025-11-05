@@ -8,6 +8,7 @@ import { Input, AuthCard, Button } from "../../components/index.components.js";
 import { useDispatch } from "react-redux";
 import { register } from "../../features/index.features.js";
 import useConditionalRendering from "../../hooks/useConditionalRendering.js";
+import useNavigation from "../../hooks/useNavigation.js";
 
 function Register() {
   // ----------------------------------------------------------------------------------
@@ -49,6 +50,12 @@ function Register() {
 
     dispatch(register(payload));
   };
+
+  // ----------------------------------------------------------------------------------
+  // Once the user registers, they should automatically be navigated to the dashboard
+  // ----------------------------------------------------------------------------------
+
+  useNavigation("/users/me/dashboard");
 
   // ----------------------------------------------------------------------------------
   // This is the conditional rendering message based on the status of the state

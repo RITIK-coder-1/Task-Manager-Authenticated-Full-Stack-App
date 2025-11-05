@@ -5,6 +5,7 @@ This is a custom hook for automatically transfering the user to specific pages a
 
 import { useNavigate, useLocation } from "react-router-dom";
 import useConditionalRendering from "./useConditionalRendering";
+import { useEffect } from "react";
 
 const useNavigation = (url) => {
   const navigate = useNavigate();

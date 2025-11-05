@@ -29,8 +29,6 @@ const registerUser = async (userData) => {
         timeout: 30000, // custom timeout for file related operations
       }
     );
-    console.log("user data: ", userData);
-
     console.log("User successfully registered!", response.data);
     return response.data; // the response sent by the backend
   } catch (error) {
