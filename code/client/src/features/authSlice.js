@@ -56,10 +56,10 @@ const logout = createAsyncThunk(
 const handleAuthFulfilled = (state, action) => {
   const token = action.payload.message.accessToken;
   localStorage.setItem("accessToken", token);
-  state.status = "succeeded"; // for every non-navigation related status updates
+  state.status = "succeeded";
   state.accessToken = token;
   state.isAuthenticated = true;
-  state.navigationStatus = "succeeded"; // this is a unqiue status that is for navigation only
+  state.navigationStatus = "succeeded";
 
   console.log("The state: ", state.isAuthenticated);
 };
@@ -98,9 +98,9 @@ const authSlice = createSlice({
   initialState: {
     accessToken: localStorage.getItem("accessToken") || null,
     isAuthenticated: !!localStorage.getItem("accessToken"),
-    status: "idle", // idle, pending, succeeded, failed
+    status: "idle", // // for every non-navigation related status updates (idle, pending, succeeded, failed)
     error: null,
-    navigationStatus: "idle", // idle, pending, succeeded, failed
+    navigationStatus: "idle", // this is a unqiue status that is for navigation related status updates only (idle, succeeded, failed)
   },
   reducers: {
     // action to reset the state of the user once an action is done
