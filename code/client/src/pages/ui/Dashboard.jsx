@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 import { displayAll } from "../../features/taskSlice.js";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, CreateTaskModal } from "../../components/index.components.js";
+import { Link } from "react-router-dom";
 
 function Dashboard() {
   // ----------------------------------------------------------------------------------
@@ -40,13 +41,15 @@ function Dashboard() {
   const displayTasks = () => {
     return tasks?.map((ele) => {
       return (
-        <div
-          key={ele._id}
-          className="border w-36 h-auto p-2 flex flex-col justify-center items-center"
-        >
-          <h1>{ele.title}</h1>
-          <p>{ele.description}</p>
-        </div>
+        <Link to={`/users/me/dashboad/${ele._id}`} key={ele._id}>
+          <div
+            className="border w-36 h-auto p-2 flex flex-col justify-center items-center cursor-pointer"
+            title={`Visit ${ele.title}`}
+          >
+            <h1>{ele.title}</h1>
+            <p>{ele.description}</p>
+          </div>
+        </Link>
       );
     });
   };
