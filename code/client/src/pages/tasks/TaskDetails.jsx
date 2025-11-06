@@ -6,12 +6,7 @@ This page shows the details of a specific task. The task can be updated and dele
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import {
-  getTask,
-  update,
-  remove,
-  resetNav,
-} from "../../features/index.features.js";
+import { getTask, update, remove } from "../../features/index.features.js";
 import { AuthCard, Button, Input } from "../../components/index.components";
 import useNavigation from "../../hooks/useNavigation.js";
 
@@ -61,6 +56,9 @@ function TaskDetails() {
 
     dispatch(update(data));
   };
+  // ----------------------------------------------------------------------------------
+  // Automatic navigation once the task is deleted
+  // ----------------------------------------------------------------------------------
   useNavigation("tasks", "/users/me/dashboard");
 
   return (
@@ -168,7 +166,6 @@ function TaskDetails() {
         content={"Delete"}
         onClick={() => {
           dispatch(remove(taskId));
-          dispatch(resetNav());
         }}
       />
     </>
