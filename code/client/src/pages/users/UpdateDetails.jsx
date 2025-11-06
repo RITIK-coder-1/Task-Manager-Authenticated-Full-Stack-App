@@ -1,27 +1,38 @@
+/* ---------------------------------------------------------------------------
+UpdateDetails.jsx
+This is the page to update the details of the profile 
+------------------------------------------------------------------------------ */
+
 import React, { useEffect, useState } from "react";
 import { AuthCard, Input, Button } from "../../components/index.components";
 import { useDispatch, useSelector } from "react-redux";
 import { userUpdate } from "../../features/userSlice.js";
 import { getUser } from "../../features/index.features.js";
+import useConditionalRendering from "../../hooks/useConditionalRendering.js";
 
 function UpdateDetails() {
   const dispatch = useDispatch();
 
+  // ----------------------------------------------------------------------------------
+  // Get the user details as soon as the page loads
+  // ----------------------------------------------------------------------------------
   useEffect(() => {
     dispatch(getUser());
   }, [dispatch]);
 
+  // ----------------------------------------------------------------------------------
+  // All the variables of the script
+  // ----------------------------------------------------------------------------------
   const user = useSelector((state) => state.users.user?.message);
-  console.log("user", user);
-
-  const status = useSelector((state) => state.users.status);
-  const error = useSelector((state) => state.users.error);
-
+  const { status, error } = useConditionalRendering("users");
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
   const [email, setEmail] = useState(null);
   const [username, setUsername] = useState(null);
 
+  // ----------------------------------------------------------------------------------
+  // For better UX, I made sure to pre-load the current value of the task details
+  // ----------------------------------------------------------------------------------
   useEffect(() => {
     if (user && user.fullName) {
       setFirstName(user.fullName.firstName || "");
@@ -29,12 +40,15 @@ function UpdateDetails() {
       setEmail(user.email || "");
       setUsername(user.username || "");
     }
-  }, [user, status, dispatch]);
+  }, [user, dispatch, setFirstName, setLastName, setEmail, setUsername]);
 
-  // Function to handle form submission
+  // ----------------------------------------------------------------------------------
+  // Function to dispatch the action
+  // ----------------------------------------------------------------------------------
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault(); // prevent page reloads
 
+    // If some data is not updated, send the current data
     const updatedData = {
       fullName: {
         firstName: firstName ?? user?.fullName?.firstName,
@@ -47,10 +61,16 @@ function UpdateDetails() {
     dispatch(userUpdate(updatedData));
   };
 
+  // ----------------------------------------------------------------------------------
+  // Loading the user data for UX
+  // ----------------------------------------------------------------------------------
   if (!user && status === "pending") {
     return <AuthCard>Loading user data...</AuthCard>;
   }
 
+  // ----------------------------------------------------------------------------------
+  // The conditional message
+  // ----------------------------------------------------------------------------------
   const conditionalMessage = () => {
     if (status === "pending") {
       return <span>Checking...</span>;
@@ -63,7 +83,9 @@ function UpdateDetails() {
 
   return (
     <>
+      {/* The Auth form */}
       <AuthCard onSubmit={handleSubmit}>
+        {/* The full name */}
         <div className="flex gap-2">
           <label>Update Your Full Name: </label>
           <Input
@@ -83,6 +105,8 @@ function UpdateDetails() {
             }}
           />
         </div>
+
+        {/* The username */}
         <div className="flex gap-2">
           <label>Update your username: </label>
           <Input
@@ -94,6 +118,8 @@ function UpdateDetails() {
             }}
           />
         </div>
+
+        {/* The email */}
         <div className="flex gap-2">
           <label>Update Your Email: </label>
           <Input
@@ -105,12 +131,16 @@ function UpdateDetails() {
             }}
           />
         </div>
+
+        {/* The update button */}
         <Button
           content={"Update"}
           type={"submit"}
           disabled={status === "pending"}
         />
       </AuthCard>
+
+      {/* The conditional message */}
       {conditionalMessage()}
     </>
   );
