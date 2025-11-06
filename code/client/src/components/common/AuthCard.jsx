@@ -1,3 +1,8 @@
+/* ---------------------------------------------------------------------------
+AuthCard.jsx
+This is the form for every input values
+------------------------------------------------------------------------------ */
+
 import React from "react";
 
 function AuthCard({ children, onSubmit, styles = "" }) {

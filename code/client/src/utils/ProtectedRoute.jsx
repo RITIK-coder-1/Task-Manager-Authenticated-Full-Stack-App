@@ -1,3 +1,8 @@
+/* ---------------------------------------------------------------------------
+ProtectedRoute.jsx
+This is a special component that wraps all the secured roots for routing
+------------------------------------------------------------------------------ */
+
 import React from "react";
 import { Navigate, Outlet, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";

@@ -11,7 +11,6 @@ import {
   deleteTask,
   getTask,
 } from "../services/index.services.js";
-import { resetNavStatus } from "./authSlice.js";
 
 /* ---------------------------------------------------------------------------
 Function to display all the tasks

@@ -8,5 +8,6 @@ import AuthCard from "./common/AuthCard";
 import Button from "./common/Button";
 import CreateTaskModal from "./layout/CreateTaskModal";
 import Header from "./layout/Header";
+import Logout from "./auth/Logout";
 
-export { Input, AuthCard, Button, CreateTaskModal, Header };
+export { Input, AuthCard, Button, CreateTaskModal, Header, Logout };

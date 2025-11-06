@@ -1,6 +1,11 @@
+/* ---------------------------------------------------------------------------
+Header.jsx
+This is the header component for navigation between pages
+------------------------------------------------------------------------------ */
+
 import React from "react";
 import { NavLink } from "react-router-dom";
-import Logout from "../auth/Logout";
+import { Logout } from "../index.components";
 
 function Header() {
   return (

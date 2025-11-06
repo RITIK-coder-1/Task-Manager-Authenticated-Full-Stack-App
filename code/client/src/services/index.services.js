@@ -1,6 +1,6 @@
 /* ---------------------------------------------------------------------------
 index.service.js
-This script exports all the user and task related API calls from a single place
+This script exports all the auth, user and task related API calls from a single place
 ------------------------------------------------------------------------------ */
 
 // auth API calls

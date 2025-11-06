@@ -1,3 +1,8 @@
+/* ---------------------------------------------------------------------------
+store.js
+This is the redux store for managing reducers
+------------------------------------------------------------------------------ */
+
 import { configureStore } from "@reduxjs/toolkit";
 import {
   taskReducer,

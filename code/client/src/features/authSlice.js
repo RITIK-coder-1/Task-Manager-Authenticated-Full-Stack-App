@@ -1,5 +1,14 @@
+/* ---------------------------------------------------------------------------
+authSlice.js
+This is the redux slice for authentication related queries and global state management
+------------------------------------------------------------------------------ */
+
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { loginUser, logoutUser, registerUser } from "../services/authService";
+import {
+  registerUser,
+  loginUser,
+  logoutUser,
+} from "../services/index.services";
 
 /* ---------------------------------------------------------------------------
 The function to register a user

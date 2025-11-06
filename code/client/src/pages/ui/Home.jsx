@@ -1,3 +1,8 @@
+/* ---------------------------------------------------------------------------
+Home.jsx
+This is the landing page where unauthenticated users land. It navigates to the register and login pages
+------------------------------------------------------------------------------ */
+
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../../components/index.components";

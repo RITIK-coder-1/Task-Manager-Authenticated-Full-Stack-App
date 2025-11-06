@@ -1,3 +1,8 @@
+/* ---------------------------------------------------------------------------
+Input.jsx
+This is a common input component for reuse
+------------------------------------------------------------------------------ */
+
 import React from "react";
 
 function Input({
@@ -5,7 +10,6 @@ function Input({
   name,
   onChange,
   value,
-  id,
   styles = "",
   readOnly = false,
 }) {
