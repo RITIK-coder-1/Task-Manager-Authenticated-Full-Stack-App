@@ -7,7 +7,7 @@ function Input({
   value,
   id,
   styles = "",
-  readOnly,
+  readOnly = false,
 }) {
   return (
     <input

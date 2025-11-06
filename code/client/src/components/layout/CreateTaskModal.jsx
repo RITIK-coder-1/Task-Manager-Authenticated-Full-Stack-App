@@ -18,7 +18,7 @@ function CreateTaskModal({ onClick }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("Low");
-  const [isCompleted, setIsCompleted] = useState("");
+  const [isCompleted, setIsCompleted] = useState(false);
   const [category, setCategory] = useState("unspecified");
 
   // ----------------------------------------------------------------------------------
@@ -106,11 +106,10 @@ function CreateTaskModal({ onClick }) {
           name="isCompleted"
           id="isCompleted"
           onClick={() => {
-            // these values will be converted to boolean in the create task controller in the server
-            if (isCompleted === "") {
-              setIsCompleted("true");
-            } else if (isCompleted === "true") {
-              setIsCompleted("");
+            if (isCompleted === false) {
+              setIsCompleted(true);
+            } else if (isCompleted === true) {
+              setIsCompleted(false);
             }
           }}
         />
