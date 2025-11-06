@@ -153,15 +153,7 @@ const taskSlice = createSlice({
     // the success case
     builder.addCase(update.fulfilled, (state, action) => {
       state.status = "succeeded";
-
-      // override the task
-      const index = state.tasks.findIndex(
-        (task) => task.id === action.payload.id
-      );
-
-      if (index !== -1) {
-        state.tasks[index] = action.payload;
-      }
+      state.specificTask = action.payload;
     });
 
     // the failure case

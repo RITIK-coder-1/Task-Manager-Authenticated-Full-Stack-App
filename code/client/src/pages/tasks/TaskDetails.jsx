@@ -6,8 +6,8 @@ This page shows the details of a specific task
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getTask } from "../../features/index.features";
-import { AuthCard, Input } from "../../components/index.components";
+import { getTask, update } from "../../features/index.features.js";
+import { AuthCard, Button, Input } from "../../components/index.components";
 
 function TaskDetails() {
   // ----------------------------------------------------------------------------------
@@ -38,7 +38,8 @@ function TaskDetails() {
 
   const [isCompleted, setIsCompleted] = useState(task?.isCompleted);
 
-  const submit = () => {
+  const submit = (e) => {
+    e.preventDefault(); // for preventing page reload
     const payload = {
       title: title,
       description: description,
@@ -46,11 +47,18 @@ function TaskDetails() {
       category: category,
       isCompleted: isCompleted,
     };
+
+    const data = {
+      taskId: taskId,
+      taskData: payload,
+    };
+
+    dispatch(update(data));
   };
 
   return (
     <>
-      <AuthCard>
+      <AuthCard onSubmit={submit}>
         {/* The title of the task */}
         <div className="flex justify-between items-center gap-2">
           <Input
@@ -141,13 +149,14 @@ function TaskDetails() {
             onClick={() => {
               // these values will be converted to boolean in the create task controller in the server
               if (isCompleted === true) {
-                setIsCompleted("");
+                setIsCompleted(false);
               } else if (isCompleted === false) {
-                setIsCompleted("true");
+                setIsCompleted(true);
               }
             }}
           />
         </div>
+        <Button content={"Update"} type={"submit"} />
       </AuthCard>
     </>
   );
