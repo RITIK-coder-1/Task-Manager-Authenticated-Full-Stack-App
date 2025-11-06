@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getTask } from "../../features/index.features";
+import { Input } from "../../components/index.components";
 
 function TaskDetails() {
   // ----------------------------------------------------------------------------------
@@ -32,6 +33,7 @@ function TaskDetails() {
         <span>Category: {task.category}</span>
         <span>Priority: {task.priority}</span>
         <span>Completion: {String(task.isCompleted)}</span>
+        <Input styles="outline-1" value={task.title} />
       </div>
     </>
   );

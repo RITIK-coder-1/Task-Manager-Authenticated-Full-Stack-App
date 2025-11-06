@@ -1,16 +1,24 @@
 import React from "react";
 
-function Input({ placeholder, name, onChange, value, id, styles = "" }) {
+function Input({
+  placeholder,
+  name,
+  onChange,
+  value,
+  id,
+  styles = "",
+  readOnly,
+}) {
   return (
     <input
       type="text"
       placeholder={placeholder}
-      className={`outline-1 ${styles}`}
+      className={`${styles}`}
       name={name}
       onChange={onChange}
       value={value}
-      readOnly={false}
-      id={id}
+      readOnly={readOnly}
+      id={name}
     />
   );
 }

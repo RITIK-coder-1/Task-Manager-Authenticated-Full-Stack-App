@@ -66,7 +66,7 @@ function Login() {
     <AuthCard onSubmit={handleSubmit}>
       {/* The username/email */}
       <div className="flex gap-2">
-        <label>Enter Your Username or Email: </label>
+        <label htmlFor="credential">Enter Your Username or Email: </label>
         <Input
           placeholder={"username/email"}
           name={"credential"}
@@ -78,7 +78,7 @@ function Login() {
 
       {/* The password */}
       <div className="flex gap-2">
-        <label>Enter Your password: </label>
+        <label htmlFor="password">Enter Your password: </label>
         <Input
           placeholder={"it should be at least of 10 characters."}
           name={"password"}

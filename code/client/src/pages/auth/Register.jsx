@@ -83,7 +83,7 @@ function Register() {
     <AuthCard onSubmit={handleOnSubmit}>
       {/* The fullname */}
       <div className="flex gap-2">
-        <label>Enter Your Full Name: </label>
+        <label htmlFor="firstName">Enter Your Full Name: </label>
         <Input
           placeholder={"Enter first name"}
           name={"firstName"}
@@ -104,7 +104,7 @@ function Register() {
 
       {/* The username */}
       <div className="flex gap-2">
-        <label>Enter a username: </label>
+        <label htmlFor="username">Enter a username: </label>
         <Input
           placeholder={"Minimum 3 characters"}
           name={"username"}
@@ -117,7 +117,7 @@ function Register() {
 
       {/* The email */}
       <div className="flex gap-2">
-        <label>Enter Your Email: </label>
+        <label htmlFor="email">Enter Your Email: </label>
         <Input
           placeholder={"example@gmail.com"}
           name={"email"}
@@ -130,7 +130,7 @@ function Register() {
 
       {/* The password */}
       <div className="flex gap-2">
-        <label>Enter Your password: </label>
+        <label htmlFor="password">Enter Your password: </label>
         <Input
           placeholder={"it should be at least of 10 characters."}
           name={"password"}

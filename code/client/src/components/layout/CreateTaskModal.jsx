@@ -59,7 +59,6 @@ function CreateTaskModal({ onClick }) {
         <label htmlFor="title">Enter the title of the task: (Required)</label>
         <Input
           name={"title"}
-          id={"title"}
           onChange={(e) => {
             setTitle(e.target.value);
           }}
@@ -69,7 +68,6 @@ function CreateTaskModal({ onClick }) {
         <label htmlFor="description">Add any notes (optional): </label>
         <Input
           name={"description"}
-          id={"description"}
           width="w-full"
           height="h-56"
           onChange={(e) => {
@@ -96,7 +94,6 @@ function CreateTaskModal({ onClick }) {
         <label htmlFor="category">Any category: (optional)</label>
         <Input
           name={"category"}
-          id={"category"}
           onChange={(e) => {
             setCategory(e.target.value);
           }}
