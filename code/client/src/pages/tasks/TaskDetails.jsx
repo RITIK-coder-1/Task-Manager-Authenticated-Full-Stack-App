@@ -10,9 +10,6 @@ import { getTask, update } from "../../features/index.features.js";
 import { AuthCard, Button, Input } from "../../components/index.components";
 
 function TaskDetails() {
-  // ----------------------------------------------------------------------------------
-  // All the variables
-  // ----------------------------------------------------------------------------------
   const { taskId } = useParams(); // getting the task id included in the URL
   const dispatch = useDispatch();
 
@@ -23,20 +20,23 @@ function TaskDetails() {
     dispatch(getTask(taskId));
   }, [taskId, dispatch]);
 
+  // ----------------------------------------------------------------------------------
+  // All the variables
+  // ----------------------------------------------------------------------------------
   const task = useSelector((state) => state.tasks.specificTask.message); // the task data
 
-  const [title, setTitle] = useState(task?.title);
+  const [title, setTitle] = useState(task?.title); // the title of the task
   const [modifyTitle, setModifyTitle] = useState(false);
 
-  const [description, setDescription] = useState(task?.description);
+  const [description, setDescription] = useState(task?.description); // the desc
   const [modifyDesc, setModifyDesc] = useState(false);
 
-  const [priority, setPriority] = useState(task?.priority);
+  const [priority, setPriority] = useState(task?.priority); // the priority (can be changed directly)
 
-  const [category, setCategory] = useState(task?.category);
+  const [category, setCategory] = useState(task?.category); // the category
   const [modifyCategory, setModifyCategory] = useState(false);
 
-  const [isCompleted, setIsCompleted] = useState(task?.isCompleted);
+  const [isCompleted, setIsCompleted] = useState(task?.isCompleted); // the completion status (can be changed directly)
 
   const submit = (e) => {
     e.preventDefault(); // for preventing page reload
@@ -49,7 +49,7 @@ function TaskDetails() {
     };
 
     const data = {
-      taskId: taskId,
+      taskId: taskId, // for URL purposes
       taskData: payload,
     };
 
@@ -147,7 +147,6 @@ function TaskDetails() {
             id="isCompleted"
             defaultChecked={isCompleted ? true : false}
             onClick={() => {
-              // these values will be converted to boolean in the create task controller in the server
               if (isCompleted === true) {
                 setIsCompleted(false);
               } else if (isCompleted === false) {
