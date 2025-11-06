@@ -77,7 +77,7 @@ The function to get a specific task
 const getTask = async (taskId) => {
   try {
     const response = await taskAxios.get(`/${taskId}`);
-    console.log("Task successfully retrieved!: ", response.data);
+    console.log("Task has been successfully retrieved!: ", response.data);
     return response.data;
   } catch (error) {
     console.error(

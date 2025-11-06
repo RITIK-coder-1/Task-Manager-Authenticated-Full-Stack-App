@@ -8,7 +8,7 @@ function Profile() {
 
   useEffect(() => {
     dispatch(get());
-  }, []);
+  }, [dispatch]);
 
   const conditionalMessage = () => {
     if (user) {

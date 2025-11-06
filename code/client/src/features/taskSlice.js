@@ -112,7 +112,8 @@ SLICE
 const taskSlice = createSlice({
   name: "tasks",
   initialState: {
-    tasks: [], // holding the data
+    tasks: [], // it will display the list of all the tasks
+    specificTask: {}, // it will display only a single task at the moment
     status: "idle", // "idle", "pending", "succeeded", "rejected"
     error: null, // the error message
   },
@@ -227,7 +228,7 @@ const taskSlice = createSlice({
     // the success case
     builder.addCase(get.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.tasks = action.payload;
+      state.specificTask = action.payload;
     });
 
     // the failure case

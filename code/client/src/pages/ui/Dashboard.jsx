@@ -16,7 +16,7 @@ function Dashboard() {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(displayAll());
-  }, []);
+  }, [dispatch]);
 
   // ----------------------------------------------------------------------------------
   // All the variables of the script
@@ -39,9 +39,11 @@ function Dashboard() {
   // ----------------------------------------------------------------------------------
 
   const displayTasks = () => {
+    console.log("TASKS: ", tasks);
+
     return tasks?.map((ele) => {
       return (
-        <Link to={`/users/me/dashboad/${ele._id}`} key={ele._id}>
+        <Link to={`/users/me/dashboard/${ele._id}`} key={ele._id}>
           <div
             className="border w-36 h-auto p-2 flex flex-col justify-center items-center cursor-pointer"
             title={`Visit ${ele.title}`}
@@ -71,7 +73,6 @@ function Dashboard() {
           displayTasks()
         )}
       </div>
-
       {/* The modal */}
       {isModalOpen && <CreateTaskModal onClick={closeModal} />}
     </>

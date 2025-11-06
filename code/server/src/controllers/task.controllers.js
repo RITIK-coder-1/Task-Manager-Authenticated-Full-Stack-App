@@ -109,7 +109,7 @@ const displayAllTasksFunction = async (req, res) => {
 
 const retrieveTaskFunction = async (req, res) => {
   const userId = req.user?._id;
-  const taskId = req.body.taskId;
+  const taskId = req.params?.taskId;
 
   if (!userId || !taskId) {
     throw new ApiError(400, "Invalid user or task!");
