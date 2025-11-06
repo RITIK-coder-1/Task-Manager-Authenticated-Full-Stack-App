@@ -1,13 +1,19 @@
 /* ---------------------------------------------------------------------------
 TaskDetails.jsx
-This page shows the details of a specific task
+This page shows the details of a specific task. The task can be updated and deleted here. 
 ------------------------------------------------------------------------------ */
 
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-import { getTask, update } from "../../features/index.features.js";
+import {
+  getTask,
+  update,
+  remove,
+  resetNav,
+} from "../../features/index.features.js";
 import { AuthCard, Button, Input } from "../../components/index.components";
+import useNavigation from "../../hooks/useNavigation.js";
 
 function TaskDetails() {
   const { taskId } = useParams(); // getting the task id included in the URL
@@ -55,6 +61,7 @@ function TaskDetails() {
 
     dispatch(update(data));
   };
+  useNavigation("tasks", "/users/me/dashboard");
 
   return (
     <>
@@ -157,6 +164,13 @@ function TaskDetails() {
         </div>
         <Button content={"Update"} type={"submit"} />
       </AuthCard>
+      <Button
+        content={"Delete"}
+        onClick={() => {
+          dispatch(remove(taskId));
+          dispatch(resetNav());
+        }}
+      />
     </>
   );
 }

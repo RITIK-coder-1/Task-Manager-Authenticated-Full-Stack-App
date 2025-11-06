@@ -57,7 +57,7 @@ function Register() {
   // Once the user registers, they should automatically be navigated to the dashboard
   // ----------------------------------------------------------------------------------
 
-  useNavigation("/users/me/dashboard");
+  useNavigation("auth", "/users/me/dashboard");
 
   // ----------------------------------------------------------------------------------
   // This is the conditional rendering message based on the status of the state

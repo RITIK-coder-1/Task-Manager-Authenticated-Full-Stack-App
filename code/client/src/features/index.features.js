@@ -24,6 +24,7 @@ import {
   remove,
   displayAll,
   get as getTask,
+  resetNav,
 } from "./taskSlice.js";
 
 import { register, login, logout, resetNavStatus } from "./authSlice.js";
@@ -41,6 +42,7 @@ export {
   remove,
   displayAll,
   getTask,
+  resetNav,
   register,
   login,
   logout,

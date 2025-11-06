@@ -9,11 +9,11 @@ import { useEffect } from "react";
 import { resetNavStatus } from "../features/authSlice";
 import { useDispatch } from "react-redux";
 
-const useNavigation = (url) => {
+const useNavigation = (slice, url) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const { error, navigationStatus } = useConditionalRendering("auth");
+  const { error, navigationStatus } = useConditionalRendering(slice);
   const fromPath = location.state?.from?.pathname || url; // either visit the page the user intended to, or visit the specific URL
 
   // useEffect to handle the redirect after successful login

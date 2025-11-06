@@ -39,7 +39,7 @@ function Logout() {
   // ----------------------------------------------------------------------------------
   // Once the user logs out, they should automatically be navigated to the homepage
   // ----------------------------------------------------------------------------------
-  useNavigation("/");
+  useNavigation("auth", "/");
 
   return (
     <>

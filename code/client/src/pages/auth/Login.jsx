@@ -57,7 +57,7 @@ function Login() {
   // ----------------------------------------------------------------------------------
   // Once the user logs in, they should automatically be navigated to the dashboard
   // ----------------------------------------------------------------------------------
-  useNavigation("/users/me/dashboard");
+  useNavigation("auth", "/users/me/dashboard");
 
   return (
     // ----------------------------------------------------------------------------------

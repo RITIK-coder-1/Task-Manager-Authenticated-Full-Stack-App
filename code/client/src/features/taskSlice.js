@@ -11,6 +11,7 @@ import {
   deleteTask,
   getTask,
 } from "../services/index.services.js";
+import { resetNavStatus } from "./authSlice.js";
 
 /* ---------------------------------------------------------------------------
 Function to display all the tasks
@@ -115,7 +116,14 @@ const taskSlice = createSlice({
     tasks: [], // it will display the list of all the tasks
     specificTask: {}, // it will display only a single task at the moment
     status: "idle", // "idle", "pending", "succeeded", "rejected"
-    error: null, // the error message
+    error: null, // the error message,
+    navigationStatus: "idle", // it's a special status used for automatic navigation upon task deletion
+  },
+  reducers: {
+    // it resets the navigation status upon task deletion
+    resetNav: (state) => {
+      state.navigationStatus = "idle";
+    },
   },
   extraReducers: (builder) => {
     /* ---------------------------------------------------------------------------
@@ -175,14 +183,14 @@ const taskSlice = createSlice({
     // the success case
     builder.addCase(remove.fulfilled, (state, action) => {
       state.status = "succeeded";
-      const index = state.tasks.findIndex((task) => task.id === action.payload);
-      state.tasks.splice(index, 1);
+      state.navigationStatus = "succeeded";
     });
 
     // the failure case
     builder.addCase(remove.rejected, (state, action) => {
       state.status = "failed";
       state.error = uxErrorMessage(action.payload);
+      state.navigationStatus = "failed";
     });
 
     /* ---------------------------------------------------------------------------
@@ -230,6 +238,8 @@ const taskSlice = createSlice({
     });
   },
 });
+
+export const { resetNav } = taskSlice.actions; // synchronous actions
 
 export { create, update, remove, displayAll, get };
 
