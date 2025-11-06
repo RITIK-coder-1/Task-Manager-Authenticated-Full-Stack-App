@@ -140,7 +140,6 @@ const userSlice = createSlice({
     builder.addCase(userUpdate.rejected, (state, action) => {
       state.status = "failed";
       state.error = uxErrorMessage(action.payload);
-      state.user = null; // clear data on failure
     });
 
     /* ---------------------------------------------------------------------------

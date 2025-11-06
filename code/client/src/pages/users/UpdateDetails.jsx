@@ -2,11 +2,18 @@ import React, { useEffect, useState } from "react";
 import { AuthCard, Input, Button } from "../../components/index.components";
 import { useDispatch, useSelector } from "react-redux";
 import { userUpdate } from "../../features/userSlice.js";
+import { getUser } from "../../features/index.features.js";
 
 function UpdateDetails() {
   const dispatch = useDispatch();
 
-  const user = useSelector((state) => state.users.user);
+  useEffect(() => {
+    dispatch(getUser());
+  }, [dispatch]);
+
+  const user = useSelector((state) => state.users.user?.message);
+  console.log("user", user);
+
   const status = useSelector((state) => state.users.status);
   const error = useSelector((state) => state.users.error);
 

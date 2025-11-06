@@ -373,7 +373,7 @@ const updateAccountFunction = async (req, res) => {
     throw new ApiError(409, "The entered username is already present!"); // if the updated username is already present
   }
 
-  if (username.trim().length < 3) {
+  if (username?.trim().length < 3) {
     throw new ApiError(400, "The username should be of 3 characters minimum");
   }
 

@@ -22,7 +22,7 @@ function UpdatePassword() {
     if (status === "pending") {
       return <span>Checking...</span>;
     } else if (status === "succeeded") {
-      return <span>Your password have been updated!</span>;
+      return <span>Your password has been updated!</span>;
     } else if (status === "failed") {
       return <span>{error}</span>;
     }

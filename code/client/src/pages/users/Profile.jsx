@@ -1,14 +1,31 @@
+/* ---------------------------------------------------------------------------
+Profile.jsx
+This is the profile section of the user. The user can delete their profile here. 
+------------------------------------------------------------------------------ */
+
 import React, { useEffect, useState } from "react";
-import { get } from "../../features/userSlice";
+import { getUser } from "../../features/index.features";
 import { useDispatch, useSelector } from "react-redux";
+import { Button } from "../../components/index.components";
+import { Link } from "react-router-dom";
 
 function Profile() {
+  // ----------------------------------------------------------------------------------
+  // All the variables of the script
+  // ----------------------------------------------------------------------------------
   const dispatch = useDispatch();
   const user = useSelector((state) => state.users.user?.message);
 
+  // ----------------------------------------------------------------------------------
+  // The user details should be displayed as soon as the component mounts
+  // ----------------------------------------------------------------------------------
   useEffect(() => {
-    dispatch(get());
+    dispatch(getUser());
   }, [dispatch]);
+
+  // ----------------------------------------------------------------------------------
+  // The profile should be displayed based on this condition
+  // ----------------------------------------------------------------------------------
 
   const conditionalMessage = () => {
     if (user) {
@@ -27,7 +44,25 @@ function Profile() {
       return <span>You're unauthorized!</span>;
     }
   };
-  return <>{conditionalMessage()}</>;
+
+  return (
+    <>
+      {conditionalMessage()}
+
+      {/*  ----------------------------------------------------------------------------------
+          The links to update the profile
+       ---------------------------------------------------------------------------------- */}
+      <Link to={"/users/me/details"} className="cursor-pointer">
+        <Button content={"Update details"} />
+      </Link>
+      <Link to={"/users/me/password"} className="cursor-pointer">
+        <Button content={"Update password"} />
+      </Link>
+      <Link to={"/users/me/appearance"} className="cursor-pointer">
+        <Button content={"Update profile"} />
+      </Link>
+    </>
+  );
 }
 
 export default Profile;
