@@ -21,7 +21,7 @@ function Home() {
       <main className="w-full h-full flex flex-col justify-center items-center bg-gray-200 py-5">
         {/* The heading of the homepage */}
         <section className="flex flex-col w-full justify-center items-center text-sm gap-1 px-1">
-          <h1 className="font-sans font-extrabold flex flex-col justify-center items-center text-5xl sm:text-7xl md:text-8xl">
+          <h1 className="font-sans font-extrabold flex flex-col justify-center items-center text-5xl sm:text-7xl md:text-8xl xl:text-10xl">
             <span>Task & Habit</span>
             <span>Tracker</span>
           </h1>
@@ -31,7 +31,7 @@ function Home() {
         </section>
 
         {/* The body of the homepage */}
-        <section className="w-full flex flex-wrap items-center justify-center gap-5 font-semibold py-4 px-1 sm:px-3">
+        <section className="w-full flex flex-wrap items-center justify-center gap-5 font-semibold py-4 px-1 sm:px-3 xl:gap-10">
           {/* THE CARD COMPONENTS */}
 
           {/* The first card (Daily Tasks) */}
@@ -66,7 +66,7 @@ function Home() {
           {/* The fifth card (Anchor habits) */}
           <HomeCard
             icon={faCheck}
-            heading={"Anchor habits"}
+            heading={"Anchor Habits"}
             desc={"Complete all the important tasks"}
             styles="py-1"
           />
@@ -80,11 +80,11 @@ function Home() {
         </section>
 
         {/* The registeration section */}
-        <section className="flex justify-center items-center w-full gap-5 p-2">
+        <section className="flex justify-center items-center w-full gap-5 p-2 xl:pt-6">
           <Link to={"/users/register"}>
             <Button
               content={"Register"}
-              styles="p-5 w-40 text-lg sm:w-56 sm:text-2xl sm:p-6 md:w-64 md:p-7 md:text-3xl lg:w-72 md:p-8 md:text-4xl"
+              styles="p-5 w-40 text-lg sm:w-56 sm:text-2xl sm:p-6 md:w-64 md:p-7 md:text-3xl lg:w-72 md:p-8 md:text-4xl duration-150"
             />
           </Link>
           <Link to={"/users/login"}>
