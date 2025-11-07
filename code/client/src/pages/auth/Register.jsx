@@ -4,7 +4,12 @@ This is the register page for registering a new user
 ------------------------------------------------------------------------------ */
 
 import React, { useState } from "react";
-import { Input, AuthCard, Button } from "../../components/index.components.js";
+import {
+  Input,
+  AuthCard,
+  Button,
+  MainSection,
+} from "../../components/index.components.js";
 import { useDispatch } from "react-redux";
 import { register } from "../../features/index.features.js";
 import {
@@ -79,10 +84,9 @@ function Register() {
     // ----------------------------------------------------------------------------------
     // The Auth form
     // ----------------------------------------------------------------------------------
-
-    <AuthCard onSubmit={handleOnSubmit}>
+    <AuthCard onSubmit={handleOnSubmit} styles="border w-full">
       {/* The fullname */}
-      <div className="flex gap-2">
+      <div className="flex gap-2 flex-col items-start justify-center border">
         <label htmlFor="firstName">Enter Your Full Name: </label>
         <Input
           placeholder={"Enter first name"}
@@ -103,7 +107,7 @@ function Register() {
       </div>
 
       {/* The username */}
-      <div className="flex gap-2">
+      <div className="flex gap-2 flex-col items-start">
         <label htmlFor="username">Enter a username: </label>
         <Input
           placeholder={"Minimum 3 characters"}
@@ -116,7 +120,7 @@ function Register() {
       </div>
 
       {/* The email */}
-      <div className="flex gap-2">
+      <div className="flex gap-2 flex-col items-start">
         <label htmlFor="email">Enter Your Email: </label>
         <Input
           placeholder={"example@gmail.com"}
@@ -129,7 +133,7 @@ function Register() {
       </div>
 
       {/* The password */}
-      <div className="flex gap-2">
+      <div className="flex gap-2 flex-col items-start">
         <label htmlFor="password">Enter Your password: </label>
         <Input
           placeholder={"it should be at least of 10 characters."}
@@ -142,7 +146,7 @@ function Register() {
       </div>
 
       {/* The profile pic */}
-      <div className="flex gap-2">
+      <div className="flex gap-2 flex-col items-start">
         <label>Choose an image for your profile (optional): </label>
         <input
           type="file"
