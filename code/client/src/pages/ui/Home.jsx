@@ -12,9 +12,9 @@ import { faDisplay } from "@fortawesome/free-solid-svg-icons";
 function Home() {
   return (
     <>
-      <main className="w-full h-full flex flex-col justify-center items-center bg-[#F7F7FA]">
+      <main className="w-full h-full flex flex-col justify-center items-center bg-gray-200">
         {/* The heading of the homepage */}
-        <section className="flex flex-col pt-2 border w-full justify-center items-center text-sm gap-1">
+        <section className="flex flex-col pt-2 w-full justify-center items-center text-sm gap-1">
           <h1 className="font-sans font-extrabold text-5xl flex flex-col justify-center items-center">
             <span>Task & Habit</span>
             <span>Tracker</span>
@@ -25,7 +25,7 @@ function Home() {
         </section>
 
         {/* The body of the homepage */}
-        <section className="border w-full flex flex-col items-center justify-center font-semibold">
+        <section className="w-full flex flex-wrap items-center justify-center gap-5 font-semibold py-2">
           {/* THE CARD COMPONENTS */}
 
           {/* The first card (Daily Tasks) */}
@@ -39,35 +39,37 @@ function Home() {
           <HomeCard
             icon={faDisplay}
             heading={"Weekly Habits"}
-            desc={"Add daily tasks and goals"}
+            desc={"Track your habits"}
+            styles="gap-5"
           />
 
           {/* The third card (Minimum Viable Productivity) */}
           <HomeCard
             icon={faDisplay}
-            heading={"Min Productivity"}
-            desc={"Add daily tasks and goals"}
+            heading={"Productivity"}
+            desc={"Minimal Viable Productivity"}
           />
 
-          {/* The fourth card (Deep work sessoins) */}
+          {/* The fourth card (Deep work sessions) */}
           <HomeCard
             icon={faDisplay}
-            heading={"Deep work sessoins"}
-            desc={"Add daily tasks and goals"}
+            heading={"Deep Work"}
+            desc={"Track focused work sessions"}
           />
 
           {/* The fifth card (Anchor habits) */}
           <HomeCard
             icon={faDisplay}
             heading={"Anchor habits"}
-            desc={"Add daily tasks and goals"}
+            desc={"Complete all tasks"}
+            styles="gap-5"
           />
 
           {/* The sixth card (Health and Movement) */}
           <HomeCard
             icon={faDisplay}
-            heading={"Health and Movement"}
-            desc={"Add daily tasks and goals"}
+            heading={"Health"}
+            desc={"Monitor daily steps and water intake"}
           />
         </section>
       </main>

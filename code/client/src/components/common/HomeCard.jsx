@@ -7,16 +7,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import Button from "./Button";
 
-function HomeCard({ icon, heading, desc }) {
+function HomeCard({ icon, heading, desc, styles = "gap-3" }) {
   return (
-    <div className="border w-28 h-32 rounded-lg flex flex-col gap-2 py-1 justify-center items-center bg-white">
+    <div
+      className={`w-36 h-44 rounded-lg flex flex-col justify-center items-center bg-white shadow-xl ${styles}`}
+    >
       <FontAwesomeIcon
         icon={icon}
         style={{ color: "oklch(37.9% 0.146 265.522)" }}
       />
       <div className="flex flex-col justify-center items-center">
-        <h5 className="text-sm text-center">{heading}</h5>
-        <span className="text-[10px] font-extralight text-center text-gray-700">
+        <h5 className="text-lg text-center">{heading}</h5>
+        <span className="text-sm font-extralight text-center text-gray-700">
           {desc}
         </span>
       </div>
