@@ -21,11 +21,11 @@ function Home() {
       <main className="w-full h-full flex flex-col justify-center items-center bg-gray-200 py-5">
         {/* The heading of the homepage */}
         <section className="flex flex-col w-full justify-center items-center text-sm gap-1 px-1">
-          <h1 className="font-sans font-extrabold flex flex-col justify-center items-center text-5xl sm:text-7xl">
+          <h1 className="font-sans font-extrabold flex flex-col justify-center items-center text-5xl sm:text-7xl md:text-8xl">
             <span>Task & Habit</span>
             <span>Tracker</span>
           </h1>
-          <h3 className="font-sans text-gray-900 font-semibold text-[13px] sm:text-lg">
+          <h3 className="font-sans text-gray-900 font-semibold text-[13px] sm:text-lg md:text-xl">
             Simplify Your Routine
           </h3>
         </section>
@@ -84,20 +84,20 @@ function Home() {
           <Link to={"/users/register"}>
             <Button
               content={"Register"}
-              styles="p-5 w-40 text-lg sm:w-56 sm:text-2xl sm:p-6"
+              styles="p-5 w-40 text-lg sm:w-56 sm:text-2xl sm:p-6 md:w-64 md:p-7 md:text-3xl lg:w-72 md:p-8 md:text-4xl"
             />
           </Link>
           <Link to={"/users/login"}>
             <Button
               content={"Log in"}
-              styles="p-5 w-40 text-lg sm:w-56 sm:text-2xl sm:p-6"
+              styles="p-5 w-40 text-lg sm:w-56 sm:text-2xl sm:p-6 md:w-64 md:p-7 md:text-3xl lg:w-72 md:p-8 md:text-4xl"
             />
           </Link>
         </section>
       </main>
 
       {/* The footer slogan */}
-      <footer className="flex justify-center items-center gap-4 bg-gray-200 w-full pb-5 text-gray-700 sm:text-lg">
+      <footer className="flex justify-center items-center gap-4 bg-gray-200 w-full pb-5 text-gray-700 sm:text-lg md:text-xl lg:text-2xl">
         <span>Track</span>
         <span>Achieve</span>
         <span>Repeat</span>
