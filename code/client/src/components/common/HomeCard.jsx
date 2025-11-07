@@ -7,10 +7,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import Button from "./Button";
 
-function HomeCard({ icon, heading, desc, styles = "gap-3" }) {
+function HomeCard({ icon, heading, desc, styles = "" }) {
   return (
     <div
-      className={`w-36 h-44 rounded-lg flex flex-col justify-center items-center bg-white shadow-xl ${styles}`}
+      className={`w-36 h-44 rounded-lg flex flex-col gap-3 justify-center items-center bg-white shadow-xl ${styles}`}
     >
       <FontAwesomeIcon
         icon={icon}
@@ -25,7 +25,7 @@ function HomeCard({ icon, heading, desc, styles = "gap-3" }) {
       <Link to={"/users/register"}>
         <Button
           content={"Start Tracking"}
-          styles="bg-blue-900 text-[10px] w-22"
+          styles="bg-blue-900 hover:bg-blue-800 text-[10px] w-22"
         />
       </Link>
     </div>

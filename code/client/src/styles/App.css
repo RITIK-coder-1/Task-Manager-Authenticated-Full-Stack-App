@@ -3,3 +3,9 @@ App.css
 This file contains the styles of the application 
 ------------------------------------------------------------------------------ */
 @import "tailwindcss";
+
+:root,
+body {
+  width: 100%;
+  height: auto;
+}
