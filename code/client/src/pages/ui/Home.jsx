@@ -15,9 +15,9 @@ function Home() {
   return (
     <>
       {/* The main section */}
-      <main className="w-full min-h-screen flex flex-col justify-center items-center bg-linear-to-b from-gray-100 to-gray-200 py-10 px-2 transition-all duration-300">
+      <main className="w-full min-h-screen flex flex-col justify-center items-center bg-linear-to-b from-gray-100 to-gray-200 pt-10 px-2 transition-all duration-300">
         {/* The heading of the homepage */}
-        <section className="flex flex-col w-full justify-center items-center text-center gap-2 px-2 mb-8">
+        <section className="flex flex-col w-full justify-center items-center text-center gap-2 px-2 ">
           <h1 className="font-sans font-extrabold flex flex-col justify-center items-center text-5xl sm:text-7xl md:text-8xl xl:text-9xl text-gray-900 leading-tight drop-shadow-sm">
             <span>Task & Habit</span>
             <span>Tracker</span>
