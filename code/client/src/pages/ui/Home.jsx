@@ -7,14 +7,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../../components/index.components";
 import { HomeCard } from "../../components/index.components";
-import { faDisplay } from "@fortawesome/free-solid-svg-icons";
-import { faCalendarWeek } from "@fortawesome/free-solid-svg-icons";
-import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
-import { faListCheck } from "@fortawesome/free-solid-svg-icons";
+import { useCards } from "../../hooks/index.hooks.js";
 
 function Home() {
+  const cardsData = useCards(); // importing the component cards
+
   return (
     <>
       {/* The main section */}
@@ -33,50 +30,14 @@ function Home() {
         {/* The body of the homepage */}
         <section className="w-full flex flex-wrap items-center justify-center gap-6 sm:gap-8 md:gap-10 xl:gap-12 font-semibold py-6 px-3 transition-all duration-300">
           {/* THE CARD COMPONENTS */}
-
-          {/* The first card (Daily Tasks) */}
-          <HomeCard
-            icon={faListCheck}
-            heading={"Daily Tasks"}
-            desc={"Add daily tasks and goals"}
-          />
-
-          {/* The second card (Weekly Habits) */}
-          <HomeCard
-            icon={faCalendarWeek}
-            heading={"Weekly Habits"}
-            desc={"Track your weekly habits"}
-            styles="py-1"
-          />
-
-          {/* The third card (Minimum Viable Productivity) */}
-          <HomeCard
-            icon={faThumbsUp}
-            heading={"Productivity"}
-            desc={"Minimal Viable Productivity"}
-          />
-
-          {/* The fourth card (Deep work sessions) */}
-          <HomeCard
-            icon={faDisplay}
-            heading={"Deep Work"}
-            desc={"Track focused work sessions"}
-          />
-
-          {/* The fifth card (Anchor habits) */}
-          <HomeCard
-            icon={faCheck}
-            heading={"Anchor Habits"}
-            desc={"Complete all the important tasks"}
-            styles="py-1"
-          />
-
-          {/* The sixth card (Health and Movement) */}
-          <HomeCard
-            icon={faDumbbell}
-            heading={"Health"}
-            desc={"Monitor daily steps and water intake"}
-          />
+          {cardsData.map((card) => (
+            <HomeCard
+              icon={card.icon}
+              styles={card.styles}
+              heading={card.heading}
+              desc={card.desc}
+            />
+          ))}
         </section>
 
         {/* The registeration section */}
