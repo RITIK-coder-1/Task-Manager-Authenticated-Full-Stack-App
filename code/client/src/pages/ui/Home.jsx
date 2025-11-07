@@ -20,18 +20,18 @@ function Home() {
       {/* The main section */}
       <main className="w-full h-full flex flex-col justify-center items-center bg-gray-200 py-5">
         {/* The heading of the homepage */}
-        <section className="flex flex-col w-full justify-center items-center text-sm gap-1">
-          <h1 className="font-sans font-extrabold text-5xl flex flex-col justify-center items-center">
+        <section className="flex flex-col w-full justify-center items-center text-sm gap-1 px-1">
+          <h1 className="font-sans font-extrabold flex flex-col justify-center items-center text-5xl sm:text-7xl">
             <span>Task & Habit</span>
             <span>Tracker</span>
           </h1>
-          <h3 className="text-[13px] font-sans text-gray-900 font-semibold">
+          <h3 className="font-sans text-gray-900 font-semibold text-[13px] sm:text-lg">
             Simplify Your Routine
           </h3>
         </section>
 
         {/* The body of the homepage */}
-        <section className="w-full flex flex-wrap items-center justify-center gap-5 font-semibold py-4">
+        <section className="w-full flex flex-wrap items-center justify-center gap-5 font-semibold py-4 px-1 sm:px-3">
           {/* THE CARD COMPONENTS */}
 
           {/* The first card (Daily Tasks) */}
@@ -80,18 +80,24 @@ function Home() {
         </section>
 
         {/* The registeration section */}
-        <section className="flex justify-center items-center w-full gap-5 pt-2">
+        <section className="flex justify-center items-center w-full gap-5 p-2">
           <Link to={"/users/register"}>
-            <Button content={"Register"} styles="p-5 w-40 text-lg" />
+            <Button
+              content={"Register"}
+              styles="p-5 w-40 text-lg sm:w-56 sm:text-2xl sm:p-6"
+            />
           </Link>
           <Link to={"/users/login"}>
-            <Button content={"Log in"} styles="p-5 w-40 text-lg" />
+            <Button
+              content={"Log in"}
+              styles="p-5 w-40 text-lg sm:w-56 sm:text-2xl sm:p-6"
+            />
           </Link>
         </section>
       </main>
 
       {/* The footer slogan */}
-      <footer className="flex justify-center items-center gap-4 bg-gray-200 w-full pb-5 text-gray-700">
+      <footer className="flex justify-center items-center gap-4 bg-gray-200 w-full pb-5 text-gray-700 sm:text-lg">
         <span>Track</span>
         <span>Achieve</span>
         <span>Repeat</span>
