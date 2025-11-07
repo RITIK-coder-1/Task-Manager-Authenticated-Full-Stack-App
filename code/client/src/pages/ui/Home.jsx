@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import { Button } from "../../components/index.components";
 import { HomeCard } from "../../components/index.components";
 import { useCards } from "../../hooks/index.hooks.js";
+import { MainSection } from "../../components/index.components";
 
 function Home() {
   const cardsData = useCards(); // importing the component cards
@@ -15,7 +16,7 @@ function Home() {
   return (
     <>
       {/* The main section */}
-      <main className="w-full min-h-screen flex flex-col justify-center items-center bg-linear-to-b from-gray-100 to-gray-200 pt-10 px-2 transition-all duration-300">
+      <MainSection>
         {/* The heading of the homepage */}
         <section className="flex flex-col w-full justify-center items-center text-center gap-2 px-2 ">
           <h1 className="font-sans font-extrabold flex flex-col justify-center items-center text-5xl sm:text-7xl md:text-8xl xl:text-9xl text-gray-900 leading-tight drop-shadow-sm">
@@ -55,7 +56,7 @@ function Home() {
             />
           </Link>
         </section>
-      </main>
+      </MainSection>
 
       {/* The footer slogan */}
       <footer className="flex justify-center items-center gap-6 bg-gray-200 w-full py-6 text-gray-700 sm:text-lg md:text-xl lg:text-2xl tracking-wide uppercase font-medium border-t border-gray-300">

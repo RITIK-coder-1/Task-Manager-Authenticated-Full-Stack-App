@@ -9,6 +9,16 @@ import Button from "./common/Button";
 import CreateTaskModal from "./layout/CreateTaskModal";
 import Header from "./layout/Header";
 import Logout from "./auth/Logout";
-import HomeCard from "./common/HomeCard";
+import HomeCard from "./layout/HomeCard";
+import MainSection from "./layout/MainSection";
 
-export { Input, AuthCard, Button, CreateTaskModal, Header, Logout, HomeCard };
+export {
+  Input,
+  AuthCard,
+  Button,
+  CreateTaskModal,
+  Header,
+  Logout,
+  HomeCard,
+  MainSection,
+};
