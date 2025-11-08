@@ -8,7 +8,14 @@ import React from "react";
 function AuthCard({ children, onSubmit, styles = "" }) {
   return (
     <form
-      className={` ${styles} flex flex-col justify-center items-center px-2 py-5 gap-2 shadow-2xl w-76 rounded-lg sm:w-80 sm:px-3 lg:w-[500px] bg-white`}
+      className={` ${styles} flex flex-col justify-center items-center 
+    px-4 py-6 gap-4 
+    shadow-[0_4px_20px_rgba(0,0,0,0.08)] 
+    w-76 rounded-2xl 
+    sm:w-80 sm:px-6 lg:w-[500px] 
+    border border-gray-100 
+    hover:shadow-[0_6px_24px_rgba(0,0,0,0.1)] 
+    transition-all duration-300 ease-in-out backdrop-blur-sm bg-white/90`}
       onSubmit={onSubmit}
     >
       {children}

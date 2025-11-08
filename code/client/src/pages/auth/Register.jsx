@@ -19,6 +19,7 @@ import {
 } from "../../hooks/index.hooks.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserTie } from "@fortawesome/free-solid-svg-icons";
+import { ToastContainer, toast, Bounce } from "react-toastify";
 
 function Register() {
   // ----------------------------------------------------------------------------------
@@ -59,6 +60,69 @@ function Register() {
     }
 
     dispatch(register(payload));
+
+    if (status === "pending") {
+      toast("Registering...", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        newestOnTop: true,
+        rtl: false,
+        className: "text-xl shadow-2xl border",
+      });
+    } else if (status === "succeeded") {
+      toast("User successfully registered!", {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        newestOnTop: true,
+        rtl: false,
+        className: "text-xl shadow-2xl border",
+      });
+    } else if (status === "failed") {
+      toast(error, {
+        position: "top-right",
+        autoClose: 1000,
+        hideProgressBar: true,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+        newestOnTop: true,
+        rtl: false,
+        className: "text-xl shadow-2xl border",
+      });
+      setTimeout(() => {
+        toast("Please try again!", {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+          newestOnTop: true,
+          rtl: false,
+          className: "text-xl shadow-2xl border",
+        });
+      }, 500);
+    }
   };
 
   // ----------------------------------------------------------------------------------
@@ -71,18 +135,6 @@ function Register() {
   // This is the conditional rendering message based on the status of the state
   // ----------------------------------------------------------------------------------
 
-  const renderStatusMessage = () => {
-    if (status === "pending") {
-      return <span>Checking...</span>;
-    } else if (status === "succeeded") {
-      return <span>User is successfully registered!</span>;
-    } else if (status === "failed") {
-      return <span>{error}</span>;
-    }
-    // Handle the default/idle state
-    return null;
-  };
-
   return (
     // ----------------------------------------------------------------------------------
     // The Auth form
@@ -92,7 +144,7 @@ function Register() {
         <AuthCard onSubmit={handleOnSubmit}>
           {/* The profile pic */}
           <div className="flex gap-1 flex-col items-center justify-center">
-            <span className="border border-blue-900 rounded-full p-1 w-12 h-12 flex justify-center items-center sm:w-16 sm:h-16 lg:w-26 lg:h-26">
+            <span className="border border-blue-900 rounded-full p-1 w-12 h-12 flex justify-center items-center sm:w-16 sm:h-16 lg:w-26 lg:h-26 bg-blue-50">
               <FontAwesomeIcon
                 icon={faUserTie}
                 style={{ color: "oklch(37.9% 0.146 265.522)" }}
@@ -107,7 +159,7 @@ function Register() {
             </label>
             <input
               type="file"
-              className="border border-gray-200 rounded-sm bg-gray-100 p-1 cursor-pointer w-32 text-[9px] hover:bg-gray-200 sm:text-[11px] sm:w-36 lg:text-sm lg:w-44"
+              className="border border-gray-200 rounded-sm bg-gray-100 p-1 cursor-pointer w-32 text-[9px] hover:bg-gray-200 sm:text-[11px] sm:w-36 lg:text-sm lg:w-44 hover:shadow-sm transition-all"
               name="profilePic"
               id="profilePic"
               onChange={(e) => {
@@ -165,7 +217,7 @@ function Register() {
           </div>
         </AuthCard>
         {/* The status message */}
-        {renderStatusMessage()}
+        <ToastContainer />
       </MainSection>
     </>
   );
