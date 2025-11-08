@@ -19,7 +19,7 @@ function Input({
     <input
       type={type}
       placeholder={placeholder}
-      className={`rounded-md border-gray-300 outline:gray-300 hover:outline focus:outline focus:outline-blue-600  transition-all duration-150 p-2 sm:p-3 md:p-4 lg:p-6 ${border} ${styles}`}
+      className={`rounded-md border-gray-300 outline:gray-300 hover:outline focus:outline focus:outline-blue-600 transition-all duration-150 p-2 sm:p-3 md:p-4 lg:p-6 ${border} ${styles}`}
       name={name}
       onChange={onChange}
       value={value}

@@ -4,7 +4,12 @@ This is the login page for logging in an existing user
 ------------------------------------------------------------------------------ */
 
 import React, { useState } from "react";
-import { AuthCard, Input, Button } from "../../components/index.components.js";
+import {
+  AuthCard,
+  Button,
+  InputCard,
+  MainSection,
+} from "../../components/index.components.js";
 import { login } from "../../features/index.features.js";
 import { useDispatch } from "react-redux";
 import { useNavigation } from "../../hooks/index.hooks.js";
@@ -47,37 +52,39 @@ function Login() {
     // ----------------------------------------------------------------------------------
     // The Auth form
     // ----------------------------------------------------------------------------------
-    <AuthCard onSubmit={handleSubmit}>
-      {/* The username/email */}
-      <div className="flex gap-2">
-        <label htmlFor="credential">Enter Your Username or Email: </label>
-        <Input
-          placeholder={"username/email"}
+    <MainSection>
+      <AuthCard onSubmit={handleSubmit}>
+        {/* The username/email */}
+        <InputCard
+          label={"Enter Your Credentials:"}
           name={"credential"}
-          onChange={(e) => {
-            setCredential(e.target.value);
-          }}
+          method={setCredential}
+          placeholder={"Username/Email"}
         />
-      </div>
 
-      {/* The password */}
-      <div className="flex gap-2">
-        <label htmlFor="password">Enter Your password: </label>
-        <Input
-          placeholder={"it should be at least of 10 characters."}
+        {/* The password */}
+        <InputCard
+          label={"Enter Your Password:"}
           name={"password"}
-          onChange={(e) => {
-            setPassword(e.target.value);
-          }}
+          method={setPassword}
+          placeholder={"Password"}
+          type={"password"}
         />
-      </div>
 
-      {/* The submit button */}
-      <Button content={"Log in"} type={"submit"} />
+        {/* The button to submit the data */}
+        <div className="flex justify-center items-center w-full">
+          <Button
+            content={"Log in"}
+            type={"submit"}
+            width={"w-full"}
+            bgColor="bg-gray-700 hover:bg-gray-800"
+          />
+        </div>
 
-      {/* The notifications */}
-      <ToastContainer />
-    </AuthCard>
+        {/* The notifications */}
+        <ToastContainer />
+      </AuthCard>
+    </MainSection>
   );
 }
 

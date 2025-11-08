@@ -120,7 +120,7 @@ function Register() {
                 const value = e.target.value;
                 setLastName(value);
               }}
-              styles=""
+              styles="w-full"
             />
           </InputCard>
 

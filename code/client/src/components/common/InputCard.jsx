@@ -7,7 +7,7 @@ import { Input } from "../index.components";
 
 function InputCard({ children, label, placeholder, name, method, type }) {
   return (
-    <div className="flex flex-col items-start justify-center">
+    <div className="flex flex-col items-start justify-center w-full">
       <label
         htmlFor={name}
         className="text-[11px] text-gray-800 font-semibold sm:text-sm md:text-[16px] lg:text-lg"
@@ -21,7 +21,7 @@ function InputCard({ children, label, placeholder, name, method, type }) {
           const value = e.target.value;
           method(value);
         }}
-        styles="mb-2"
+        styles="mb-2 w-full"
         type={type}
       />
       {children}

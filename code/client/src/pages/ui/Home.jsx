@@ -16,7 +16,7 @@ function Home() {
   return (
     <>
       {/* The main section */}
-      <MainSection>
+      <MainSection styles="pt-10">
         {/* The heading of the homepage */}
         <section className="flex flex-col w-full justify-center items-center text-center gap-2 px-2 ">
           <h1 className="font-sans font-extrabold flex flex-col justify-center items-center text-5xl sm:text-7xl md:text-8xl xl:text-9xl text-gray-900 leading-tight drop-shadow-sm">
