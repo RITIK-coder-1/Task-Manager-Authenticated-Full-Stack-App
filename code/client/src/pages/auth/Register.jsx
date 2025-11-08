@@ -9,6 +9,7 @@ import {
   AuthCard,
   Button,
   MainSection,
+  InputCard,
 } from "../../components/index.components.js";
 import { useDispatch } from "react-redux";
 import { register } from "../../features/index.features.js";
@@ -84,18 +85,14 @@ function Register() {
     // ----------------------------------------------------------------------------------
     // The Auth form
     // ----------------------------------------------------------------------------------
-    <AuthCard onSubmit={handleOnSubmit} styles="border w-full">
+    <AuthCard onSubmit={handleOnSubmit} styles="border w-72">
       {/* The fullname */}
-      <div className="flex gap-2 flex-col items-start justify-center border">
-        <label htmlFor="firstName">Enter Your Full Name: </label>
-        <Input
-          placeholder={"Enter first name"}
-          name={"firstName"}
-          onChange={(e) => {
-            const value = e.target.value;
-            setFirstName(value);
-          }}
-        />
+      <InputCard
+        label={"Fullname"}
+        placeholder={"Enter first name"}
+        name={"firstname"}
+        method={setFirstName}
+      >
         <Input
           placeholder={"Enter last name"}
           name={"lastName"}
@@ -103,8 +100,9 @@ function Register() {
             const value = e.target.value;
             setLastName(value);
           }}
+          styles=""
         />
-      </div>
+      </InputCard>
 
       {/* The username */}
       <div className="flex gap-2 flex-col items-start">

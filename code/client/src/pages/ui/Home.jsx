@@ -37,6 +37,7 @@ function Home() {
               styles={card.styles}
               heading={card.heading}
               desc={card.desc}
+              key={card.heading}
             />
           ))}
         </section>

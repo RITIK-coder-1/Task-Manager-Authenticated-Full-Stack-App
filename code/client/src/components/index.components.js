@@ -11,6 +11,7 @@ import Header from "./layout/Header";
 import Logout from "./auth/Logout";
 import HomeCard from "./layout/HomeCard";
 import MainSection from "./layout/MainSection";
+import InputCard from "./common/InputCard";
 
 export {
   Input,
@@ -21,4 +22,5 @@ export {
   Logout,
   HomeCard,
   MainSection,
+  InputCard,
 };

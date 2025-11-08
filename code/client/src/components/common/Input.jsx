@@ -12,12 +12,13 @@ function Input({
   value,
   styles = "",
   readOnly = false,
+  border = "border",
 }) {
   return (
     <input
       type="text"
       placeholder={placeholder}
-      className={`${styles}`}
+      className={`rounded-md border-gray-300 p-2 ${border} ${styles}`}
       name={name}
       onChange={onChange}
       value={value}
