@@ -15,7 +15,13 @@ function Logout({ toLogOut }) {
   // All the variables of the script
   // ----------------------------------------------------------------------------------
   const dispatch = useDispatch();
-  const notifications = useNotification("auth", 5000, false); // this custom hook returns a function so that I can call it inside a function body (handleOnSubmit)
+  const notifications = useNotification(
+    "auth",
+    5000,
+    false,
+    "Logging out...",
+    "Successfully logged out!"
+  ); // this custom hook returns a function so that I can call it inside a function body (handleOnSubmit)
   const onLogout = () => {
     dispatch(logout());
     notifications(); // the toastify notifications
@@ -29,7 +35,7 @@ function Logout({ toLogOut }) {
   return (
     <>
       <button
-        className={`text-[9px] font-semibold border w-16 text-center rounded-sm bg-gray-200 fixed top-9 ${
+        className={`text-xl py-1 font-semibold border w-38 text-center rounded-sm bg-gray-200 fixed top-9 right-2 ${
           toLogOut ? "visible" : "hidden"
         } cursor-pointer`}
         onClick={onLogout}

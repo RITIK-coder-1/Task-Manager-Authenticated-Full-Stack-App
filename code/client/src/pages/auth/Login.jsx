@@ -21,7 +21,14 @@ function Login() {
   // All the variables of the script
   // ----------------------------------------------------------------------------------
   const dispatch = useDispatch();
-  const notifications = useNotification("auth", 5000, false, "left-96"); // this custom hook returns a function so that I can call it inside a function body (handleOnSubmit)
+  const notifications = useNotification(
+    "auth",
+    5000,
+    false,
+    "left-96",
+    "Logging in...",
+    "User successfully logged in!"
+  ); // this custom hook returns a function so that I can call it inside a function body (handleOnSubmit)
 
   // the local state variables for data holding
   const [credential, setCredential] = useState("");

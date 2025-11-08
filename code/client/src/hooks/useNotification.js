@@ -10,7 +10,9 @@ function useNotification(
   slice,
   duration = 1000,
   hideProgressBar = true,
-  styles
+  styles,
+  pendingContent,
+  successContent
 ) {
   const { status, error } = useConditionalRendering(slice);
 
@@ -19,7 +21,7 @@ function useNotification(
   ------------------------------------------------------------------------------ */
   function closureFunction() {
     if (status === "pending") {
-      toast("Registering...", {
+      toast(pendingContent, {
         position: "top-right",
         autoClose: duration,
         hideProgressBar: hideProgressBar,
@@ -34,7 +36,7 @@ function useNotification(
         className: `text-xl shadow-2xl border ${styles}`,
       });
     } else if (status === "succeeded") {
-      toast("User successfully registered!", {
+      toast(successContent, {
         position: "top-right",
         autoClose: 1000,
         hideProgressBar: true,
