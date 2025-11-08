@@ -58,7 +58,7 @@ function Dashboard() {
 
   return (
     <>
-      <div className="flex flex-wrap gap-3">
+      <div className="flex flex-wrap gap-3 z-10 relative top-30">
         {/* The button to create a task */}
         <Button
           content={"Create a task"}
