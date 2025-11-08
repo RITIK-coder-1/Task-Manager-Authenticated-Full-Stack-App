@@ -24,7 +24,7 @@ function Register() {
   // All the variables of the script
   // ----------------------------------------------------------------------------------
   const dispatch = useDispatch();
-  const notifications = useNotification("auth", 5000, false); // this custom hook returns a function so that I can call it inside a functions body (handleOnSubmit)
+  const notifications = useNotification("auth", 5000, false); // this custom hook returns a function so that I can call it inside a function body (handleOnSubmit)
 
   // the local state variables for data holding
   const [firstName, setFirstName] = useState("");
