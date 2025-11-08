@@ -19,14 +19,15 @@ import {
 } from "../../hooks/index.hooks.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserTie } from "@fortawesome/free-solid-svg-icons";
-import { ToastContainer, toast, Bounce } from "react-toastify";
+import { ToastContainer } from "react-toastify";
+import { useNotification } from "../../hooks/index.hooks.js";
 
 function Register() {
   // ----------------------------------------------------------------------------------
   // All the variables of the script
   // ----------------------------------------------------------------------------------
-  const { status, error } = useConditionalRendering("auth");
   const dispatch = useDispatch();
+  const notifications = useNotification("auth", 5000, false); // this custom hook returns a function so that I can call it inside a functions body (handleOnSubmit)
 
   // the local state variables for data holding
   const [firstName, setFirstName] = useState("");
@@ -61,68 +62,7 @@ function Register() {
 
     dispatch(register(payload));
 
-    if (status === "pending") {
-      toast("Registering...", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-        newestOnTop: true,
-        rtl: false,
-        className: "text-xl shadow-2xl border",
-      });
-    } else if (status === "succeeded") {
-      toast("User successfully registered!", {
-        position: "top-right",
-        autoClose: 1000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-        newestOnTop: true,
-        rtl: false,
-        className: "text-xl shadow-2xl border",
-      });
-    } else if (status === "failed") {
-      toast(error, {
-        position: "top-right",
-        autoClose: 1000,
-        hideProgressBar: true,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-        transition: Bounce,
-        newestOnTop: true,
-        rtl: false,
-        className: "text-xl shadow-2xl border",
-      });
-      setTimeout(() => {
-        toast("Please try again!", {
-          position: "top-right",
-          autoClose: 1000,
-          hideProgressBar: true,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "light",
-          transition: Bounce,
-          newestOnTop: true,
-          rtl: false,
-          className: "text-xl shadow-2xl border",
-        });
-      }, 500);
-    }
+    notifications(); // the toastify notifications
   };
 
   // ----------------------------------------------------------------------------------
