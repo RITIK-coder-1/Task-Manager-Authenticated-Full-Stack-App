@@ -13,10 +13,7 @@ import {
 } from "../../components/index.components.js";
 import { useDispatch } from "react-redux";
 import { register } from "../../features/index.features.js";
-import {
-  useConditionalRendering,
-  useNavigation,
-} from "../../hooks/index.hooks.js";
+import { useNavigation } from "../../hooks/index.hooks.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserTie } from "@fortawesome/free-solid-svg-icons";
 import { ToastContainer } from "react-toastify";
@@ -157,6 +154,7 @@ function Register() {
             <Button content={"Register"} type={"submit"} width={"w-full"} />
           </div>
         </AuthCard>
+
         {/* The status message */}
         <ToastContainer />
       </MainSection>
