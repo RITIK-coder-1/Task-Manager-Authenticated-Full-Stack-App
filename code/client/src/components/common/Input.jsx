@@ -13,10 +13,11 @@ function Input({
   styles = "",
   readOnly = false,
   border = "border",
+  type = "text",
 }) {
   return (
     <input
-      type="text"
+      type={type}
       placeholder={placeholder}
       className={`rounded-md border-gray-300 outline:gray-300 hover:outline focus:outline focus:outline-blue-600  transition-all duration-150 p-2 sm:p-3 md:p-4 lg:p-6 ${border} ${styles}`}
       name={name}

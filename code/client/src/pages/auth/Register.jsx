@@ -209,6 +209,7 @@ function Register() {
             placeholder={"Min 10 characters"}
             name={"password"}
             method={setPassword}
+            type={"password"}
           />
 
           {/* The button to submit the data */}
