@@ -6,7 +6,12 @@ This is a custom hook for providing the status notification updates using react 
 import { toast, Bounce } from "react-toastify";
 import useConditionalRendering from "./useConditionalRendering";
 
-function useNotification(slice, duration = 1000, hideProgressBar = true) {
+function useNotification(
+  slice,
+  duration = 1000,
+  hideProgressBar = true,
+  styles
+) {
   const { status, error } = useConditionalRendering(slice);
 
   /* ---------------------------------------------------------------------------
@@ -26,7 +31,7 @@ function useNotification(slice, duration = 1000, hideProgressBar = true) {
         transition: Bounce,
         newestOnTop: true,
         rtl: false,
-        className: "text-xl shadow-2xl border",
+        className: `text-xl shadow-2xl border ${styles}`,
       });
     } else if (status === "succeeded") {
       toast("User successfully registered!", {
@@ -41,7 +46,7 @@ function useNotification(slice, duration = 1000, hideProgressBar = true) {
         transition: Bounce,
         newestOnTop: true,
         rtl: false,
-        className: "text-xl shadow-2xl border",
+        className: `text-xl shadow-2xl border ${styles}`,
       });
     } else if (status === "failed") {
       toast(error, {
@@ -56,7 +61,7 @@ function useNotification(slice, duration = 1000, hideProgressBar = true) {
         transition: Bounce,
         newestOnTop: true,
         rtl: false,
-        className: "text-xl shadow-2xl border",
+        className: `text-xl shadow-2xl border ${styles}`,
       });
       setTimeout(() => {
         toast("Please try again!", {
@@ -71,7 +76,7 @@ function useNotification(slice, duration = 1000, hideProgressBar = true) {
           transition: Bounce,
           newestOnTop: true,
           rtl: false,
-          className: "text-xl shadow-2xl border",
+          className: `text-xl shadow-2xl border ${styles}`,
         });
       }, 500);
     }
