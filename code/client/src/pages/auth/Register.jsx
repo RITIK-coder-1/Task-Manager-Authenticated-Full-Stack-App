@@ -88,26 +88,26 @@ function Register() {
     // The Auth form
     // ----------------------------------------------------------------------------------
     <>
-      <MainSection styles="pt-1">
+      <MainSection styles="py-1 md:py-3">
         <AuthCard onSubmit={handleOnSubmit}>
           {/* The profile pic */}
           <div className="flex gap-1 flex-col items-center justify-center">
-            <span className="border border-blue-900 rounded-full p-1 w-12 h-12 flex justify-center items-center">
+            <span className="border border-blue-900 rounded-full p-1 w-12 h-12 flex justify-center items-center sm:w-16 sm:h-16 lg:w-26 lg:h-26">
               <FontAwesomeIcon
                 icon={faUserTie}
                 style={{ color: "oklch(37.9% 0.146 265.522)" }}
-                className="text-3xl"
+                className="text-3xl sm:text-4xl lg:text-6xl"
               />
             </span>
             <label
-              className="text-[11px] text-gray-800 font-semibold"
+              className="text-[11px] text-gray-800 font-semibold sm:text-sm md:text-[16px] lg:text-xl"
               htmlFor="profilePic"
             >
               Set a profile:
             </label>
             <input
               type="file"
-              className="border border-gray-200 rounded-sm bg-gray-100 p-1 cursor-pointer w-32 text-[9px] hover:bg-gray-200"
+              className="border border-gray-200 rounded-sm bg-gray-100 p-1 cursor-pointer w-32 text-[9px] hover:bg-gray-200 sm:text-[11px] sm:w-36 lg:text-sm lg:w-44"
               name="profilePic"
               id="profilePic"
               onChange={(e) => {

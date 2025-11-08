@@ -8,7 +8,10 @@ import { Input } from "../index.components";
 function InputCard({ children, label, placeholder, name, method }) {
   return (
     <div className="flex flex-col items-start justify-center">
-      <label htmlFor={name} className="text-[11px] text-gray-800 font-semibold">
+      <label
+        htmlFor={name}
+        className="text-[11px] text-gray-800 font-semibold sm:text-sm md:text-[16px] lg:text-lg"
+      >
         {label}
       </label>
       <Input
