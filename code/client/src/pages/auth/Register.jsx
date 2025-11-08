@@ -17,6 +17,8 @@ import {
   useConditionalRendering,
   useNavigation,
 } from "../../hooks/index.hooks.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUserTie } from "@fortawesome/free-solid-svg-icons";
 
 function Register() {
   // ----------------------------------------------------------------------------------
@@ -85,83 +87,87 @@ function Register() {
     // ----------------------------------------------------------------------------------
     // The Auth form
     // ----------------------------------------------------------------------------------
-    <AuthCard onSubmit={handleOnSubmit} styles="border w-72">
-      {/* The fullname */}
-      <InputCard
-        label={"Fullname"}
-        placeholder={"Enter first name"}
-        name={"firstname"}
-        method={setFirstName}
-      >
-        <Input
-          placeholder={"Enter last name"}
-          name={"lastName"}
-          onChange={(e) => {
-            const value = e.target.value;
-            setLastName(value);
-          }}
-          styles=""
-        />
-      </InputCard>
+    <>
+      <MainSection styles="pt-1">
+        <AuthCard onSubmit={handleOnSubmit}>
+          {/* The profile pic */}
+          <div className="flex gap-1 flex-col items-center justify-center">
+            <span className="border border-blue-900 rounded-full p-1 w-12 h-12 flex justify-center items-center">
+              <FontAwesomeIcon
+                icon={faUserTie}
+                style={{ color: "oklch(37.9% 0.146 265.522)" }}
+                className="text-3xl"
+              />
+            </span>
+            <label
+              className="text-[11px] text-gray-800 font-semibold"
+              htmlFor="profilePic"
+            >
+              Set a profile:
+            </label>
+            <input
+              type="file"
+              className="border border-gray-200 rounded-sm bg-gray-100 p-1 cursor-pointer w-32 text-[9px] hover:bg-gray-200"
+              name="profilePic"
+              id="profilePic"
+              onChange={(e) => {
+                setProfile(e.target.files[0]);
+              }}
+              title="Choose a profile"
+            />
+          </div>
 
-      {/* The username */}
-      <div className="flex gap-2 flex-col items-start">
-        <label htmlFor="username">Enter a username: </label>
-        <Input
-          placeholder={"Minimum 3 characters"}
-          name={"username"}
-          onChange={(e) => {
-            const value = e.target.value;
-            setUsername(value);
-          }}
-        />
-      </div>
+          {/* The fullname */}
+          <InputCard
+            label={"Fullname:"}
+            placeholder={"Enter first name"}
+            name={"firstname"}
+            method={setFirstName}
+          >
+            <Input
+              placeholder={"Enter last name"}
+              name={"lastName"}
+              onChange={(e) => {
+                const value = e.target.value;
+                setLastName(value);
+              }}
+              styles=""
+            />
+          </InputCard>
 
-      {/* The email */}
-      <div className="flex gap-2 flex-col items-start">
-        <label htmlFor="email">Enter Your Email: </label>
-        <Input
-          placeholder={"example@gmail.com"}
-          name={"email"}
-          onChange={(e) => {
-            const value = e.target.value;
-            setEmail(value);
-          }}
-        />
-      </div>
+          {/* The username */}
+          <InputCard
+            label={"Username:"}
+            placeholder={"Min 3 characters"}
+            name={"username"}
+            method={setUsername}
+          />
 
-      {/* The password */}
-      <div className="flex gap-2 flex-col items-start">
-        <label htmlFor="password">Enter Your password: </label>
-        <Input
-          placeholder={"it should be at least of 10 characters."}
-          name={"password"}
-          onChange={(e) => {
-            const value = e.target.value;
-            setPassword(value);
-          }}
-        />
-      </div>
+          {/* The email */}
+          <InputCard
+            label={"Email:"}
+            placeholder={"example@gmail.com"}
+            name={"email"}
+            method={setEmail}
+          />
 
-      {/* The profile pic */}
-      <div className="flex gap-2 flex-col items-start">
-        <label>Choose an image for your profile (optional): </label>
-        <input
-          type="file"
-          className="outline-1 cursor-pointer"
-          name="profilePic"
-          onChange={(e) => {
-            setProfile(e.target.files[0]);
-          }}
-        />
-      </div>
+          {/* The password */}
+          <InputCard
+            label={"Password:"}
+            placeholder={"Min 10 characters"}
+            name={"password"}
+            method={setPassword}
+          />
 
-      {/* The button to submit the data */}
-      <Button content={"Register"} type={"submit"} />
-
-      {/* The status message */}
-      {renderStatusMessage()}
-    </AuthCard>
+          {/* The button to submit the data */}
+          <div className="flex justify-center items-center w-full">
+            <Button content={"Register"} type={"submit"} width={"w-full"} />
+          </div>
+        </AuthCard>
+        {/* The status message */}
+        {renderStatusMessage()}
+      </MainSection>
+    </>
   );
 }
 

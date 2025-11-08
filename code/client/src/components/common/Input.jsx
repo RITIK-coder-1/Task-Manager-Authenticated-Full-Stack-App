@@ -18,12 +18,13 @@ function Input({
     <input
       type="text"
       placeholder={placeholder}
-      className={`rounded-md border-gray-300 p-2 ${border} ${styles}`}
+      className={`rounded-md border-gray-300 outline:gray-300 focus:outline focus:outline-blue-600  transition-all duration-150 p-2 ${border} ${styles}`}
       name={name}
       onChange={onChange}
       value={value}
       readOnly={readOnly}
       id={name}
+      title={name}
     />
   );
 }

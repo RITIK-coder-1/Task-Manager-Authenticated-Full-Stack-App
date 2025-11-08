@@ -11,7 +11,7 @@ import { useCards } from "../../hooks/index.hooks.js";
 import { MainSection } from "../../components/index.components";
 
 function Home() {
-  const cardsData = useCards(); // importing the component cards
+  const homeCards = useCards(); // importing the component cards
 
   return (
     <>
@@ -31,7 +31,7 @@ function Home() {
         {/* The body of the homepage */}
         <section className="w-full flex flex-wrap items-center justify-center gap-6 sm:gap-8 md:gap-10 xl:gap-12 font-semibold py-6 px-3 transition-all duration-300">
           {/* THE CARD COMPONENTS */}
-          {cardsData.map((card) => (
+          {homeCards.map((card) => (
             <HomeCard
               icon={card.icon}
               styles={card.styles}
@@ -45,15 +45,12 @@ function Home() {
         {/* The registeration section */}
         <section className="flex flex-wrap justify-center items-center w-full gap-6 sm:gap-8 md:gap-10 p-4 xl:pt-10">
           <Link to={"/users/register"}>
-            <Button
-              content={"Register"}
-              styles="p-5 w-40 text-lg sm:w-56 sm:text-2xl sm:p-6 md:w-64 md:p-7 md:text-3xl lg:w-72 lg:p-8 lg:text-4xl bg-blue-900 hover:bg-blue-800 text-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
-            />
+            <Button content={"Register"} />
           </Link>
           <Link to={"/users/login"}>
             <Button
               content={"Log in"}
-              styles="p-5 w-40 text-lg sm:w-56 sm:text-2xl sm:p-6 md:w-64 md:p-7 md:text-3xl lg:w-72 lg:p-8 lg:text-4xl bg-gray-700 hover:bg-gray-800 text-white rounded-xl shadow-md hover:shadow-lg transition-all duration-300"
+              bgColor="bg-gray-700 :hover:bg-gray-800"
             />
           </Link>
         </section>

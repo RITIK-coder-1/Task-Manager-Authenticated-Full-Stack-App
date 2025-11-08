@@ -11,7 +11,7 @@ import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 import { faListCheck } from "@fortawesome/free-solid-svg-icons";
 
 function useCards() {
-  return [
+  const homeCards = [
     {
       icon: faListCheck,
       heading: "Daily Tasks",
@@ -45,6 +45,7 @@ function useCards() {
       desc: "Monitor daily steps and water intake",
     },
   ];
+  return homeCards;
 }
 
 export default useCards;
