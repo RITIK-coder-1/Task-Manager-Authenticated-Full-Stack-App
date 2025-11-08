@@ -3,20 +3,29 @@ Header.jsx
 This is the header component for navigation between pages
 ------------------------------------------------------------------------------ */
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Logout } from "../index.components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserTie } from "@fortawesome/free-solid-svg-icons";
 import useConditionalRendering from "../../hooks/useConditionalRendering";
+import { getUser } from "../../features/index.features";
+import { useDispatch } from "react-redux";
 
 function Header() {
+  const dispatch = useDispatch();
+
+  // get the user details as soon as the component mounts so that I can get the profile pic
+  useEffect(() => {
+    dispatch(getUser());
+  }, [dispatch]);
+
   const { user } = useConditionalRendering("users"); // for displaying the profile pic
   const [toLogOut, setToLogOut] = useState(false); // for displaying the logout button
 
   return (
     // The header section
-    <header className="w-full h-18 border-b border-blue-200 fixed z-50 shadow-xl bg-white py-2">
+    <header className="w-full h-20 border-b border-blue-200 fixed z-50 shadow-xl bg-white py-2">
       {/* The nav bar */}
       <nav className="w-full h-full flex flex-col px-5 items-center font-semibold text-lg">
         <div className="w-full flex items-center justify-end">
@@ -47,13 +56,7 @@ function Header() {
             </span>
 
             {/* The logout button */}
-            <button
-              className={`text-[9px] font-semibold border w-16 text-center rounded-sm bg-gray-200 fixed top-9 ${
-                toLogOut ? "visible" : "hidden"
-              } cursor-pointer`}
-            >
-              Log out
-            </button>
+            <Logout toLogOut={toLogOut} />
           </div>
         </div>
         <div className="w-full flex justify-around">
@@ -77,7 +80,6 @@ function Header() {
           </NavLink>
         </div>
       </nav>
-      {/* <Logout /> */}
     </header>
   );
 }

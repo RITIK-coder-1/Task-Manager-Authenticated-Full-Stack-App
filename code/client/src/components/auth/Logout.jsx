@@ -4,36 +4,21 @@ This button logs out a user
 ------------------------------------------------------------------------------ */
 
 import React from "react";
-import { Button } from "../index.components.js";
 import { logout } from "../../features/index.features.js";
 import { useDispatch } from "react-redux";
-import {
-  useConditionalRendering,
-  useNavigation,
-} from "../../hooks/index.hooks.js";
+import { useNavigation } from "../../hooks/index.hooks.js";
+import { ToastContainer } from "react-toastify";
+import { useNotification } from "../../hooks/index.hooks.js";
 
-function Logout() {
+function Logout({ toLogOut }) {
   // ----------------------------------------------------------------------------------
   // All the variables of the script
   // ----------------------------------------------------------------------------------
-  const { status, error } = useConditionalRendering("auth");
   const dispatch = useDispatch();
+  const notifications = useNotification("auth", 5000, false); // this custom hook returns a function so that I can call it inside a function body (handleOnSubmit)
   const onLogout = () => {
     dispatch(logout());
-  };
-
-  // ----------------------------------------------------------------------------------
-  // This is the conditional rendering message based on the status of the state
-  // ----------------------------------------------------------------------------------
-
-  const conditionalMessage = () => {
-    if (status === "pending") {
-      return <span>Working...</span>;
-    } else if (status === "succeeded") {
-      return <span>Successfully logged out!</span>;
-    } else if (status === "failed") {
-      return <span>{error}</span>;
-    }
+    notifications(); // the toastify notifications
   };
 
   // ----------------------------------------------------------------------------------
@@ -43,8 +28,15 @@ function Logout() {
 
   return (
     <>
-      <Button content={"Log out"} onClick={onLogout} />
-      {conditionalMessage()}
+      <button
+        className={`text-[9px] font-semibold border w-16 text-center rounded-sm bg-gray-200 fixed top-9 ${
+          toLogOut ? "visible" : "hidden"
+        } cursor-pointer`}
+        onClick={onLogout}
+      >
+        Log out
+      </button>
+      <ToastContainer />
     </>
   );
 }
