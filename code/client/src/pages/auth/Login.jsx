@@ -59,7 +59,7 @@ function Login() {
     // ----------------------------------------------------------------------------------
     // The Auth form
     // ----------------------------------------------------------------------------------
-    <MainSection>
+    <MainSection styles="justify-center">
       <AuthCard onSubmit={handleSubmit}>
         {/* The username/email */}
         <InputCard

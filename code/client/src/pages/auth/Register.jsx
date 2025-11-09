@@ -83,7 +83,7 @@ function Register() {
     // The Auth form
     // ----------------------------------------------------------------------------------
     <>
-      <MainSection styles="py-1 md:py-3">
+      <MainSection styles="justify-center py-1 md:py-3">
         <AuthCard onSubmit={handleOnSubmit}>
           {/* The profile pic */}
           <div className="flex gap-1 flex-col items-center justify-center">

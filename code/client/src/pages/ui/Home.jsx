@@ -16,7 +16,7 @@ function Home() {
   return (
     <>
       {/* The main section */}
-      <MainSection styles="pt-10">
+      <MainSection styles="pt-10 justify-center">
         {/* The heading of the homepage */}
         <section className="flex flex-col w-full justify-center items-center text-center gap-2 px-2 ">
           <h1 className="font-sans font-extrabold flex flex-col justify-center items-center text-5xl sm:text-7xl md:text-8xl xl:text-9xl text-gray-900 leading-tight drop-shadow-sm">
@@ -50,7 +50,7 @@ function Home() {
           <Link to={"/users/login"}>
             <Button
               content={"Log in"}
-              bgColor="bg-gray-700 :hover:bg-gray-800"
+              bgColor="bg-gray-700 hover:bg-gray-800"
             />
           </Link>
         </section>

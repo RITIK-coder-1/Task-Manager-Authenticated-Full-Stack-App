@@ -8,7 +8,7 @@ import React from "react";
 function MainSection({ children, styles = "" }) {
   return (
     <main
-      className={`w-full min-h-screen flex flex-col justify-center items-center bg-linear-to-b from-gray-100 to-gray-200 px-2 transition-all duration-300 ${styles}`}
+      className={`w-full min-h-screen flex flex-col items-center bg-linear-to-b from-gray-100 to-gray-200 px-2 transition-all duration-300 ${styles}`}
     >
       {children}
     </main>

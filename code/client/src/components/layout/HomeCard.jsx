@@ -28,7 +28,7 @@ function HomeCard({ icon, heading, desc, styles = "" }) {
       <Link to={"/users/register"}>
         <Button
           content={"Start Tracking"}
-          styles="bg-blue-900 hover:bg-blue-800 text-[10px] sm:text-[14px] sm:py-4  md:py-5 md:text-[16px]  md:py-6 md:text-[18px] xl:text-[20px]"
+          styles="rounded-3xl bg-blue-900 hover:bg-blue-800 text-[10px] sm:text-[14px] sm:py-4  md:py-5 md:text-[16px]  md:py-6 md:text-[18px] xl:text-[20px]"
           width="w-22 sm:w-36 md:w-40 md:w-48 xl:w-56"
         />
       </Link>

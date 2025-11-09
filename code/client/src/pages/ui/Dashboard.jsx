@@ -6,7 +6,11 @@ This is the dashboad page where a logged in user lands at
 import React, { useEffect, useState } from "react";
 import { displayAll } from "../../features/taskSlice.js";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, CreateTaskModal } from "../../components/index.components.js";
+import {
+  Button,
+  CreateTaskModal,
+  MainSection,
+} from "../../components/index.components.js";
 import { Link } from "react-router-dom";
 
 function Dashboard() {
@@ -42,37 +46,60 @@ function Dashboard() {
     console.log("TASKS: ", tasks);
 
     return tasks?.map((ele) => {
+      // for displaying the creation date of each task
+      const myDate = new Date(ele.createdAt);
+      const day = myDate.getDate(); // the day number
+      const formatter = new Intl.DateTimeFormat("en-US", { month: "short" });
+      const monthNameLocalized = formatter.format(myDate); // the month word
+      const createdAt = `${monthNameLocalized} ${day}`; // the final string to display
+
       return (
-        <Link to={`/users/me/dashboard/${ele._id}`} key={ele._id}>
-          <div
-            className="border w-36 h-auto p-2 flex flex-col justify-center items-center cursor-pointer"
-            title={`Visit ${ele.title}`}
-          >
-            <h1>{ele.title}</h1>
-            <p>{ele.description}</p>
+        <>
+          <div className="w-full flex flex-col">
+            <Link
+              to={`/users/me/dashboard/${ele._id}`}
+              key={ele._id}
+              className="w-full h-18 pt-5 px-3 overflow-hidden font-semibold rounded-t-xl bg-white flex flex-col justify-start items-start gap-1 cursor-pointer relative z-10 text-xl"
+              title={`Visit ${ele.title}`}
+            >
+              <h1>{ele.title}</h1>
+              <p className="text-xs/snug font-light text-gray-900 relative z-10">
+                {ele.description === "" ? "No description..." : ele.description}
+              </p>
+            </Link>
+            {/* For displaying the date */}
+            <span className="h-6 pl-3 text-xs bg-white w-full font-light text-gray-700 rounded-b-xl shadow-md">
+              {createdAt}
+            </span>
           </div>
-        </Link>
+        </>
       );
     });
   };
 
   return (
     <>
-      <div className="flex flex-wrap gap-3 z-10 relative top-30">
-        {/* The button to create a task */}
-        <Button
-          content={"Create a task"}
-          styles="w-28 h-12"
-          onClick={openModal}
-        />
+      {/* The main section */}
+      <MainSection styles="pt-22">
+        <section className="w-full h-full flex flex-wrap gap-3 z-10">
+          {/* All the tasks */}
+          {!tasks || tasks?.length === 0 ? (
+            <span>No tasks to display!</span> // conditional message if there is no task
+          ) : (
+            displayTasks()
+          )}
 
-        {/* All the tasks */}
-        {!tasks || tasks?.length === 0 ? (
-          <span>No tasks to display!</span> // conditional message if there is no task
-        ) : (
-          displayTasks()
-        )}
-      </div>
+          {/* The button to create a task */}
+          <div className="w-full h-full flex items-end justify-end pr-2">
+            <Button
+              content={"Add Task"}
+              styles="fixed h-12 rounded-3xl text-md bottom-20 z-1000"
+              width="w-24"
+              onClick={openModal}
+            />
+          </div>
+        </section>
+      </MainSection>
       {/* The modal */}
       {isModalOpen && <CreateTaskModal onClick={closeModal} />}
     </>
