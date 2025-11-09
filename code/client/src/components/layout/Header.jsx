@@ -25,19 +25,23 @@ function Header() {
 
   return (
     // The header section
-    <header className="w-full fixed top-0 left-0 z-50 bg-white shadow-md border-b border-blue-100">
-      <nav className="max-w-7xl mx-auto flex justify-between items-center px-5 py-3 sm:px-8 sm:py-4">
+    <header className="w-full h-16 fixed top-0 left-0 z-50 bg-white shadow-md border-b border-blue-100">
+      <nav className="w-full h-full mx-auto flex justify-between items-center px-5 py-3 sm:px-8 sm:py-4">
         {/* App title / logo area */}
-        <h1 className="font-extrabold text-blue-900 text-xl sm:text-2xl md:text-3xl tracking-tight">
-          Task<span className="text-black">&Habit</span>
+        <h1
+          className="w-36 font-extrabold text-blue-900 hidden sm:flex items-center justify-center gap-1 text-lg md:text-xl md:w-40 lg:text-2xl lg:w-44 tracking-tight"
+          title="Task and Habit"
+        >
+          <span>Task</span>
+          <span className="text-black w-full"> & Habit</span>
         </h1>
 
         {/* Navigation Links */}
-        <div className="flex items-center gap-4 sm:gap-6 md:gap-10 text-sm sm:text-lg md:text-xl font-semibold">
+        <div className="flex items-center mr-3 justify-center gap-10 w-full sm:gap-6 md:gap-10 text-xl sm:text-lg md:text-xl lg:text-2xl lg:mr-5 font-semibold">
           <NavLink
             to="/users/me/dashboard"
             className={({ isActive }) =>
-              `transition-all duration-200 ${
+              `transition-all duration-50 ${
                 isActive
                   ? "text-blue-900 border-b-2 border-blue-900 pb-1"
                   : "text-gray-700 hover:text-blue-900"
@@ -50,7 +54,7 @@ function Header() {
           <NavLink
             to="/users/me"
             className={({ isActive }) =>
-              `transition-all duration-200 ${
+              `transition-all duration-50 ${
                 isActive
                   ? "text-blue-900 border-b-2 border-blue-900 pb-1"
                   : "text-gray-700 hover:text-blue-900"
@@ -67,7 +71,7 @@ function Header() {
           <button
             onClick={() => setToLogOut(!toLogOut)}
             title="logout"
-            className="border border-blue-900 rounded-full overflow-hidden w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex justify-center items-center bg-blue-50 hover:scale-105 transition-transform duration-200"
+            className="border border-blue-900 rounded-full overflow-hidden w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex justify-center items-center bg-blue-50 hover:scale-105 transition-transform duration-200 cursor-pointer"
           >
             {/* If a profile is uploaded, display it or else a dummy image */}
             {user?.message?.profilePic === "" ? (
