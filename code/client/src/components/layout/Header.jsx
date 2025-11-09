@@ -25,45 +25,23 @@ function Header() {
 
   return (
     // The header section
-    <header className="w-full h-20 border-b border-blue-200 fixed z-50 shadow-xl bg-white py-2">
-      {/* The nav bar */}
-      <nav className="w-full h-full flex flex-col px-5 items-center font-semibold text-lg">
-        <div className="w-full flex items-center justify-end">
-          {/* The profile section */}
-          <div className="flex flex-col gap-1 justify-center items-center">
-            {/* By clicking on the profile, the user can see the logout button */}
-            <span
-              className="border border-blue-900 rounded-full overflow-hidden w-6 h-6 flex justify-center items-center sm:w-16 sm:h-16 lg:w-26 lg:h-26 bg-blue-50"
-              onClick={() => {
-                setToLogOut(!toLogOut);
-              }}
-              title="logout"
-            >
-              {/* If a profile is uploaded, display it or else a dummy image */}
-              {user?.message?.profilePic === "" ? (
-                <FontAwesomeIcon
-                  icon={faUserTie}
-                  style={{ color: "oklch(37.9% 0.146 265.522)" }}
-                  className="text-sm sm:text-4xl lg:text-6xl"
-                />
-              ) : (
-                <img
-                  src={`${user?.message?.profilePic}`}
-                  width={"100%"}
-                  height={"100%"}
-                />
-              )}
-            </span>
+    <header className="w-full fixed top-0 left-0 z-50 bg-white shadow-md border-b border-blue-100">
+      <nav className="max-w-7xl mx-auto flex justify-between items-center px-5 py-3 sm:px-8 sm:py-4">
+        {/* App title / logo area */}
+        <h1 className="font-extrabold text-blue-900 text-xl sm:text-2xl md:text-3xl tracking-tight">
+          Task<span className="text-black">&Habit</span>
+        </h1>
 
-            {/* The logout button */}
-            <Logout toLogOut={toLogOut} />
-          </div>
-        </div>
-        <div className="w-full flex justify-around">
+        {/* Navigation Links */}
+        <div className="flex items-center gap-4 sm:gap-6 md:gap-10 text-sm sm:text-lg md:text-xl font-semibold">
           <NavLink
             to="/users/me/dashboard"
             className={({ isActive }) =>
-              `${isActive ? "text-blue-900" : "text-black"}`
+              `transition-all duration-200 ${
+                isActive
+                  ? "text-blue-900 border-b-2 border-blue-900 pb-1"
+                  : "text-gray-700 hover:text-blue-900"
+              }`
             }
           >
             Dashboard
@@ -72,12 +50,45 @@ function Header() {
           <NavLink
             to="/users/me"
             className={({ isActive }) =>
-              isActive ? "text-blue-900" : "text-black"
+              `transition-all duration-200 ${
+                isActive
+                  ? "text-blue-900 border-b-2 border-blue-900 pb-1"
+                  : "text-gray-700 hover:text-blue-900"
+              }`
             }
-            end // Only if the URL matches exactly
+            end
           >
             Profile
           </NavLink>
+        </div>
+
+        {/* Profile section */}
+        <div className="relative flex flex-col items-center">
+          <button
+            onClick={() => setToLogOut(!toLogOut)}
+            title="logout"
+            className="border border-blue-900 rounded-full overflow-hidden w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex justify-center items-center bg-blue-50 hover:scale-105 transition-transform duration-200"
+          >
+            {/* If a profile is uploaded, display it or else a dummy image */}
+            {user?.message?.profilePic === "" ? (
+              <FontAwesomeIcon
+                icon={faUserTie}
+                style={{ color: "oklch(37.9% 0.146 265.522)" }}
+                className="text-base sm:text-lg md:text-2xl"
+              />
+            ) : (
+              <img
+                src={`${user?.message?.profilePic}`}
+                alt="Profile"
+                className="object-cover w-full h-full"
+              />
+            )}
+          </button>
+
+          {/* Logout button */}
+          <div className="absolute top-12 sm:top-14 md:top-16 right-0">
+            <Logout toLogOut={toLogOut} />
+          </div>
         </div>
       </nav>
     </header>

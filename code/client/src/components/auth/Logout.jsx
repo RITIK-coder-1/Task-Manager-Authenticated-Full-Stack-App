@@ -35,7 +35,7 @@ function Logout({ toLogOut }) {
   return (
     <>
       <button
-        className={`text-xl py-1 font-semibold border w-38 text-center rounded-sm bg-gray-200 fixed top-9 right-2 ${
+        className={`text-xl py-1 font-semibold border w-38 text-center rounded-sm bg-gray-200 fixed top-9 right-2 sm:top-11 md:top-13 lg:top-15 ${
           toLogOut ? "visible" : "hidden"
         } cursor-pointer`}
         onClick={onLogout}
