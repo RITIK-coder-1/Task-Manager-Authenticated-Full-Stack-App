@@ -59,18 +59,18 @@ function Dashboard() {
             <Link
               to={`/users/me/dashboard/${ele._id}`}
               key={ele._id}
-              className="w-full h-18 pt-5 px-3 overflow-hidden font-semibold rounded-t-xl bg-white flex flex-col justify-start items-start gap-1 cursor-pointer relative z-10 text-xl "
+              className="w-full h-18 pt-5 px-3 overflow-hidden font-semibold rounded-t-xl bg-white flex flex-col justify-start items-start gap-1 cursor-pointer relative z-10 text-xl sm:h-26 sm:text-2xl"
               title={`Visit ${ele.title}`}
             >
               <h1 className="group-hover:text-blue-800 transition-colors duration-200">
                 {ele.title}
               </h1>
-              <p className="text-xs/snug font-light text-gray-900 relative z-10">
+              <p className="text-xs/snug sm:text-sm/6 font-light text-gray-900 relative z-10">
                 {ele.description === "" ? "No description..." : ele.description}
               </p>
             </Link>
             {/* For displaying the date */}
-            <span className="h-6 pl-3 text-xs bg-white w-full font-light text-gray-700 rounded-b-xl shadow-md ">
+            <span className="h-6 pl-3 pt-1 text-xs bg-white w-full font-light text-gray-700 rounded-b-xl shadow-md sm:text-sm sm:h-8">
               {createdAt}
             </span>
           </div>
@@ -95,8 +95,8 @@ function Dashboard() {
           <div className="w-full h-full flex items-end justify-end pr-4">
             <Button
               content={"+"}
-              styles="fixed h-18 rounded-full text-4xl bottom-24 right-6 z-[1000]"
-              width="w-18"
+              styles="fixed h-18 rounded-full text-4xl bottom-24 right-6 z-[1000] sm:h-22 sm:text-5xl"
+              width="w-22"
               onClick={openModal}
               title={"Add Task"}
             />
