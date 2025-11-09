@@ -13,6 +13,7 @@ function Button({
   styles = "rounded-xl p-5 text-lg sm:text-2xl sm:p-6 md:p-7 md:text-3xl lg:p-8 lg:text-4xl",
   bgColor = "bg-blue-600 hover:bg-blue-700",
   width = "w-40 sm:w-56 md:w-64 lg:w-72",
+  title,
 }) {
   return (
     <button
@@ -20,7 +21,7 @@ function Button({
       onClick={onClick}
       type={type}
       disabled={disabled}
-      title={content}
+      title={title || content}
     >
       {content}
     </button>

@@ -92,10 +92,11 @@ function Dashboard() {
           {/* The button to create a task */}
           <div className="w-full h-full flex items-end justify-end pr-2">
             <Button
-              content={"Add Task"}
-              styles="fixed h-12 rounded-3xl text-md bottom-20 z-1000"
-              width="w-24"
+              content={"+"}
+              styles="fixed h-12 rounded-full text-md bottom-20 z-1000"
+              width="w-12"
               onClick={openModal}
+              title={"Add Task"}
             />
           </div>
         </section>
