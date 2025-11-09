@@ -55,22 +55,22 @@ function Dashboard() {
 
       return (
         <>
-          <div className="group cursor-pointer w-full flex flex-col  hover:shadow-xl transition-shadow duration-300">
+          <div className="group cursor-pointer w-full flex flex-col hover:shadow-xl transition-shadow duration-300 lg:hover:shadow-2xl">
             <Link
               to={`/users/me/dashboard/${ele._id}`}
               key={ele._id}
-              className="w-full h-18 pt-5 px-3 overflow-hidden font-semibold rounded-t-xl bg-white flex flex-col justify-start items-start gap-1 cursor-pointer relative z-10 text-xl sm:h-26 sm:text-2xl"
+              className="w-full h-18 pt-5 px-3 overflow-hidden font-semibold rounded-t-xl bg-white flex flex-col justify-start items-start gap-1 cursor-pointer relative z-10 text-xl sm:h-26 sm:text-2xl lg:h-32 lg:text-3xl"
               title={`Visit ${ele.title}`}
             >
               <h1 className="group-hover:text-blue-800 transition-colors duration-200">
                 {ele.title}
               </h1>
-              <p className="text-xs/snug sm:text-sm/6 font-light text-gray-900 relative z-10">
+              <p className="text-xs/snug sm:text-sm/6 font-light text-gray-700 relative z-10">
                 {ele.description === "" ? "No description..." : ele.description}
               </p>
             </Link>
             {/* For displaying the date */}
-            <span className="h-6 pl-3 pt-1 text-xs bg-white w-full font-light text-gray-700 rounded-b-xl shadow-md sm:text-sm sm:h-8">
+            <span className="h-6 pl-3 pt-1 text-xs bg-white w-full font-light text-gray-600 rounded-b-xl shadow-md sm:text-sm sm:h-8">
               {createdAt}
             </span>
           </div>
