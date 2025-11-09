@@ -55,20 +55,22 @@ function Dashboard() {
 
       return (
         <>
-          <div className="w-full flex flex-col">
+          <div className="group cursor-pointer w-full flex flex-col  hover:shadow-xl transition-shadow duration-300">
             <Link
               to={`/users/me/dashboard/${ele._id}`}
               key={ele._id}
-              className="w-full h-18 pt-5 px-3 overflow-hidden font-semibold rounded-t-xl bg-white flex flex-col justify-start items-start gap-1 cursor-pointer relative z-10 text-xl"
+              className="w-full h-18 pt-5 px-3 overflow-hidden font-semibold rounded-t-xl bg-white flex flex-col justify-start items-start gap-1 cursor-pointer relative z-10 text-xl "
               title={`Visit ${ele.title}`}
             >
-              <h1>{ele.title}</h1>
+              <h1 className="group-hover:text-blue-800 transition-colors duration-200">
+                {ele.title}
+              </h1>
               <p className="text-xs/snug font-light text-gray-900 relative z-10">
                 {ele.description === "" ? "No description..." : ele.description}
               </p>
             </Link>
             {/* For displaying the date */}
-            <span className="h-6 pl-3 text-xs bg-white w-full font-light text-gray-700 rounded-b-xl shadow-md">
+            <span className="h-6 pl-3 text-xs bg-white w-full font-light text-gray-700 rounded-b-xl shadow-md ">
               {createdAt}
             </span>
           </div>
@@ -80,21 +82,21 @@ function Dashboard() {
   return (
     <>
       {/* The main section */}
-      <MainSection styles="pt-22">
-        <section className="w-full h-full flex flex-wrap gap-3 z-10">
+      <MainSection styles="pt-24 pb-16">
+        <section className="w-full h-full flex flex-wrap justify-center gap-4 z-10 px-3 sm:px-6 md:px-10">
           {/* All the tasks */}
           {!tasks || tasks?.length === 0 ? (
-            <span>No tasks to display!</span> // conditional message if there is no task
+            <span className="text-gray-600 italic">No tasks to display!</span> // conditional message if there is no task
           ) : (
             displayTasks()
           )}
 
           {/* The button to create a task */}
-          <div className="w-full h-full flex items-end justify-end pr-2">
+          <div className="w-full h-full flex items-end justify-end pr-4">
             <Button
               content={"+"}
-              styles="fixed h-12 rounded-full text-md bottom-20 z-1000"
-              width="w-12"
+              styles="fixed h-18 rounded-full text-4xl bottom-24 right-6 z-[1000]"
+              width="w-18"
               onClick={openModal}
               title={"Add Task"}
             />
