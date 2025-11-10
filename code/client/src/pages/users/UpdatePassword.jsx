@@ -4,7 +4,13 @@ This is the page to update the password
 ------------------------------------------------------------------------------ */
 
 import React, { useState } from "react";
-import { AuthCard, Input, Button } from "../../components/index.components";
+import {
+  AuthCard,
+  Input,
+  Button,
+  MainSection,
+  InputCard,
+} from "../../components/index.components";
 import { passwordUpdate } from "../../features/userSlice.js";
 import { useDispatch } from "react-redux";
 import useConditionalRendering from "../../hooks/useConditionalRendering.js";
@@ -46,35 +52,37 @@ function UpdatePassword() {
   return (
     <>
       {/* The auth form */}
-      <AuthCard onSubmit={handleSubmit}>
-        {/* The old password */}
-        <div className="flex gap-2">
-          <label>Enter your old password: </label>
-          <Input
-            placeholder={"old password"}
+      <MainSection styles="pt-22">
+        <AuthCard onSubmit={handleSubmit}>
+          {/* The old password */}
+          <InputCard
+            label="Enter Old Password: "
             name={"oldPassword"}
-            onChange={(e) => {
-              setOldPassword(e.target.value);
-            }}
+            method={setOldPassword}
+            placeholder="Old Password"
+            type="password"
           />
-        </div>
-        {/* The new password */}
-        <div className="flex gap-2">
-          <label>Enter your new password: </label>
-          <Input
-            placeholder={"Minimum 10 characters"}
-            name={"newPassword"}
-            onChange={(e) => {
-              setNewPassword(e.target.value);
-            }}
-          />
-        </div>
-        {/* The update button */}
-        <Button content={"Update"} type={"submit"} />
-      </AuthCard>
 
-      {/* The conditional message */}
-      {conditionalMessage()}
+          {/* The new password */}
+          <InputCard
+            label="Enter New Password: "
+            name={"newPassword"}
+            method={setNewPassword}
+            placeholder="New Password"
+            type="password"
+          />
+
+          {/* The update button */}
+          <Button
+            content={"Update"}
+            type={"submit"}
+            width="w-full"
+            bgColor="bg-blue-900 hover:bg-blue-800"
+          />
+        </AuthCard>
+        {/* The conditional message */}
+        {conditionalMessage()}
+      </MainSection>
     </>
   );
 }
