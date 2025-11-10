@@ -12,6 +12,7 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { get, profileUpdate } from "../../features/userSlice.js";
 import useConditionalRendering from "../../hooks/useConditionalRendering.js";
+import ProfilePic from "../../components/common/ProfilePic.jsx";
 
 function UpdateAppearance() {
   // ----------------------------------------------------------------------------------
@@ -64,9 +65,10 @@ function UpdateAppearance() {
           <h1 className="text-lg font-semibold text-gray-800 md:text-2xl lg:text-3xl">
             Your current profile pic:{" "}
           </h1>
-          <img
-            src={user?.profilePic}
-            className="w-36 h-36 rounded-full transition-all duration-300 md:w-40 md:h-40 lg:w-50 lg:h-50"
+          <ProfilePic
+            profileStyles={"w-36 h-36 rounded-full"}
+            dummyStyles={"w-36 h-36 border border-blue-900"}
+            dummyDimensions={"text-5xl"}
           />
           <label htmlFor="profilePic" className="text-md lg:text-lg">
             Choose a new pic:{" "}

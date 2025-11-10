@@ -14,6 +14,7 @@ import {
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
+import ProfilePic from "../../components/common/ProfilePic";
 
 function Profile() {
   // ----------------------------------------------------------------------------------
@@ -46,11 +47,10 @@ function Profile() {
             <div className="w-full h-full flex flex-col items-center justify-center gap-5 sm:flex-row">
               {/* The profile image */}
               <ProfileCard>
-                <img
-                  src={user?.profilePic}
-                  className="w-36 h-36 rounded-full"
-                  title="profile"
-                  alt="Profile Picture"
+                <ProfilePic
+                  profileStyles={"w-36 h-36 rounded-full"}
+                  dummyStyles={"w-36 h-36 border border-blue-900"}
+                  dummyDimensions={"text-5xl"}
                 />
                 <div className="w-34 h-36 absolute flex justify-end items-end">
                   <Link

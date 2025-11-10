@@ -11,6 +11,7 @@ import { faUserTie } from "@fortawesome/free-solid-svg-icons";
 import useConditionalRendering from "../../hooks/useConditionalRendering";
 import { getUser } from "../../features/index.features";
 import { useDispatch } from "react-redux";
+import ProfilePic from "../common/ProfilePic";
 
 function Header() {
   const dispatch = useDispatch();
@@ -70,23 +71,13 @@ function Header() {
         <div className="relative flex flex-col items-center">
           <button
             onClick={() => setToLogOut(!toLogOut)}
-            title="logout"
             className="border border-blue-900 rounded-full overflow-hidden w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex justify-center items-center bg-blue-50 hover:scale-105 transition-transform duration-200 cursor-pointer"
           >
-            {/* If a profile is uploaded, display it or else a dummy image */}
-            {user?.message?.profilePic === "" ? (
-              <FontAwesomeIcon
-                icon={faUserTie}
-                style={{ color: "oklch(37.9% 0.146 265.522)" }}
-                className="text-base sm:text-lg md:text-2xl"
-              />
-            ) : (
-              <img
-                src={`${user?.message?.profilePic}`}
-                alt="Profile"
-                className="object-cover w-full h-full"
-              />
-            )}
+            <ProfilePic
+              dummyStyles={"text-base sm:text-lg md:text-2xl"}
+              profileStyles={"w-full h-full"}
+              title="logout"
+            />
           </button>
 
           {/* Logout button */}

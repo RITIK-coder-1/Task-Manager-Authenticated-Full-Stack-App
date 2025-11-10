@@ -1,4 +1,7 @@
-import React from "react";
+/* ---------------------------------------------------------------------------
+ProfileCard.jsx
+This is a common profile card component for displaying and updating the profile details
+------------------------------------------------------------------------------ */
 
 function ProfileCard({
   styles,
