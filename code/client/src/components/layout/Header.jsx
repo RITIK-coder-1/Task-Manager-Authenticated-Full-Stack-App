@@ -6,9 +6,6 @@ This is the header component for navigation between pages
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Logout } from "../index.components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserTie } from "@fortawesome/free-solid-svg-icons";
-import useConditionalRendering from "../../hooks/useConditionalRendering";
 import { getUser } from "../../features/index.features";
 import { useDispatch } from "react-redux";
 import ProfilePic from "../common/ProfilePic";
@@ -20,8 +17,6 @@ function Header() {
   useEffect(() => {
     dispatch(getUser());
   }, [dispatch]);
-
-  const { user } = useConditionalRendering("users"); // for displaying the profile pic
   const [toLogOut, setToLogOut] = useState(false); // for displaying the logout button
 
   return (

@@ -16,6 +16,7 @@ function ProfilePic({
   profileStyles,
   title = "profile pic",
 }) {
+  // get the user information for fetching the profile pic
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUser());
@@ -25,6 +26,7 @@ function ProfilePic({
 
   return (
     <>
+      {/* If the pic exists, display it or display a dummy image */}
       {user?.message?.profilePic === "" ? (
         <div
           className={`flex justify-center items-center rounded-full ${dummyStyles}`}
