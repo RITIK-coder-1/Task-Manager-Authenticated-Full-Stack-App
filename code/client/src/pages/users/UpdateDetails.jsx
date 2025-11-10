@@ -37,7 +37,7 @@ function UpdateDetails() {
   const [username, setUsername] = useState(null);
 
   // ----------------------------------------------------------------------------------
-  // For better UX, I made sure to pre-load the current value of the task details
+  // For better UX, I made sure to pre-load the current value of the user details
   // ----------------------------------------------------------------------------------
   useEffect(() => {
     if (user && user.fullName) {
