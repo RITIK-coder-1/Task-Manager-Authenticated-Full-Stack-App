@@ -48,14 +48,18 @@ function Profile() {
                 title="profile"
                 alt="Profile Picture"
               />
-
-              <Link
-                to={"/users/me/appearance"}
-                className="flex justify-center items-center bg-blue-900 w-8 h-8 rounded-full border border-gray-800 shadow-md absolute right-[30%] top-[67%] hover:bg-blue-950 transition-all duration-200"
-                title="update pic"
-              >
-                <FontAwesomeIcon icon={faPen} className="text-white text-sm" />
-              </Link>
+              <div className="w-34 h-36 absolute flex justify-end items-end">
+                <Link
+                  to={"/users/me/appearance"}
+                  className="flex justify-center items-center bg-blue-900 w-8 h-8 rounded-full border border-gray-800 shadow-md absolute hover:bg-blue-950 transition-all duration-200"
+                  title="update pic"
+                >
+                  <FontAwesomeIcon
+                    icon={faPen}
+                    className="text-white text-sm"
+                  />
+                </Link>
+              </div>
             </div>
 
             {/* The details section */}
