@@ -6,7 +6,11 @@ This is the profile section of the user. The user can delete their profile here.
 import React, { useEffect } from "react";
 import { getUser } from "../../features/index.features";
 import { useDispatch, useSelector } from "react-redux";
-import { Button, MainSection } from "../../components/index.components";
+import {
+  Button,
+  MainSection,
+  ProfileCard,
+} from "../../components/index.components";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
@@ -41,7 +45,7 @@ function Profile() {
             </h1>
             <div className="w-full h-full flex flex-col items-center justify-center gap-5 sm:flex-row">
               {/* The profile image */}
-              <div className="bg-white relative p-3 flex justify-center items-center w-72 h-52 rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 sm:h-66 lg:h-70 sm:w-80 lg:w-95">
+              <ProfileCard>
                 <img
                   src={user?.profilePic}
                   className="w-36 h-36 rounded-full"
@@ -60,11 +64,10 @@ function Profile() {
                     />
                   </Link>
                 </div>
-              </div>
+              </ProfileCard>
 
               {/* The details section */}
-              <div className="bg-white p-5 flex flex-col justify-center items-center gap-5 w-72 h-auto rounded-3xl shadow-lg hover:shadow-xl transition-all duration-300 sm:h-66 sm:w-80 lg:h-70 lg:w-95">
-                {/* The details */}
+              <ProfileCard styles="flex-col gap-5">
                 <div className="flex flex-col items-start justify-center text-center gap-1">
                   <h2 className="text-2xl font-semibold text-gray-900 sm:text-3xl lg:text-4xl">
                     {`${user?.fullName?.firstName} ${user?.fullName?.lastName}`}
@@ -98,7 +101,7 @@ function Profile() {
                     />
                   </Link>
                 </div>
-              </div>
+              </ProfileCard>
             </div>
           </section>
         ) : (

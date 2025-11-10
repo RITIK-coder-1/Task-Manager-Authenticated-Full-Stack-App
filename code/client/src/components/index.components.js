@@ -12,6 +12,7 @@ import Logout from "./auth/Logout";
 import HomeCard from "./layout/HomeCard";
 import MainSection from "./layout/MainSection";
 import InputCard from "./common/InputCard";
+import ProfileCard from "./common/ProfileCard";
 
 export {
   Input,
@@ -23,4 +24,5 @@ export {
   HomeCard,
   MainSection,
   InputCard,
+  ProfileCard,
 };

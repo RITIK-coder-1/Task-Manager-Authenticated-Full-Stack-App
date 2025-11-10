@@ -4,7 +4,7 @@ This is the page to update the profile pic
 ------------------------------------------------------------------------------ */
 
 import React, { useEffect, useState } from "react";
-import { Button } from "../../components/index.components";
+import { Button, MainSection } from "../../components/index.components";
 import { useDispatch, useSelector } from "react-redux";
 import { get, profileUpdate } from "../../features/userSlice.js";
 import useConditionalRendering from "../../hooks/useConditionalRendering.js";
@@ -52,18 +52,22 @@ function UpdateAppearance() {
 
   return (
     <>
-      <span>Your current profile pic: </span>
-      <img src={user?.profilePic} className="w-36 h-36 rounded-full" />
-      <label>Choose a new pic: </label>
-      <input
-        type="file"
-        className="border border-solid border-black cursor-pointer block"
-        name="profilePic"
-        onChange={(e) => {
-          setProfile(e.target.files[0]);
-        }}
-      />
-      <Button content={"Update"} onClick={handleSubmit} />
+      <MainSection styles="pt-22">
+        <div>
+          <span>Your current profile pic: </span>
+          <img src={user?.profilePic} className="w-36 h-36 rounded-full" />
+          <label>Choose a new pic: </label>
+          <input
+            type="file"
+            className="border border-solid border-black cursor-pointer block"
+            name="profilePic"
+            onChange={(e) => {
+              setProfile(e.target.files[0]);
+            }}
+          />
+          <Button content={"Update"} onClick={handleSubmit} />
+        </div>
+      </MainSection>
       {conditionalMessage()}
     </>
   );
