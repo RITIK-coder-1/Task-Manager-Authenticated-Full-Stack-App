@@ -52,7 +52,7 @@ function UpdatePassword() {
   return (
     <>
       {/* The auth form */}
-      <MainSection styles="pt-22">
+      <MainSection styles="pt-22 pb-3">
         <AuthCard onSubmit={handleSubmit}>
           {/* The old password */}
           <InputCard

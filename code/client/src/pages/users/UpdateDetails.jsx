@@ -105,7 +105,6 @@ function UpdateDetails() {
               onChange={(e) => {
                 setLastName(e.target.value);
               }}
-              styles="w-full"
             />
           </InputCard>
 

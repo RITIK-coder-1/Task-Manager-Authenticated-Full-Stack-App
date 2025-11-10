@@ -126,7 +126,6 @@ function Register() {
                 const value = e.target.value;
                 setLastName(value);
               }}
-              styles="w-full"
             />
           </InputCard>
 

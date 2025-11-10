@@ -93,11 +93,11 @@ function TaskDetails() {
 
   return (
     <>
-      <MainSection styles="pt-22">
-        <AuthCard onSubmit={submit}>
+      <MainSection styles="pt-22 pb-5 px-3">
+        <AuthCard onSubmit={submit} width="w-full md:w-[600px] lg:w-[800px]">
           {/* The title of the task */}
           <TaskInput
-            styles="font-black text-3xl"
+            styles="font-black text-3xl md:text-4xl"
             value={title}
             modifyMethod={modifyTitle}
             setMethod={setTitle}
@@ -105,24 +105,30 @@ function TaskDetails() {
             label="Title"
           />
 
-          {/* The description of the task */}
+          {/* The description of the task (multiline)*/}
           <TaskInput
-            styles="h-auto"
+            styles="h-auto md:text-lg"
             value={description}
             modifyMethod={modifyDesc}
             setMethod={setDescription}
             setModifyMethod={setModifyDesc}
             label="Description"
             multiline={true}
+            placeholder={description === "" ? "No description..." : ""}
+            rows={description !== "" ? 20 : ""}
+            border="border border-gray-200"
           />
 
           {/* The priority of the task */}
-          <div className="flex flex-col justify-center items-start w-full gap-2 pl-2">
-            <label htmlFor={"priority"} className="text-[12px] text-gray-600">
+          <div className="flex flex-col justify-center items-start w-full gap-2">
+            <label
+              htmlFor={"priority"}
+              className="text-[12px] text-gray-600 md:text-lg"
+            >
               Priority
             </label>
             <select
-              className="outline-1 w-full"
+              className="outline-1 w-full py-2 rounded-md outline-gray-700 bg-gray-100 cursor-pointer md:text-lg"
               value={priority}
               onChange={(e) => {
                 setPriority(e.target.value);
@@ -139,6 +145,7 @@ function TaskDetails() {
 
           {/* The category of the task */}
           <TaskInput
+            styles="md:text-lg"
             value={category}
             modifyMethod={modifyCategory}
             setMethod={setCategory}
@@ -147,28 +154,35 @@ function TaskDetails() {
           />
 
           {/* The completion status of the task */}
-          <div className="flex justify-start items-center gap-2">
-            <label htmlFor="isCompleted">Completed: </label>
+          <div className="flex w-full justify-start items-center gap-2">
+            <label htmlFor="isCompleted" className="text-gray-700">
+              Completed:{" "}
+            </label>
             <input
               type="checkbox"
               name="isCompleted"
               id="isCompleted"
-              defaultChecked={isCompleted ? true : false}
+              value={isCompleted}
+              checked={isCompleted ? true : false}
               onClick={() => {
-                if (isCompleted === true) {
-                  setIsCompleted(false);
-                } else if (isCompleted === false) {
-                  setIsCompleted(true);
-                }
+                setIsCompleted(!isCompleted);
               }}
+              className="cursor-pointer text-3xl"
             />
           </div>
-          <Button content={"Update"} type={"submit"} />
+          <Button
+            content={"Update"}
+            type={"submit"}
+            width="w-full md:w-88"
+            bgColor="bg-blue-800 hover:bg-blue-900"
+          />
           <Button
             content={"Delete"}
             onClick={() => {
               dispatch(remove(taskId));
             }}
+            width="w-full md:w-88"
+            bgColor="bg-red-800 hover:bg-red-900"
           />
         </AuthCard>
       </MainSection>

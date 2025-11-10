@@ -15,15 +15,21 @@ function TaskInput({
   setMethod,
   setModifyMethod,
   multiline,
+  placeholder,
+  rows,
+  border,
 }) {
   return (
     <div className="flex w-full justify-between items-center gap-2">
       <div className="flex flex-col justify-center items-start">
-        <label htmlFor={value} className="ml-2 text-[12px] text-gray-600">
+        <label
+          htmlFor={value}
+          className="text-[12px] text-gray-600 md:text-[15px]"
+        >
           {label}
         </label>
         <Input
-          styles={`w-full cursor-auto ${
+          styles={`w-full py-2 px-1 cursor-auto ${
             modifyMethod ? "outline-1 cursor-alias" : "outline-0"
           } ${styles}`}
           value={value}
@@ -32,8 +38,10 @@ function TaskInput({
           onChange={(e) => {
             setMethod(e.target.value);
           }}
-          border=""
+          border={border ?? ""}
           multiline={multiline}
+          placeholder={placeholder}
+          rows={rows}
         />
       </div>
       <span
@@ -42,7 +50,10 @@ function TaskInput({
         }}
         title={`Update ${value}`}
       >
-        <FontAwesomeIcon icon={faPencil} className="text-blue-800 text-sm" />
+        <FontAwesomeIcon
+          icon={faPencil}
+          className="text-blue-800 text-sm md:text-lg cursor-pointer"
+        />
       </span>
     </div>
   );

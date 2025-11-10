@@ -8,15 +8,16 @@ function Input({
   name,
   onChange,
   value,
-  styles = "",
+  styles = "p-2 sm:p-3 md:p-4 lg:p-6",
   readOnly = false,
   border = "border border-gray-300 outline:gray-300 hover:outline focus:outline focus:outline-blue-600",
   type = "text",
   multiline = false,
+  rows,
 }) {
   const commonProps = {
     placeholder,
-    className: `rounded-md transition-all duration-150 p-2 sm:p-3 md:p-4 lg:p-6 ${border} ${styles}`,
+    className: `w-full rounded-md transition-all duration-150 resize-none ${border} ${styles}`,
     name,
     onChange,
     value,
@@ -27,7 +28,7 @@ function Input({
 
   if (multiline) {
     // Renders a TEXTAREA for wrapping content
-    return <textarea {...commonProps} />;
+    return <textarea {...commonProps} cols={1000} rows={rows} />;
   }
 
   // Renders a standard INPUT for single-line content

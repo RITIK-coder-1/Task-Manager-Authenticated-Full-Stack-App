@@ -29,7 +29,7 @@ function InputCard({
           const value = e.target.value;
           method(value);
         }}
-        styles="mb-2 w-full"
+        styles="mb-2 p-2 sm:p-3 md:p-4 lg:p-6"
         type={type}
         value={value}
       />

@@ -57,7 +57,7 @@ function UpdateAppearance() {
   return (
     <>
       {/* The main section */}
-      <MainSection styles="pt-22">
+      <MainSection styles="pt-22 pb-3">
         <ProfileCard
           styles="flex-col gap-2 sm:ml-15 md:w-130"
           dimensions="w-full h-auto sm:w-80"
