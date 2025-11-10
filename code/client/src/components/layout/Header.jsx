@@ -29,7 +29,7 @@ function Header() {
       <nav className="w-full h-full mx-auto flex justify-between items-center px-5 py-3 sm:px-8 sm:py-4">
         {/* App title / logo area */}
         <h1
-          className="w-36 font-extrabold text-blue-900 hidden sm:flex items-center justify-center gap-1 text-lg  md:w-40 lg:text-xl lg:w-44 tracking-tight"
+          className="w-36 font-extrabold text-blue-900 hidden sm:flex items-center justify-center gap-1 text-lg md:w-40 md:text-xl lg:text-2xl lg:w-44 tracking-tight"
           title="Task and Habit"
         >
           <span>Task</span>
@@ -37,7 +37,7 @@ function Header() {
         </h1>
 
         {/* Navigation Links */}
-        <div className="flex items-center mr-3 justify-center gap-10 w-full sm:gap-6 md:gap-20 text-xl sm:text-lg sm:mr-5 md:mr-22 md:text-xl lg:text-2xl font-semibold">
+        <div className="flex items-center mr-3 justify-center gap-10 w-full sm:gap-6 md:gap-20 text-xl sm:text-lg sm:mr-5 md:mr-0 md:text-xl lg:text-2xl font-semibold">
           <NavLink
             to="/users/me/dashboard"
             className={({ isActive }) =>

@@ -57,15 +57,18 @@ function UpdateAppearance() {
   return (
     <>
       <MainSection styles="pt-22">
-        <ProfileCard styles="flex-col gap-2" dimensions="w-full h-auto">
-          <h1 className="text-lg font-semibold text-gray-800">
+        <ProfileCard
+          styles="flex-col gap-2 sm:ml-15 md:w-130"
+          dimensions="w-full h-auto sm:w-80"
+        >
+          <h1 className="text-lg font-semibold text-gray-800 md:text-2xl lg:text-3xl">
             Your current profile pic:{" "}
           </h1>
           <img
             src={user?.profilePic}
-            className="w-36 h-36 rounded-full transition-all duration-300"
+            className="w-36 h-36 rounded-full transition-all duration-300 md:w-40 md:h-40 lg:w-50 lg:h-50"
           />
-          <label htmlFor="profilePic" className="text-md">
+          <label htmlFor="profilePic" className="text-md lg:text-lg">
             Choose a new pic:{" "}
           </label>
           <input
@@ -80,7 +83,7 @@ function UpdateAppearance() {
           <Button
             content={"Update"}
             onClick={handleSubmit}
-            styles="text-xl rounded-3xl p-5 bg-blue-900 hover:bg-blue-800 mt-2"
+            styles="text-xl rounded-3xl p-5 bg-blue-900 hover:bg-blue-800 mt-2 md:text-2xl md:p-6"
           />
         </ProfileCard>
         {conditionalMessage()}

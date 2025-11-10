@@ -40,7 +40,7 @@ function Profile() {
         {/* Only if the user is authenticated */}
         {user ? (
           <section className="w-full h-full flex flex-col items-center justify-center gap-5">
-            <h1 className="text-4xl font-bold text-blue-950 tracking-wide mb-2 sm:text-5xl">
+            <h1 className="text-4xl font-bold text-blue-950 tracking-wide mb-2 sm:text-5xl sm:ml-10 md:ml-20">
               My Profile
             </h1>
             <div className="w-full h-full flex flex-col items-center justify-center gap-5 sm:flex-row">
