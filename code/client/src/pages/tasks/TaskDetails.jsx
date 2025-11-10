@@ -12,8 +12,11 @@ import {
   Button,
   Input,
   MainSection,
+  TaskInput,
 } from "../../components/index.components";
 import useNavigation from "../../hooks/useNavigation.js";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPencil } from "@fortawesome/free-solid-svg-icons";
 
 function TaskDetails() {
   const { taskId } = useParams(); // getting the task id included in the URL
@@ -93,55 +96,39 @@ function TaskDetails() {
       <MainSection styles="pt-22">
         <AuthCard onSubmit={submit}>
           {/* The title of the task */}
-          <div className="flex justify-between items-center gap-2">
-            <Input
-              styles={`w-full text-black text-3xl cursor-auto ${
-                modifyTitle ? "outline-1 cursor-alias" : "outline-0"
-              }`}
-              value={title}
-              readOnly={modifyTitle ? false : true}
-              name={"title"}
-              onChange={(e) => {
-                setTitle(e.target.value);
-              }}
-            />
-            <div
-              className="bg-yellow-400 rounded-full w-6 h-6 cursor-pointer"
-              onClick={() => {
-                setModifyTitle(!modifyTitle);
-              }}
-            ></div>
-          </div>
+          <TaskInput
+            styles="font-black text-3xl"
+            value={title}
+            modifyMethod={modifyTitle}
+            setMethod={setTitle}
+            setModifyMethod={setModifyTitle}
+            label="Title"
+          />
 
           {/* The description of the task */}
-          <div className="flex justify-between items-center gap-2">
-            <Input
-              styles={`w-full h-72 cursor-auto ${
-                modifyDesc ? "outline-1 cursor-alias" : "outline-0"
-              }`}
-              value={description}
-              readOnly={modifyDesc ? false : true}
-              name={"description"}
-              onChange={(e) => {
-                setDescription(e.target.value);
-              }}
-            />
-            <div
-              className="bg-yellow-400 rounded-full w-6 h-6 cursor-pointer"
-              onClick={() => {
-                setModifyDesc(!modifyDesc);
-              }}
-            ></div>
-          </div>
+          <TaskInput
+            styles="h-auto"
+            value={description}
+            modifyMethod={modifyDesc}
+            setMethod={setDescription}
+            setModifyMethod={setModifyDesc}
+            label="Description"
+            multiline={true}
+          />
 
           {/* The priority of the task */}
-          <div className="flex justify-between items-center gap-2">
+          <div className="flex flex-col justify-center items-start w-full gap-2 pl-2">
+            <label htmlFor={"priority"} className="text-[12px] text-gray-600">
+              Priority
+            </label>
             <select
-              className="outline-1"
+              className="outline-1 w-full"
               value={priority}
               onChange={(e) => {
                 setPriority(e.target.value);
               }}
+              name="priority"
+              id="priority"
             >
               <option>Low</option>
               <option>Medium</option>
@@ -151,25 +138,13 @@ function TaskDetails() {
           </div>
 
           {/* The category of the task */}
-          <div className="flex justify-between items-center gap-2">
-            <Input
-              styles={`w-full cursor-auto ${
-                modifyCategory ? "outline-1 cursor-alias" : "outline-0"
-              }`}
-              value={category}
-              readOnly={modifyCategory ? false : true}
-              name={"category"}
-              onChange={(e) => {
-                setCategory(e.target.value);
-              }}
-            />
-            <div
-              className="bg-yellow-400 rounded-full w-6 h-6 cursor-pointer"
-              onClick={() => {
-                setModifyCategory(!modifyCategory);
-              }}
-            ></div>
-          </div>
+          <TaskInput
+            value={category}
+            modifyMethod={modifyCategory}
+            setMethod={setCategory}
+            setModifyMethod={setModifyCategory}
+            label="Category"
+          />
 
           {/* The completion status of the task */}
           <div className="flex justify-start items-center gap-2">

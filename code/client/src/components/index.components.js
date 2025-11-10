@@ -13,6 +13,7 @@ import HomeCard from "./layout/HomeCard";
 import MainSection from "./layout/MainSection";
 import InputCard from "./common/InputCard";
 import ProfileCard from "./common/ProfileCard";
+import TaskInput from "./common/TaskInput";
 
 export {
   Input,
@@ -25,4 +26,5 @@ export {
   MainSection,
   InputCard,
   ProfileCard,
+  TaskInput,
 };

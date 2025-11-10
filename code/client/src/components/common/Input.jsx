@@ -1,9 +1,7 @@
 /* ---------------------------------------------------------------------------
 Input.jsx
-This is a common input component for reuse
+This is a common input component for reuse. If an element needs multiple lines (task descriptions), it will return the text-area element 
 ------------------------------------------------------------------------------ */
-
-import React from "react";
 
 function Input({
   placeholder,
@@ -12,22 +10,28 @@ function Input({
   value,
   styles = "",
   readOnly = false,
-  border = "border",
+  border = "border border-gray-300 outline:gray-300 hover:outline focus:outline focus:outline-blue-600",
   type = "text",
+  multiline = false,
 }) {
-  return (
-    <input
-      type={type}
-      placeholder={placeholder}
-      className={`rounded-md border-gray-300 outline:gray-300 hover:outline focus:outline focus:outline-blue-600 transition-all duration-150 p-2 sm:p-3 md:p-4 lg:p-6 ${border} ${styles}`}
-      name={name}
-      onChange={onChange}
-      value={value}
-      readOnly={readOnly}
-      id={name}
-      title={name}
-    />
-  );
+  const commonProps = {
+    placeholder,
+    className: `rounded-md transition-all duration-150 p-2 sm:p-3 md:p-4 lg:p-6 ${border} ${styles}`,
+    name,
+    onChange,
+    value,
+    readOnly,
+    id: name,
+    title: name,
+  };
+
+  if (multiline) {
+    // Renders a TEXTAREA for wrapping content
+    return <textarea {...commonProps} />;
+  }
+
+  // Renders a standard INPUT for single-line content
+  return <input type={type} {...commonProps} />;
 }
 
 export default Input;
