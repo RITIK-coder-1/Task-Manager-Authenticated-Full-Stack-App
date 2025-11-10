@@ -4,7 +4,11 @@ This is the page to update the profile pic
 ------------------------------------------------------------------------------ */
 
 import React, { useEffect, useState } from "react";
-import { Button, MainSection } from "../../components/index.components";
+import {
+  Button,
+  MainSection,
+  ProfileCard,
+} from "../../components/index.components";
 import { useDispatch, useSelector } from "react-redux";
 import { get, profileUpdate } from "../../features/userSlice.js";
 import useConditionalRendering from "../../hooks/useConditionalRendering.js";
@@ -53,22 +57,34 @@ function UpdateAppearance() {
   return (
     <>
       <MainSection styles="pt-22">
-        <div>
-          <span>Your current profile pic: </span>
-          <img src={user?.profilePic} className="w-36 h-36 rounded-full" />
-          <label>Choose a new pic: </label>
+        <ProfileCard styles="flex-col gap-2" dimensions="w-full h-auto">
+          <h1 className="text-lg font-semibold text-gray-800">
+            Your current profile pic:{" "}
+          </h1>
+          <img
+            src={user?.profilePic}
+            className="w-36 h-36 rounded-full transition-all duration-300"
+          />
+          <label htmlFor="profilePic" className="text-md">
+            Choose a new pic:{" "}
+          </label>
           <input
             type="file"
-            className="border border-solid border-black cursor-pointer block"
+            className="cursor-pointer shadow-md w-50 rounded-md p-2 text-sm bg-gray-200 hover:bg-gray-300"
             name="profilePic"
+            id="profilePic"
             onChange={(e) => {
               setProfile(e.target.files[0]);
             }}
           />
-          <Button content={"Update"} onClick={handleSubmit} />
-        </div>
+          <Button
+            content={"Update"}
+            onClick={handleSubmit}
+            styles="text-xl rounded-3xl p-5 bg-blue-900 hover:bg-blue-800 mt-2"
+          />
+        </ProfileCard>
+        {conditionalMessage()}
       </MainSection>
-      {conditionalMessage()}
     </>
   );
 }
