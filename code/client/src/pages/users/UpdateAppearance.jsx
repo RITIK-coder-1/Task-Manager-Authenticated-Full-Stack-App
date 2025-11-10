@@ -9,7 +9,7 @@ import {
   MainSection,
   ProfileCard,
 } from "../../components/index.components";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { get, profileUpdate } from "../../features/userSlice.js";
 import useConditionalRendering from "../../hooks/useConditionalRendering.js";
 import ProfilePic from "../../components/common/ProfilePic.jsx";
@@ -26,7 +26,6 @@ function UpdateAppearance() {
   // ----------------------------------------------------------------------------------
   // All the variables of the script
   // ----------------------------------------------------------------------------------
-  const user = useSelector((state) => state.users.user?.message);
   const { status, error } = useConditionalRendering("users");
   const [profile, setProfile] = useState(null);
 
@@ -57,11 +56,13 @@ function UpdateAppearance() {
 
   return (
     <>
+      {/* The main section */}
       <MainSection styles="pt-22">
         <ProfileCard
           styles="flex-col gap-2 sm:ml-15 md:w-130"
           dimensions="w-full h-auto sm:w-80"
         >
+          {/* The current profile pic */}
           <h1 className="text-lg font-semibold text-gray-800 md:text-2xl lg:text-3xl">
             Your current profile pic:{" "}
           </h1>
@@ -70,6 +71,8 @@ function UpdateAppearance() {
             dummyStyles={"w-36 h-36 border border-blue-900"}
             dummyDimensions={"text-5xl"}
           />
+
+          {/* Choosing a pic */}
           <label htmlFor="profilePic" className="text-md lg:text-lg">
             Choose a new pic:{" "}
           </label>

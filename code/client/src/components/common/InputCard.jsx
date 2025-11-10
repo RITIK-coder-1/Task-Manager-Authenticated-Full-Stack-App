@@ -5,7 +5,15 @@ This is a common input card for entering values with labels and styles
 
 import { Input } from "../index.components";
 
-function InputCard({ children, label, placeholder, name, method, type }) {
+function InputCard({
+  children,
+  label,
+  placeholder,
+  name,
+  method,
+  type = "text",
+  value,
+}) {
   return (
     <div className="flex flex-col items-start justify-center w-full">
       <label
@@ -23,6 +31,7 @@ function InputCard({ children, label, placeholder, name, method, type }) {
         }}
         styles="mb-2 w-full"
         type={type}
+        value={value}
       />
       {children}
     </div>

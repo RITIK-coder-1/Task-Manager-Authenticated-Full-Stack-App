@@ -4,7 +4,13 @@ This is the page to update the details of the profile
 ------------------------------------------------------------------------------ */
 
 import React, { useEffect, useState } from "react";
-import { AuthCard, Input, Button } from "../../components/index.components";
+import {
+  AuthCard,
+  Input,
+  Button,
+  MainSection,
+  InputCard,
+} from "../../components/index.components";
 import { useDispatch, useSelector } from "react-redux";
 import { userUpdate } from "../../features/userSlice.js";
 import { getUser } from "../../features/index.features.js";
@@ -84,64 +90,53 @@ function UpdateDetails() {
   return (
     <>
       {/* The Auth form */}
-      <AuthCard onSubmit={handleSubmit}>
-        {/* The full name */}
-        <div className="flex gap-2">
-          <label>Update Your Full Name: </label>
-          <Input
-            placeholder={"first name"}
-            name={"firstName"}
+      <MainSection styles="p-20">
+        <AuthCard onSubmit={handleSubmit}>
+          {/* The full name */}
+          <InputCard
+            label={"Update Name: "}
             value={firstName ?? ""}
-            onChange={(e) => {
-              setFirstName(e.target.value);
-            }}
-          />
-          <Input
-            placeholder={"last name"}
-            name={"lastName"}
-            value={lastName ?? ""}
-            onChange={(e) => {
-              setLastName(e.target.value);
-            }}
-          />
-        </div>
+            name={"firstName"}
+            method={setFirstName}
+          >
+            <Input
+              name={"lastName"}
+              value={lastName ?? ""}
+              onChange={(e) => {
+                setLastName(e.target.value);
+              }}
+              styles="w-full"
+            />
+          </InputCard>
 
-        {/* The username */}
-        <div className="flex gap-2">
-          <label>Update your username: </label>
-          <Input
-            placeholder={"Minimum 3 characters"}
-            name={"username"}
+          {/* The username */}
+          <InputCard
+            label={"Update Username: "}
             value={username ?? ""}
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
+            name={"username"}
+            method={setUsername}
           />
-        </div>
 
-        {/* The email */}
-        <div className="flex gap-2">
-          <label>Update Your Email: </label>
-          <Input
-            placeholder={"example@gmail.com"}
-            name={"email"}
+          {/* The email */}
+          <InputCard
+            label={"Update Email: "}
             value={email ?? ""}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
+            name={"email"}
+            method={setEmail}
           />
-        </div>
 
-        {/* The update button */}
-        <Button
-          content={"Update"}
-          type={"submit"}
-          disabled={status === "pending"}
-        />
-      </AuthCard>
-
+          {/* The update button */}
+          <Button
+            content={"Update"}
+            type={"submit"}
+            disabled={status === "pending"}
+            width="w-full"
+            bgColor="bg-blue-800 hover:bg-blue-900"
+          />
+        </AuthCard>
+        {conditionalMessage()}
+      </MainSection>
       {/* The conditional message */}
-      {conditionalMessage()}
     </>
   );
 }
