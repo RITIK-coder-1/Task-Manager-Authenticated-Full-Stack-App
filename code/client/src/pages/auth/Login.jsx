@@ -3,7 +3,7 @@ Login.jsx
 This is the login page for logging in an existing user
 ------------------------------------------------------------------------------ */
 
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   AuthCard,
   Button,
@@ -77,7 +77,7 @@ function Login() {
         </div>
 
         {/* The notifications */}
-        <ToastContainer />
+        {/* <ToastContainer /> */}
       </AuthCard>
     </MainSection>
   );

@@ -114,6 +114,11 @@ const authSlice = createSlice({
     resetNavStatus: (state) => {
       state.navigationStatus = "idle";
     },
+    // A reducer to reset the status/error after the notification is shown/closed
+    clearAuthStatus: (state) => {
+      state.status = "idle";
+      state.error = null;
+    },
   },
   extraReducers: (builder) => {
     /* ---------------------------------------------------------------------------
@@ -176,7 +181,7 @@ const authSlice = createSlice({
   },
 });
 
-export const { resetNavStatus } = authSlice.actions; // synchronous actions
+export const { resetNavStatus, clearAuthStatus } = authSlice.actions; // synchronous actions
 
 export { register, login, logout }; // asynchronous actions
 

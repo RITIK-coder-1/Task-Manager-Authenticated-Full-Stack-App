@@ -15,6 +15,7 @@ import InputCard from "./common/InputCard";
 import ProfileCard from "./common/ProfileCard";
 import TaskInput from "./common/TaskInput";
 import ProfilePic from "./common/ProfilePic";
+import GlobalNotificationListener from "./common/GlobalNotificationListener";
 
 export {
   Input,
@@ -29,4 +30,5 @@ export {
   ProfileCard,
   TaskInput,
   ProfilePic,
+  GlobalNotificationListener,
 };

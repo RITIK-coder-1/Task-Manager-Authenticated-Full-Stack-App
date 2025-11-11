@@ -27,7 +27,13 @@ import {
   resetNav,
 } from "./taskSlice.js";
 
-import { register, login, logout, resetNavStatus } from "./authSlice.js";
+import {
+  register,
+  login,
+  logout,
+  resetNavStatus,
+  clearAuthStatus,
+} from "./authSlice.js";
 
 export {
   taskReducer,
@@ -47,4 +53,5 @@ export {
   login,
   logout,
   resetNavStatus,
+  clearAuthStatus,
 };
