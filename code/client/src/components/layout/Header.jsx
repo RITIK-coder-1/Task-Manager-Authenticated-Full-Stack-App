@@ -21,7 +21,7 @@ function Header() {
 
   return (
     // The header section
-    <header className="w-full h-16 fixed top-0 left-0 z-50 bg-white shadow-md border-b border-blue-100">
+    <header className="w-full h-16 fixed top-0 left-0 z-1000 bg-white shadow-md border-b border-blue-100">
       <nav className="w-full h-full flex justify-between items-center px-5 py-3 sm:px-8 sm:py-4">
         {/* App title / logo area */}
         <h1

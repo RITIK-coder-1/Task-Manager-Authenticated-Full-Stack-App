@@ -18,15 +18,13 @@ const ProtectedRoute = () => {
   } else {
     // If logged in, render the requested route
     return (
-      <div className="app-container">
+      <>
         {/* 1. The Header component appears here, above all content */}
         <Header />
 
         {/* 2. The Outlet renders the specific nested page (Dashboard, Profile, etc.) */}
-        <main className="content-area">
-          <Outlet />
-        </main>
-      </div>
+        <Outlet />
+      </>
     );
   }
 };

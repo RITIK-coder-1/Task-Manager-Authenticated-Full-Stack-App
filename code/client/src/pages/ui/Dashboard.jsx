@@ -32,7 +32,7 @@ function Dashboard() {
   // The functions to open and close the modal
   // ----------------------------------------------------------------------------------
   const openModal = () => {
-    setIsModalOpen(true);
+    setIsModalOpen(!isModalOpen);
   };
   const closeModal = () => {
     setIsModalOpen(false);
@@ -81,13 +81,26 @@ function Dashboard() {
 
   return (
     <>
+      {/* The task creation modal */}
+      {isModalOpen && (
+        <div
+          className="w-full h-screen fixed inset-0 z-100 flex justify-center items-center overflow-y-auto pb-5 pt-30 sm:pt-45 md:pt-60 lg:pt-75 lg:pb-10"
+          // 2. Backdrop styling: black background with 50% opacity and blur effect
+          style={{
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            backdropFilter: "blur(10px)",
+          }}
+          onClick={closeModal}
+        >
+          <div onClick={(e) => e.stopPropagation()}>
+            <CreateTaskModal onClick={closeModal} />
+          </div>
+        </div>
+      )}
+
       {/* The main section */}
-      <div className="w-screen h-auto bg-black p-2 absolute z-50 flex justify-center items-center">
-        {isModalOpen && <CreateTaskModal onClick={closeModal} />}
-      </div>
       <MainSection styles="pt-24 pb-16">
         <section className="w-full h-full flex flex-wrap justify-center gap-4 px-3 sm:px-6 md:px-10">
-          {/* All the tasks */}
           {!tasks || tasks?.length === 0 ? (
             <span className="text-gray-600 italic">No tasks to display!</span> // conditional message if there is no task
           ) : (

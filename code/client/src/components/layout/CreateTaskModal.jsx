@@ -54,7 +54,11 @@ function CreateTaskModal({ onClick }) {
   return (
     <>
       {/* The auth card */}
-      <AuthCard onSubmit={handleSubmit} width="w-full items-start sm:w-150">
+      <AuthCard
+        onSubmit={handleSubmit}
+        width="w-80 items-start sm:w-120 lg:w-180"
+        bgColor="bg-blue-50/98"
+      >
         {/* The name of the tasks */}
         <InputCard
           label={"Title: "}
@@ -125,18 +129,18 @@ function CreateTaskModal({ onClick }) {
         </span>
         <div className="w-full flex flex-col gap-2 justify-center items-center">
           {/* The button to create the task */}
-          <Button content={"Create"} type={"submit"} width="w-full sm:w-120" />
+          <Button content={"Create"} type={"submit"} width="w-full sm:w-150" />
 
           {/* The button to cancel the modal */}
           <Button
             content={"Cancel"}
             onClick={onClick}
-            width="w-full sm:w-120"
+            width="w-full sm:w-150"
             bgColor="bg-red-800 hover:bg-red-900"
           />
         </div>
         {/* The conditional message */}
-        {conditionalMessage()}
+        {/* {conditionalMessage()} */}
       </AuthCard>
     </>
   );
