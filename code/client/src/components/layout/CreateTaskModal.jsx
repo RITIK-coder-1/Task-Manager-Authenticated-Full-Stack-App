@@ -4,7 +4,7 @@ This is the modal to create a task on the dashboard
 ------------------------------------------------------------------------------ */
 
 import React, { useState } from "react";
-import { AuthCard, Button, Input } from "../index.components";
+import { AuthCard, Button, Input, InputCard } from "../index.components";
 import { useDispatch } from "react-redux";
 import { create } from "../../features/taskSlice.js";
 import useConditionalRendering from "../../hooks/useConditionalRendering.js";
@@ -54,75 +54,90 @@ function CreateTaskModal({ onClick }) {
   return (
     <>
       {/* The auth card */}
-      <AuthCard onSubmit={handleSubmit} styles="border items-center">
+      <AuthCard onSubmit={handleSubmit} width="w-full items-start sm:w-150">
         {/* The name of the tasks */}
-        <label htmlFor="title">Enter the title of the task: (Required)</label>
-        <Input
+        <InputCard
+          label={"Title: "}
+          placeholder={"Title"}
           name={"title"}
-          onChange={(e) => {
-            setTitle(e.target.value);
-          }}
+          method={setTitle}
         />
 
         {/* The additional notes */}
-        <label htmlFor="description">Add any notes (optional): </label>
-        <Input
+        <InputCard
+          label={"Any Notes: "}
+          placeholder={"Notes..."}
           name={"description"}
-          width="w-full"
-          height="h-56"
-          onChange={(e) => {
-            setDescription(e.target.value);
-          }}
+          method={setDescription}
         />
 
         {/* The priority */}
-        <label htmlFor="priority">Select priority: (optional)</label>
-        <select
-          className="outline-1"
-          id="priority"
-          onChange={(e) => {
-            setPriority(e.target.value);
-          }}
-        >
-          <option>Low</option>
-          <option>Medium</option>
-          <option>High</option>
-          <option>Urgent</option>
-        </select>
+        <span className="w-full">
+          <label
+            htmlFor="priority"
+            className="text-[11px] text-gray-800 font-semibold sm:text-sm md:text-[16px] lg:text-lg"
+          >
+            Select priority:
+          </label>
+          <select
+            className="outline-1 w-full py-2 rounded-md outline-gray-700 cursor-pointer md:text-lg"
+            id="priority"
+            onChange={(e) => {
+              setPriority(e.target.value);
+            }}
+          >
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+            <option>Urgent</option>
+          </select>
+        </span>
 
         {/* The category */}
-        <label htmlFor="category">Any category: (optional)</label>
-        <Input
+        <InputCard
+          label={"Any Category: "}
+          placeholder={"Category"}
           name={"category"}
-          onChange={(e) => {
-            setCategory(e.target.value);
-          }}
+          method={setCategory}
         />
 
         {/* The completion */}
-        <label htmlFor="isCompleted">Completion: (optional)</label>
-        <input
-          type="checkbox"
-          name="isCompleted"
-          id="isCompleted"
-          onClick={() => {
-            if (isCompleted === false) {
-              setIsCompleted(true);
-            } else if (isCompleted === true) {
-              setIsCompleted(false);
-            }
-          }}
-        />
+        <span className="w-full flex justify-start items-center gap-2">
+          <label
+            htmlFor="isCompleted"
+            className="text-[15px] text-gray-800 font-semibold sm:text-sm md:text-[16px] lg:text-lg"
+          >
+            Completion:
+          </label>
+          <input
+            type="checkbox"
+            name="isCompleted"
+            id="isCompleted"
+            onClick={() => {
+              if (isCompleted === false) {
+                setIsCompleted(true);
+              } else if (isCompleted === true) {
+                setIsCompleted(false);
+              }
+            }}
+            className="cursor-pointer text-3xl"
+          />
+        </span>
+        <div className="w-full flex flex-col gap-2 justify-center items-center">
+          {/* The button to create the task */}
+          <Button content={"Create"} type={"submit"} width="w-full sm:w-120" />
 
-        {/* The button to create the task */}
-        <Button content={"Create"} type={"submit"} />
-
-        {/* The button to cancel the modal */}
-        <Button content={"Cancel"} onClick={onClick} />
+          {/* The button to cancel the modal */}
+          <Button
+            content={"Cancel"}
+            onClick={onClick}
+            width="w-full sm:w-120"
+            bgColor="bg-red-800 hover:bg-red-900"
+          />
+        </div>
+        {/* The conditional message */}
+        {conditionalMessage()}
       </AuthCard>
-
-      {/* The conditional message */}
-      {conditionalMessage()}
     </>
   );
 }

@@ -82,8 +82,11 @@ function Dashboard() {
   return (
     <>
       {/* The main section */}
+      <div className="w-screen h-auto bg-black p-2 absolute z-50 flex justify-center items-center">
+        {isModalOpen && <CreateTaskModal onClick={closeModal} />}
+      </div>
       <MainSection styles="pt-24 pb-16">
-        <section className="w-full h-full flex flex-wrap justify-center gap-4 z-10 px-3 sm:px-6 md:px-10">
+        <section className="w-full h-full flex flex-wrap justify-center gap-4 px-3 sm:px-6 md:px-10">
           {/* All the tasks */}
           {!tasks || tasks?.length === 0 ? (
             <span className="text-gray-600 italic">No tasks to display!</span> // conditional message if there is no task
@@ -95,16 +98,15 @@ function Dashboard() {
           <div className="w-full h-full flex items-end justify-end pr-4">
             <Button
               content={"+"}
-              styles="fixed h-18 rounded-full text-4xl bottom-24 right-6 z-[1000] sm:h-22 sm:text-5xl"
+              styles="fixed h-18 rounded-full text-4xl bottom-24 right-6 z-100 sm:h-22 sm:text-5xl"
               width="w-18 sm:w-22"
               onClick={openModal}
               title={"Add Task"}
             />
           </div>
         </section>
+        {/* The modal */}
       </MainSection>
-      {/* The modal */}
-      {isModalOpen && <CreateTaskModal onClick={closeModal} />}
     </>
   );
 }
