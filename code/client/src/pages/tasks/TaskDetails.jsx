@@ -15,8 +15,6 @@ import {
   TaskInput,
 } from "../../components/index.components";
 import useNavigation from "../../hooks/useNavigation.js";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPencil } from "@fortawesome/free-solid-svg-icons";
 
 function TaskDetails() {
   const { taskId } = useParams(); // getting the task id included in the URL

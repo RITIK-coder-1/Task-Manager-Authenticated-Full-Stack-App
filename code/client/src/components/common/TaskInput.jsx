@@ -20,8 +20,8 @@ function TaskInput({
   border,
 }) {
   return (
-    <div className="flex w-full justify-between items-center gap-2">
-      <div className="flex flex-col justify-center items-start">
+    <div className="flex w-full justify-between items-center">
+      <div className="flex flex-col justify-center items-start w-full">
         <label
           htmlFor={value}
           className="text-[12px] text-gray-600 md:text-[15px]"
@@ -29,7 +29,7 @@ function TaskInput({
           {label}
         </label>
         <Input
-          styles={`w-full py-2 px-1 cursor-auto ${
+          styles={`py-2 px-1 cursor-auto ${
             modifyMethod ? "outline-1 cursor-alias" : "outline-0"
           } ${styles}`}
           value={value}
