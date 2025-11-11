@@ -26,7 +26,7 @@ function UpdateAppearance() {
   // ----------------------------------------------------------------------------------
   // All the variables of the script
   // ----------------------------------------------------------------------------------
-  const { status, error } = useConditionalRendering("users");
+  const { status, error, user } = useConditionalRendering("users");
   const [profile, setProfile] = useState(null);
 
   // ----------------------------------------------------------------------------------
@@ -64,7 +64,9 @@ function UpdateAppearance() {
         >
           {/* The current profile pic */}
           <h1 className="text-lg font-semibold text-gray-800 md:text-2xl lg:text-3xl">
-            Your current profile pic:{" "}
+            {user?.message?.profilePic === ""
+              ? "No Profile Pic"
+              : "Your current profile pic:"}
           </h1>
           <ProfilePic
             profileStyles={"w-36 h-36 rounded-full"}
