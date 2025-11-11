@@ -96,6 +96,11 @@ const userSlice = createSlice({
     status: "idle", // idle, pending, succeeded, failed
     error: null, // will hold any error message
   },
+  reducers: {
+    resetStatus: (state) => {
+      state.status = "idle";
+    },
+  },
   extraReducers: (builder) => {
     /* ---------------------------------------------------------------------------
        All the cases for getting a user
@@ -187,6 +192,8 @@ const userSlice = createSlice({
     });
   },
 });
+
+export const { resetStatus } = userSlice.actions; // synchronous actions
 
 export { get, userUpdate, passwordUpdate, profileUpdate };
 

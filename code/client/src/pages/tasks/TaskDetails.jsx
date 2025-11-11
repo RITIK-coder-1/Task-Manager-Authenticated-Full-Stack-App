@@ -171,12 +171,16 @@ function TaskDetails() {
                 className="cursor-pointer text-3xl"
               />
             </div>
+
+            {/* The button to update */}
             <Button
               content={"Update"}
               type={"submit"}
               width="w-full md:w-88"
               bgColor="bg-blue-800 hover:bg-blue-900"
             />
+
+            {/* The button to delete */}
             <Button
               content={"Delete"}
               onClick={() => {

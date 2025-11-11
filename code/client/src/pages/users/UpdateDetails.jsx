@@ -11,30 +11,23 @@ import {
   MainSection,
   InputCard,
 } from "../../components/index.components";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { userUpdate } from "../../features/userSlice.js";
-import { getUser } from "../../features/index.features.js";
 import useConditionalRendering from "../../hooks/useConditionalRendering.js";
 
 function UpdateDetails() {
-  const dispatch = useDispatch();
-
-  // ----------------------------------------------------------------------------------
-  // Get the user details as soon as the page loads
-  // ----------------------------------------------------------------------------------
-  useEffect(() => {
-    dispatch(getUser());
-  }, [dispatch]);
-
   // ----------------------------------------------------------------------------------
   // All the variables of the script
   // ----------------------------------------------------------------------------------
-  const user = useSelector((state) => state.users.user?.message);
-  const { status, error } = useConditionalRendering("users");
+
+  // As the details of the user have already been fetched by the header, I don't need to do it again
+  const { status, error, user: userData } = useConditionalRendering("users");
+  const user = userData?.message;
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
   const [email, setEmail] = useState(null);
   const [username, setUsername] = useState(null);
+  const dispatch = useDispatch();
 
   // ----------------------------------------------------------------------------------
   // For better UX, I made sure to pre-load the current value of the user details
@@ -46,7 +39,7 @@ function UpdateDetails() {
       setEmail(user.email || "");
       setUsername(user.username || "");
     }
-  }, [user, dispatch, setFirstName, setLastName, setEmail, setUsername]);
+  }, [user, setFirstName, setLastName, setEmail, setUsername]);
 
   // ----------------------------------------------------------------------------------
   // Function to dispatch the action
@@ -73,19 +66,6 @@ function UpdateDetails() {
   if (!user && status === "pending") {
     return <AuthCard>Loading user data...</AuthCard>;
   }
-
-  // ----------------------------------------------------------------------------------
-  // The conditional message
-  // ----------------------------------------------------------------------------------
-  const conditionalMessage = () => {
-    if (status === "pending") {
-      return <span>Checking...</span>;
-    } else if (status === "succeeded") {
-      return <span>Your details have been updated!</span>;
-    } else if (status === "failed") {
-      return <span>{error}</span>;
-    }
-  };
 
   return (
     <>
@@ -133,9 +113,7 @@ function UpdateDetails() {
             bgColor="bg-blue-800 hover:bg-blue-900"
           />
         </AuthCard>
-        {conditionalMessage()}
       </MainSection>
-      {/* The conditional message */}
     </>
   );
 }

@@ -3,30 +3,25 @@ UpdateAppearance.jsx
 This is the page to update the profile pic
 ------------------------------------------------------------------------------ */
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   Button,
   MainSection,
   ProfileCard,
 } from "../../components/index.components";
 import { useDispatch } from "react-redux";
-import { get, profileUpdate } from "../../features/userSlice.js";
+import { profileUpdate } from "../../features/userSlice.js";
 import useConditionalRendering from "../../hooks/useConditionalRendering.js";
 import ProfilePic from "../../components/common/ProfilePic.jsx";
 
 function UpdateAppearance() {
   // ----------------------------------------------------------------------------------
-  // Get the user details as the page loads for displaying the current pic for UX
-  // ----------------------------------------------------------------------------------
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(get());
-  }, []);
-
-  // ----------------------------------------------------------------------------------
   // All the variables of the script
   // ----------------------------------------------------------------------------------
-  const { status, error, user } = useConditionalRendering("users");
+  const dispatch = useDispatch();
+
+  // As the details of the user have already been fetched by the header, I don't need to do it again
+  const { user } = useConditionalRendering("users");
   const [profile, setProfile] = useState(null);
 
   // ----------------------------------------------------------------------------------
@@ -36,22 +31,8 @@ function UpdateAppearance() {
     e.preventDefault(); // prevent page reload
     const payload = new FormData();
     payload.append("profilePic", profile);
-    console.log(profile);
 
     dispatch(profileUpdate(payload));
-  };
-
-  // ----------------------------------------------------------------------------------
-  // The conditional message
-  // ----------------------------------------------------------------------------------
-  const conditionalMessage = () => {
-    if (status === "pending") {
-      return <span>Checking...</span>;
-    } else if (status === "succeeded") {
-      return <span>Your profile pic has been updated!</span>;
-    } else if (status === "failed") {
-      return <span>{error}</span>;
-    }
   };
 
   return (
@@ -93,7 +74,6 @@ function UpdateAppearance() {
             styles="text-xl rounded-3xl p-5 bg-blue-900 hover:bg-blue-800 mt-2 md:text-2xl md:p-6"
           />
         </ProfileCard>
-        {conditionalMessage()}
       </MainSection>
     </>
   );

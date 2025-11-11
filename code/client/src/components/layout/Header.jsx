@@ -3,20 +3,12 @@ Header.jsx
 This is the header component for navigation between pages
 ------------------------------------------------------------------------------ */
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Logout } from "../index.components";
-import { getUser } from "../../features/index.features";
-import { useDispatch } from "react-redux";
-import ProfilePic from "../common/ProfilePic";
+import { ProfilePic } from "../index.components";
 
 function Header() {
-  const dispatch = useDispatch();
-
-  // get the user details as soon as the component mounts so that I can get the profile pic
-  useEffect(() => {
-    dispatch(getUser());
-  }, [dispatch]);
   const [toLogOut, setToLogOut] = useState(false); // for displaying the logout button
 
   return (

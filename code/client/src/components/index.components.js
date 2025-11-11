@@ -14,6 +14,7 @@ import MainSection from "./layout/MainSection";
 import InputCard from "./common/InputCard";
 import ProfileCard from "./common/ProfileCard";
 import TaskInput from "./common/TaskInput";
+import ProfilePic from "./common/ProfilePic";
 
 export {
   Input,
@@ -27,4 +28,5 @@ export {
   InputCard,
   ProfileCard,
   TaskInput,
+  ProfilePic,
 };

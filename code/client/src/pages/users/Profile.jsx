@@ -3,9 +3,6 @@ Profile.jsx
 This is the profile section of the user. The user can delete their profile here. 
 ------------------------------------------------------------------------------ */
 
-import React, { useEffect } from "react";
-import { getUser } from "../../features/index.features";
-import { useDispatch, useSelector } from "react-redux";
 import {
   Button,
   MainSection,
@@ -15,26 +12,14 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import ProfilePic from "../../components/common/ProfilePic";
+import useConditionalRendering from "../../hooks/useConditionalRendering";
 
 function Profile() {
-  // ----------------------------------------------------------------------------------
-  // All the variables of the script
-  // ----------------------------------------------------------------------------------
-  const dispatch = useDispatch();
-  const user = useSelector((state) => state.users.user?.message);
+  // As the details of the user have already been fetched by the header, I don't need to do it again
+  const { user: userData } = useConditionalRendering("users");
+  const user = userData?.message;
 
-  // ----------------------------------------------------------------------------------
-  // The user details should be displayed as soon as the component mounts
-  // ----------------------------------------------------------------------------------
-  useEffect(() => {
-    dispatch(getUser());
-  }, [dispatch]);
-
-  // ----------------------------------------------------------------------------------
-  // The profile should be displayed based on this condition
-  // ----------------------------------------------------------------------------------
-
-  const conditionalMessage = () => {
+  const userDetails = () => {
     return (
       // The main section
       <MainSection styles="pt-20 pb-3">
@@ -113,7 +98,7 @@ function Profile() {
     );
   };
 
-  return <>{conditionalMessage()}</>;
+  return <>{userDetails()}</>;
 }
 
 export default Profile;

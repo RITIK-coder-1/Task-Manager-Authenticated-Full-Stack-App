@@ -13,22 +13,12 @@ import {
 import { login } from "../../features/index.features.js";
 import { useDispatch } from "react-redux";
 import { useNavigation } from "../../hooks/index.hooks.js";
-import { ToastContainer } from "react-toastify";
-import { useNotification } from "../../hooks/index.hooks.js";
 
 function Login() {
   // ----------------------------------------------------------------------------------
   // All the variables of the script
   // ----------------------------------------------------------------------------------
   const dispatch = useDispatch();
-  const notifications = useNotification(
-    "auth",
-    5000,
-    false,
-    "left-96",
-    "Logging in...",
-    "User successfully logged in!"
-  ); // this custom hook returns a function so that I can call it inside a function body (handleOnSubmit)
 
   // the local state variables for data holding
   const [credential, setCredential] = useState("");
@@ -46,8 +36,6 @@ function Login() {
     };
 
     dispatch(login(userData));
-
-    notifications(); // the toastify notifications
   };
 
   // ----------------------------------------------------------------------------------

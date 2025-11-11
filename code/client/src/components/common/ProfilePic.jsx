@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserTie } from "@fortawesome/free-solid-svg-icons";
 
 function ProfilePic({
-  dummyDimensions,
+  dummyDimensions, // width and height of the dummy image
   dummyStyles,
   profileStyles,
   title = "profile pic",

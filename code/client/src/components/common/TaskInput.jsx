@@ -5,7 +5,7 @@ This is a common task input component for task details display
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPencil } from "@fortawesome/free-solid-svg-icons";
-import Input from "./Input";
+import { Input } from "./../index.components.js";
 
 function TaskInput({
   label,
@@ -50,6 +50,7 @@ function TaskInput({
         }}
         title={`Update ${value}`}
       >
+        {/* Icon for updating the values */}
         <FontAwesomeIcon
           icon={faPencil}
           className="text-blue-800 text-sm md:text-lg cursor-pointer"

@@ -17,8 +17,6 @@ import {
 } from "./pages/index.pages";
 import { Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./utils/ProtectedRoute.jsx";
-import useNotification from "./hooks/useNotification.js";
-import { ToastContainer } from "react-toastify";
 
 function App() {
   return (

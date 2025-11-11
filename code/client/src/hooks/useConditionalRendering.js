@@ -1,6 +1,6 @@
 /* ---------------------------------------------------------------------------
 useConditionalRendering.js
-This is a custom hook for providing the state status, the error message and the user value
+This is a custom hook for providing the state status and the error message for all the slices, and the user value for the user slice
 ------------------------------------------------------------------------------ */
 
 import { useSelector } from "react-redux";

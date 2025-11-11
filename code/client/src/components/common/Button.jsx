@@ -3,8 +3,6 @@ Button.jsx
 This is a common button component for reuse
 ------------------------------------------------------------------------------ */
 
-import React from "react";
-
 function Button({
   content,
   onClick,

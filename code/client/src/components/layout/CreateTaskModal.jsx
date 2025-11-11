@@ -3,18 +3,15 @@ CreateTaskModal.jsx
 This is the modal to create a task on the dashboard
 ------------------------------------------------------------------------------ */
 
-import React, { useState } from "react";
-import { AuthCard, Button, Input, InputCard } from "../index.components";
+import { AuthCard, Button, InputCard } from "../index.components";
 import { useDispatch } from "react-redux";
 import { create } from "../../features/taskSlice.js";
-import useConditionalRendering from "../../hooks/useConditionalRendering.js";
 
 function CreateTaskModal({ onClick }) {
   // ----------------------------------------------------------------------------------
   // All the variables of the script
   // ----------------------------------------------------------------------------------
   const dispath = useDispatch();
-  const { status, error } = useConditionalRendering("tasks");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("Low");
@@ -36,19 +33,6 @@ function CreateTaskModal({ onClick }) {
     };
 
     dispath(create(dataObject));
-  };
-
-  // ----------------------------------------------------------------------------------
-  // The conditional message on the status of the tasks
-  // ----------------------------------------------------------------------------------
-  const conditionalMessage = () => {
-    if (status === "pending") {
-      return <span>Checking...</span>;
-    } else if (status === "succeeded") {
-      return <span>Your task has been created!</span>;
-    } else if (status === "failed") {
-      return <span>{error}</span>;
-    }
   };
 
   return (
@@ -143,8 +127,6 @@ function CreateTaskModal({ onClick }) {
             bgColor="bg-red-800 hover:bg-red-900"
           />
         </div>
-        {/* The conditional message */}
-        {/* {conditionalMessage()} */}
       </AuthCard>
     </>
   );

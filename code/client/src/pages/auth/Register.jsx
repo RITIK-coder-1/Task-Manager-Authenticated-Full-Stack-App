@@ -16,21 +16,12 @@ import { register } from "../../features/index.features.js";
 import { useNavigation } from "../../hooks/index.hooks.js";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserTie } from "@fortawesome/free-solid-svg-icons";
-import { ToastContainer } from "react-toastify";
-import { useNotification } from "../../hooks/index.hooks.js";
 
 function Register() {
   // ----------------------------------------------------------------------------------
   // All the variables of the script
   // ----------------------------------------------------------------------------------
   const dispatch = useDispatch();
-  const notifications = useNotification(
-    "auth",
-    5000,
-    false,
-    "Registering...",
-    "User successfully registered!"
-  ); // this custom hook returns a function so that I can call it inside a function body (handleOnSubmit)
 
   // the local state variables for data holding
   const [firstName, setFirstName] = useState("");
@@ -64,8 +55,6 @@ function Register() {
     }
 
     dispatch(register(payload));
-
-    notifications(); // the toastify notifications
   };
 
   // ----------------------------------------------------------------------------------
@@ -73,10 +62,6 @@ function Register() {
   // ----------------------------------------------------------------------------------
 
   useNavigation("auth", "/users/me/dashboard");
-
-  // ----------------------------------------------------------------------------------
-  // This is the conditional rendering message based on the status of the state
-  // ----------------------------------------------------------------------------------
 
   return (
     // ----------------------------------------------------------------------------------
@@ -159,9 +144,6 @@ function Register() {
             <Button content={"Register"} type={"submit"} width={"w-full"} />
           </div>
         </AuthCard>
-
-        {/* The status message */}
-        <ToastContainer />
       </MainSection>
     </>
   );
