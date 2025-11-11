@@ -12,6 +12,7 @@ import {
   MainSection,
 } from "../../components/index.components.js";
 import { Link } from "react-router-dom";
+import useConditionalRendering from "../../hooks/useConditionalRendering.js";
 
 function Dashboard() {
   // ----------------------------------------------------------------------------------
@@ -26,6 +27,7 @@ function Dashboard() {
   // All the variables of the script
   // ----------------------------------------------------------------------------------
   const tasks = useSelector((state) => state.tasks.tasks?.message);
+  const { status, error } = useConditionalRendering("tasks");
   const [isModalOpen, setIsModalOpen] = useState(false); // the condition for opening the create task modal
 
   // ----------------------------------------------------------------------------------
@@ -84,7 +86,7 @@ function Dashboard() {
       {/* The task creation modal */}
       {isModalOpen && (
         <div
-          className="w-full h-screen fixed inset-0 z-100 flex justify-center items-center overflow-y-auto pb-5 pt-30 sm:pt-45 md:pt-60 lg:pt-75 lg:pb-10"
+          className="w-full h-screen fixed inset-0 z-100 flex justify-center items-center overflow-y-auto pb-5 pt-30 sm:pt-45 md:pt-60 lg:pt-77 lg:pb-10"
           // 2. Backdrop styling: black background with 50% opacity and blur effect
           style={{
             backgroundColor: "rgba(0, 0, 0, 0.5)",
@@ -101,7 +103,9 @@ function Dashboard() {
       {/* The main section */}
       <MainSection styles="pt-24 pb-16">
         <section className="w-full h-full flex flex-wrap justify-center gap-4 px-3 sm:px-6 md:px-10">
-          {!tasks || tasks?.length === 0 ? (
+          {status === "pending" ? (
+            <span className="text-5xl">Loading Data...</span>
+          ) : !tasks || tasks?.length === 0 ? (
             <span className="text-gray-600 italic">No tasks to display!</span> // conditional message if there is no task
           ) : (
             displayTasks()
@@ -118,7 +122,6 @@ function Dashboard() {
             />
           </div>
         </section>
-        {/* The modal */}
       </MainSection>
     </>
   );

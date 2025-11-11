@@ -129,13 +129,17 @@ function CreateTaskModal({ onClick }) {
         </span>
         <div className="w-full flex flex-col gap-2 justify-center items-center">
           {/* The button to create the task */}
-          <Button content={"Create"} type={"submit"} width="w-full sm:w-150" />
+          <Button
+            content={"Create"}
+            type={"submit"}
+            width="w-full sm:w-100 lg:w-150"
+          />
 
           {/* The button to cancel the modal */}
           <Button
             content={"Cancel"}
             onClick={onClick}
-            width="w-full sm:w-150"
+            width="w-full sm:w-100 lg:w-150"
             bgColor="bg-red-800 hover:bg-red-900"
           />
         </div>
