@@ -28,7 +28,6 @@ function GlobalNotificationListener({ slice, clearStatus }) {
         theme: "light",
         transition: Bounce,
       });
-
       dispatch(clearStatus());
     } else if (status === "failed") {
       // Use the error message from the store

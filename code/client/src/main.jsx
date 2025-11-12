@@ -22,7 +22,6 @@ createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <Provider store={store}>
         <App />
-        {/* <ToastContainer /> */}
         <GlobalNotificationListener
           slice={"auth"}
           clearStatus={clearAuthStatus}
@@ -35,6 +34,7 @@ createRoot(document.getElementById("root")).render(
           slice={"tasks"}
           clearStatus={clearTaskStatus}
         />
+        <ToastContainer />
       </Provider>
     </BrowserRouter>
   </StrictMode>

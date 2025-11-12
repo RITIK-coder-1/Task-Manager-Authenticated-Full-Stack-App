@@ -44,8 +44,6 @@ function Dashboard() {
   // ----------------------------------------------------------------------------------
 
   const displayTasks = () => {
-    console.log("TASKS: ", tasks);
-
     return tasks?.map((ele) => {
       // for displaying the creation date of each task
       const myDate = new Date(ele.createdAt);
@@ -55,27 +53,25 @@ function Dashboard() {
       const createdAt = `${monthNameLocalized} ${day}`; // the final string to display
 
       return (
-        <>
-          <Link
-            className="group cursor-pointer w-full flex flex-col hover:shadow-xl transition-shadow duration-300 lg:hover:shadow-2xl rounded-xl"
-            to={`/users/me/dashboard/${ele._id}`}
-            key={ele._id}
-            title={`Visit ${ele.title}`}
-          >
-            <div className="w-full h-18 pt-5 px-3 overflow-hidden font-semibold rounded-t-xl bg-white flex flex-col justify-start items-start gap-1 cursor-pointer relative z-10 text-xl sm:h-26 sm:text-2xl lg:h-32 lg:text-3xl">
-              <h1 className="group-hover:text-blue-800 transition-colors duration-200">
-                {ele.title}
-              </h1>
-              <p className="text-xs/snug sm:text-sm/6 font-light text-gray-700 relative z-10">
-                {ele.description === "" ? "No description..." : ele.description}
-              </p>
-            </div>
-            {/* For displaying the date */}
-            <span className="h-6 pl-3 pt-1 text-xs bg-white w-full font-light text-gray-600 rounded-b-xl shadow-md shadow-gray-300 sm:text-sm sm:h-8">
-              {createdAt}
-            </span>
-          </Link>
-        </>
+        <Link
+          className="group cursor-pointer w-full flex flex-col hover:shadow-xl transition-shadow duration-300 lg:hover:shadow-2xl rounded-xl"
+          to={`/users/me/dashboard/${ele._id}`}
+          title={`Visit ${ele.title}`}
+          key={ele._id}
+        >
+          <div className="w-full h-18 pt-5 px-3 overflow-hidden font-semibold rounded-t-xl bg-white flex flex-col justify-start items-start gap-1 cursor-pointer relative z-10 text-xl sm:h-26 sm:text-2xl lg:h-32 lg:text-3xl">
+            <h1 className="group-hover:text-blue-800 transition-colors duration-200">
+              {ele.title}
+            </h1>
+            <p className="text-xs/snug sm:text-sm/6 font-light text-gray-700 relative z-10">
+              {ele.description === "" ? "No description..." : ele.description}
+            </p>
+          </div>
+          {/* For displaying the date */}
+          <span className="h-6 pl-3 pt-1 text-xs bg-white w-full font-light text-gray-600 rounded-b-xl shadow-md shadow-gray-300 sm:text-sm sm:h-8">
+            {createdAt}
+          </span>
+        </Link>
       );
     });
   };

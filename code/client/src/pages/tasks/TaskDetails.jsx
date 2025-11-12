@@ -133,7 +133,7 @@ function TaskDetails() {
               </label>
               <select
                 className="outline-1 w-full py-2 rounded-md outline-gray-700 bg-gray-100 cursor-pointer md:text-lg"
-                value={priority}
+                value={priority || ""}
                 onChange={(e) => {
                   setPriority(e.target.value);
                 }}
@@ -166,7 +166,7 @@ function TaskDetails() {
                 type="checkbox"
                 name="isCompleted"
                 id="isCompleted"
-                value={isCompleted}
+                value={isCompleted || ""}
                 defaultChecked={isCompleted ? true : false}
                 onClick={() => {
                   setIsCompleted(!isCompleted);

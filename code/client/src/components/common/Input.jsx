@@ -20,7 +20,7 @@ function Input({
     className: `w-full rounded-md transition-all duration-150 resize-none ${border} ${styles}`,
     name,
     onChange,
-    value,
+    value: value || "",
     readOnly,
     id: name,
     title: name,
