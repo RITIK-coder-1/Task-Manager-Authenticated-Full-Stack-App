@@ -27,7 +27,7 @@ import {
   remove,
   displayAll,
   get as getTask,
-  resetNav,
+  resetTaskNav,
   clearTaskStatus,
 } from "./taskSlice.js";
 
@@ -35,7 +35,7 @@ import {
   register,
   login,
   logout,
-  resetNavStatus,
+  resetAuthNav,
   clearAuthStatus,
 } from "./authSlice.js";
 
@@ -56,10 +56,10 @@ export {
   displayAll,
   getTask,
   clearTaskStatus,
-  resetNav,
+  resetTaskNav,
   register,
   login,
   logout,
-  resetNavStatus,
+  resetAuthNav,
   clearAuthStatus,
 };

@@ -121,7 +121,7 @@ const taskSlice = createSlice({
   },
   reducers: {
     // it resets the navigation status upon action completion
-    resetNav: (state) => {
+    resetTaskNav: (state) => {
       state.navigationStatus = "idle";
     },
     // A reducer to reset the status/error after the notification is shown/closed
@@ -245,7 +245,7 @@ const taskSlice = createSlice({
   },
 });
 
-export const { resetNav, clearTaskStatus } = taskSlice.actions; // synchronous actions
+export const { resetTaskNav, clearTaskStatus } = taskSlice.actions; // synchronous actions
 
 export { create, update, remove, displayAll, get };
 

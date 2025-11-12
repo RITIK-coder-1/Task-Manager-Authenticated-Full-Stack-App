@@ -7,8 +7,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import useConditionalRendering from "./useConditionalRendering";
 import { useEffect } from "react";
 import {
-  resetNav,
-  resetNavStatus,
+  resetTaskNav,
+  resetAuthNav,
   resetUserNav,
 } from "../features/index.features.js";
 import { useDispatch } from "react-redux";
@@ -26,8 +26,8 @@ const useNavigation = (slice, url) => {
       // Navigate the user to the intended page
       navigate(fromPath, { replace: true }); // replace is true so that the user can't press the back button to visit the protected routes once prohibited
     }
-    dispatch(resetNavStatus()); // for auth related navigation
-    dispatch(resetNav()); // for task related navigation
+    dispatch(resetAuthNav()); // for auth related navigation
+    dispatch(resetTaskNav()); // for task related navigation
     dispatch(resetUserNav()); // for user related navigation
   }, [navigationStatus, error, navigate, fromPath, dispatch]);
 };

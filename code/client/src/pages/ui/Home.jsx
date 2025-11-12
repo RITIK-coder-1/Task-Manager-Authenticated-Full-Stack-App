@@ -3,14 +3,22 @@ Home.jsx
 This is the landing page where unauthenticated users land. It navigates to the register and login pages
 ------------------------------------------------------------------------------ */
 
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../../components/index.components";
 import { HomeCard } from "../../components/index.components";
 import { useCards } from "../../hooks/index.hooks.js";
 import { MainSection } from "../../components/index.components";
+import { useDispatch } from "react-redux";
+import { resetAuthNav } from "../../features/authSlice.js";
 
 function Home() {
+  // for safety, I'm resetting the auth navigation status to "idle" as soon as the homepage loads so that the auth navigation success after logging out has no effect to the login and register pages. The login and register pages won't re-direct to the homepage.
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(resetAuthNav());
+  }, [dispatch]);
+
   const homeCards = useCards(); // importing the component cards
 
   return (
