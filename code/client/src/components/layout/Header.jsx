@@ -5,11 +5,10 @@ This is the header component for navigation between pages
 
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Logout } from "../index.components";
-import { ProfilePic } from "../index.components";
+import { Logout, Delete, ProfilePic } from "../index.components";
 
 function Header() {
-  const [toLogOut, setToLogOut] = useState(false); // for displaying the logout button
+  const [toggle, setToggle] = useState(false); // for displaying the logout button
 
   return (
     // The header section
@@ -57,19 +56,20 @@ function Header() {
         {/* Profile section */}
         <div className="relative flex flex-col items-center">
           <button
-            onClick={() => setToLogOut(!toLogOut)}
+            onClick={() => setToggle(!toggle)}
             className="border border-blue-900 rounded-full overflow-hidden w-8 h-8 sm:w-10 sm:h-10 md:w-12 md:h-12 flex justify-center items-center bg-blue-50 hover:scale-105 transition-transform duration-200 cursor-pointer"
           >
             <ProfilePic
               dummyStyles={"text-base sm:text-lg md:text-2xl"}
               profileStyles={"w-full h-full"}
-              title="logout"
+              title="click"
             />
           </button>
 
           {/* Logout button */}
           <div className="absolute top-12 sm:top-14 md:top-16 right-0">
-            <Logout toLogOut={toLogOut} />
+            <Logout toLogOut={toggle} />
+            <Delete toDelete={toggle} />
           </div>
         </div>
       </nav>

@@ -5,7 +5,7 @@ This file exports all the app pages from a single place
 
 import Register from "./auth/Register";
 import Login from "./auth/Login";
-import Logout from "../components/auth/Logout";
+import Logout from "../components/user/Logout";
 import Profile from "./users/Profile";
 import UpdateDetails from "./users/UpdateDetails";
 import UpdatePassword from "./users/UpdatePassword";

@@ -17,6 +17,7 @@ import {
   passwordUpdate,
   profileUpdate,
   clearUserStatus,
+  userDelete,
 } from "./userSlice.js";
 
 import {
@@ -46,6 +47,7 @@ export {
   passwordUpdate,
   profileUpdate,
   clearUserStatus,
+  userDelete,
   create,
   update,
   remove,

@@ -583,6 +583,7 @@ const getCurrentUser = asyncHandler(getUserFunction);
 const updateAccount = asyncHandler(updateAccountFunction);
 const updatePassword = asyncHandler(updatePasswordFunction);
 const updateFile = asyncHandler(updateFileFunction);
+const deleteUser = asyncHandler(deleteUserFunction);
 
 export {
   registerUser,
@@ -593,4 +594,5 @@ export {
   updateAccount,
   updatePassword,
   updateFile,
+  deleteUser,
 };

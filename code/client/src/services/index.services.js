@@ -13,6 +13,7 @@ import { getUser } from "./userService";
 import { updateUser } from "./userService";
 import { updatePassword } from "./userService";
 import { updatePic } from "./userService";
+import { deleteUser } from "./userService";
 
 // task API calls
 import { createTask } from "./taskService";
@@ -34,4 +35,5 @@ export {
   updateTask,
   deleteTask,
   getTask,
+  deleteUser,
 };

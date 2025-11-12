@@ -128,4 +128,24 @@ const updatePic = async (profileFormData) => {
   }
 };
 
-export { getUser, updateUser, updatePassword, updatePic };
+/* ---------------------------------------------------------------------------
+The function to delete a user
+------------------------------------------------------------------------------ */
+
+const deleteUser = async () => {
+  try {
+    const response = await userAxios.delete("/");
+    console.log("The user has been successfully deleted: ", response.data);
+    return response.data;
+  } catch (error) {
+    console.error(
+      "There was an error while deleting the user : ",
+      error.response?.data?.message || error.message,
+      "Status:",
+      error.response?.status
+    );
+    throw error;
+  }
+};
+
+export { getUser, updateUser, updatePassword, updatePic, deleteUser };

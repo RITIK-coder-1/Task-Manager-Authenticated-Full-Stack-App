@@ -8,7 +8,7 @@ import AuthCard from "./common/AuthCard";
 import Button from "./common/Button";
 import CreateTaskModal from "./layout/CreateTaskModal";
 import Header from "./layout/Header";
-import Logout from "./auth/Logout";
+import Logout from "./user/Logout";
 import HomeCard from "./layout/HomeCard";
 import MainSection from "./layout/MainSection";
 import InputCard from "./common/InputCard";
@@ -16,6 +16,7 @@ import ProfileCard from "./common/ProfileCard";
 import TaskInput from "./common/TaskInput";
 import ProfilePic from "./common/ProfilePic";
 import GlobalNotificationListener from "./common/GlobalNotificationListener";
+import Delete from "./user/Delete";
 
 export {
   Input,
@@ -31,4 +32,5 @@ export {
   TaskInput,
   ProfilePic,
   GlobalNotificationListener,
+  Delete,
 };

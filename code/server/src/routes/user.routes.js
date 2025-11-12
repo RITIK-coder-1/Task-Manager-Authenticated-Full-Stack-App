@@ -14,6 +14,7 @@ import {
   updateFile,
   newAccessToken,
   getCurrentUser,
+  deleteUser,
 } from "../controllers/user.controllers.js";
 import verifyJWT from "../middlewares/auth.middleware.js";
 
@@ -35,9 +36,11 @@ userRouter.route("/register").post(upload.single("profilePic"), registerUser); /
 
 userRouter.route("/login").post(loginUser); // login the user on the login path
 
-// secured routes (User should be logged in to access these)
+// SECURED ROUTES (User should be logged in to access these)
 
 userRouter.route("/logout").post(verifyJWT, logoutUser); // log the user out on this path
+
+userRouter.route("/delete").post(verifyJWT, deleteUser); // delete the user
 
 userRouter.route("/me").get(verifyJWT, getCurrentUser); // getting the current user (User profile)
 
