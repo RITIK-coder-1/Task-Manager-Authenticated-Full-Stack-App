@@ -105,7 +105,7 @@ function CreateTaskModal({ onClick }) {
             type="checkbox"
             name="isCompleted"
             id="isCompleted"
-            onClick={() => {
+            onChange={() => {
               setIsCompleted(!isCompleted);
             }}
             className="cursor-pointer text-3xl"

@@ -6,7 +6,11 @@ This is a custom hook for automatically transfering the user to specific pages a
 import { useNavigate, useLocation } from "react-router-dom";
 import useConditionalRendering from "./useConditionalRendering";
 import { useEffect } from "react";
-import { resetNav, resetNavStatus } from "../features/index.features.js";
+import {
+  resetNav,
+  resetNavStatus,
+  resetUserNav,
+} from "../features/index.features.js";
 import { useDispatch } from "react-redux";
 
 const useNavigation = (slice, url) => {
@@ -24,6 +28,7 @@ const useNavigation = (slice, url) => {
     }
     dispatch(resetNavStatus()); // for auth related navigation
     dispatch(resetNav()); // for task related navigation
+    dispatch(resetUserNav()); // for user related navigation
   }, [navigationStatus, error, navigate, fromPath, dispatch]);
 };
 

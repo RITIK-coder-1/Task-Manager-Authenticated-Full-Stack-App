@@ -168,7 +168,7 @@ function TaskDetails() {
                 id="isCompleted"
                 value={isCompleted || ""}
                 checked={isCompleted ? true : false}
-                onClick={() => {
+                onChange={() => {
                   setIsCompleted(!isCompleted);
                 }}
                 className="cursor-pointer text-3xl"

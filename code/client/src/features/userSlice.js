@@ -112,13 +112,17 @@ const userSlice = createSlice({
     status: "idle", // idle, pending, succeeded, failed
     error: null, // will hold any error message
     successMessage: null, // message on success
-    navigationStatus: "idle",
+    navigationStatus: "idle", // for navigation
   },
   reducers: {
     // A reducer to reset the status/error after the notification is shown/closed
     clearUserStatus: (state) => {
       state.status = "idle";
       state.error = null;
+    },
+    // action to reset the state of the navigation status once an action is done
+    resetUserNav: (state) => {
+      state.navigationStatus = "idle";
     },
   },
   extraReducers: (builder) => {
@@ -226,6 +230,9 @@ const userSlice = createSlice({
       state.successMessage = action.payload.data;
       state.navigationStatus = "succeeded";
       localStorage.removeItem("accessToken");
+      setTimeout(() => {
+        state.navigationStatus = "idle";
+      }, 5000);
     });
 
     // the failure case
@@ -237,7 +244,7 @@ const userSlice = createSlice({
   },
 });
 
-export const { clearUserStatus } = userSlice.actions; // synchronous actions
+export const { clearUserStatus, resetUserNav } = userSlice.actions; // synchronous actions
 
 export { get, userUpdate, passwordUpdate, profileUpdate, userDelete };
 

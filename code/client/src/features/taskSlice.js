@@ -120,7 +120,7 @@ const taskSlice = createSlice({
     navigationStatus: "idle", // it's a special status used for automatic navigation upon task deletion
   },
   reducers: {
-    // it resets the navigation status upon task deletion
+    // it resets the navigation status upon action completion
     resetNav: (state) => {
       state.navigationStatus = "idle";
     },

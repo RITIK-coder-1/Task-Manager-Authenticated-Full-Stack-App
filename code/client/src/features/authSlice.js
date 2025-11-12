@@ -112,7 +112,7 @@ const authSlice = createSlice({
     navigationStatus: "idle", // this is a unqiue status that is for navigation related status updates only (idle, succeeded, failed)
   },
   reducers: {
-    // action to reset the state of the user once an action is done
+    // action to reset the state of the navigation status once an action is done
     resetNavStatus: (state) => {
       state.navigationStatus = "idle";
     },
