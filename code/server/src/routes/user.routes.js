@@ -44,7 +44,7 @@ userRouter.route("/delete").delete(verifyJWT, deleteUser); // delete the user
 
 userRouter.route("/me").get(verifyJWT, getCurrentUser); // getting the current user (User profile)
 
-userRouter.route("/me/token/refresh").post(verifyJWT, newAccessToken); // to issue a new access token end point
+userRouter.route("/me/token").post(verifyJWT, newAccessToken); // to issue a new access token end point
 
 userRouter.route("/me/details").patch(verifyJWT, updateAccount); // to update the user details
 

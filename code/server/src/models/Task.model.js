@@ -1,5 +1,5 @@
 // ----------------------------------------------
-// tasks.model.js
+// Task.model.js
 // This file defines the entire schema for storing the task's data created by a user
 // ----------------------------------------------
 

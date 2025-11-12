@@ -1,5 +1,5 @@
 // ----------------------------------------------
-// users.model.js
+// User.model.js
 // This file defines the entire schema for storing the users' data of the application
 // ----------------------------------------------
 

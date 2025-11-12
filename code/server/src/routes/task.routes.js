@@ -4,7 +4,6 @@
 // ----------------------------------------------
 
 import { Router } from "express";
-import upload from "../middlewares/multer.middleware.js";
 import {
   createTask,
   displayAllTasks,
@@ -27,7 +26,6 @@ const taskRouter = Router();
 taskRouter.route("/").post(verifyJwt, createTask); // route to create new tasks
 taskRouter.route("/").get(verifyJwt, displayAllTasks); // route to display all the tasks
 taskRouter.route("/:taskId").get(verifyJwt, retrieveTask); // route to get a particular task
-
 taskRouter.route("/:taskId").patch(verifyJwt, updateTask); // route to update a particular task
 taskRouter.route("/:taskId").delete(verifyJwt, deleteTask); // route to delete a particular task
 

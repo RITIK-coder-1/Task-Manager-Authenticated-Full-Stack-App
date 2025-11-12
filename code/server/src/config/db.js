@@ -1,7 +1,6 @@
 // ----------------------------------------------
 // db.js
-// This file sets up the connection between the database and the express server,
-// relying solely on environment variables for configuration.
+// This file sets up the connection between the database and the express server, relying solely on environment variables for configuration.
 // ----------------------------------------------
 
 import mongoose from "mongoose"; // importing mongoose

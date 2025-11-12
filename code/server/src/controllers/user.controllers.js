@@ -4,7 +4,7 @@
 // ----------------------------------------------
 
 import ApiError from "../utils/apiError.js";
-import User from "../models/users.model.js";
+import User from "../models/User.model.js";
 import {
   deleteFromCloudinary,
   uploadOnCloudinary,
@@ -14,7 +14,7 @@ import asyncHandler from "../utils/asyncHandler.js";
 import generateRandomTokenString from "../utils/generateRandomTokenString.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import Task from "../models/tasks.model.js";
+import Task from "../models/Task.model.js";
 
 // ----------------------------------------------
 // Function to generate access and refresh tokens on logging in and logging out
