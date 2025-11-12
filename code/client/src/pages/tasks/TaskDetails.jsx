@@ -42,12 +42,12 @@ function TaskDetails() {
   const [description, setDescription] = useState(null); // the desc
   const [modifyDesc, setModifyDesc] = useState(false);
 
-  const [priority, setPriority] = useState(null); // the priority (can be changed directly)
+  const [priority, setPriority] = useState("Low"); // the priority (can be changed directly)
 
   const [category, setCategory] = useState(null); // the category
   const [modifyCategory, setModifyCategory] = useState(false);
 
-  const [isCompleted, setIsCompleted] = useState(null); // the completion status (can be changed directly)
+  const [isCompleted, setIsCompleted] = useState(false); // the completion status (can be changed directly)
 
   // ----------------------------------------------------------------------------------
   // I pre-loaded the current value of the task details
@@ -56,9 +56,9 @@ function TaskDetails() {
     if (task) {
       setTitle(task.title || "");
       setDescription(task.description || "");
-      setPriority(task.priority || "");
+      setPriority(task.priority || "Low");
       setCategory(task.category || "");
-      setIsCompleted(Boolean(task.isCompleted) || false);
+      setIsCompleted(task.isCompleted || false);
     }
   }, [
     task,
@@ -167,7 +167,7 @@ function TaskDetails() {
                 name="isCompleted"
                 id="isCompleted"
                 value={isCompleted || ""}
-                defaultChecked={isCompleted ? true : false}
+                checked={isCompleted ? true : false}
                 onClick={() => {
                   setIsCompleted(!isCompleted);
                 }}
