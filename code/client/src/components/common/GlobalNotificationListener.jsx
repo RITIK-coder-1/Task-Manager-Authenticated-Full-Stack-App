@@ -54,6 +54,17 @@ function GlobalNotificationListener({ slice, clearStatus }) {
         });
       }, [100]);
       dispatch(clearStatus());
+    } else if (status === "pending") {
+      toast("Checking...", {
+        autoClose: 100,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
     }
   }, [status, error, dispatch]);
 
