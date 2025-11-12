@@ -106,11 +106,7 @@ function CreateTaskModal({ onClick }) {
             name="isCompleted"
             id="isCompleted"
             onClick={() => {
-              if (isCompleted === false) {
-                setIsCompleted(true);
-              } else if (isCompleted === true) {
-                setIsCompleted(false);
-              }
+              setIsCompleted(!isCompleted);
             }}
             className="cursor-pointer text-3xl"
           />
@@ -121,6 +117,11 @@ function CreateTaskModal({ onClick }) {
             content={"Create"}
             type={"submit"}
             width="w-full sm:w-100 lg:w-150"
+            onClick={() => {
+              setTimeout(() => {
+                onClick();
+              }, 2000);
+            }}
           />
 
           {/* The button to cancel the modal */}
