@@ -8,11 +8,11 @@ import {
   Button,
   MainSection,
   ProfileCard,
+  ProfilePic,
 } from "../../components/index.components";
 import { useDispatch } from "react-redux";
 import { profileUpdate } from "../../features/userSlice.js";
-import useConditionalRendering from "../../hooks/useConditionalRendering.js";
-import ProfilePic from "../../components/common/ProfilePic.jsx";
+import { useConditionalRendering } from "../../hooks/index.hooks.js";
 
 function UpdateAppearance() {
   // ----------------------------------------------------------------------------------

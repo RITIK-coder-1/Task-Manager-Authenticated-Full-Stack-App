@@ -4,7 +4,7 @@ This page shows the details of a specific task. The task can be updated and dele
 ------------------------------------------------------------------------------ */
 
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getTask, update, remove } from "../../features/index.features.js";
 import {
@@ -13,8 +13,10 @@ import {
   MainSection,
   TaskInput,
 } from "../../components/index.components";
-import useNavigation from "../../hooks/useNavigation.js";
-import useConditionalRendering from "../../hooks/useConditionalRendering.js";
+import {
+  useNavigation,
+  useConditionalRendering,
+} from "../../hooks/index.hooks.js";
 
 function TaskDetails() {
   const { taskId } = useParams(); // getting the task id included in the URL

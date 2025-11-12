@@ -3,12 +3,14 @@ useCards.jsx
 This hook provides the details of the card components displayed on the homepage
 ------------------------------------------------------------------------------ */
 
-import { faDisplay } from "@fortawesome/free-solid-svg-icons";
-import { faCalendarWeek } from "@fortawesome/free-solid-svg-icons";
-import { faDumbbell } from "@fortawesome/free-solid-svg-icons";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
-import { faThumbsUp } from "@fortawesome/free-solid-svg-icons";
-import { faListCheck } from "@fortawesome/free-solid-svg-icons";
+import {
+  faDisplay,
+  faCalendarWeek,
+  faDumbbell,
+  faCheck,
+  faThumbsUp,
+  faListCheck,
+} from "@fortawesome/free-solid-svg-icons";
 
 function useCards() {
   const homeCards = [

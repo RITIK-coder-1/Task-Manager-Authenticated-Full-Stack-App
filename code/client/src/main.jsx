@@ -22,6 +22,7 @@ createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <Provider store={store}>
         <App />
+        {/* The notifications */}
         <GlobalNotificationListener
           slice={"auth"}
           clearStatus={clearAuthStatus}

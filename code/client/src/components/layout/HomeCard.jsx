@@ -5,7 +5,7 @@ This is the card that is going to be displayed on the landing page
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
-import Button from "../common/Button";
+import { Button } from "../index.components.js";
 
 function HomeCard({ icon, heading, desc, styles = "" }) {
   return (

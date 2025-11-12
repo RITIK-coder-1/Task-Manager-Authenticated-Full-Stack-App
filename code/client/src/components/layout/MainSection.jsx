@@ -3,8 +3,6 @@ MainSection.jsx
 This reuses the main section that is used across all the pages
 ------------------------------------------------------------------------------ */
 
-import React from "react";
-
 function MainSection({ children, styles = "" }) {
   return (
     <main

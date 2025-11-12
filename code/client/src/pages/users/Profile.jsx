@@ -7,12 +7,12 @@ import {
   Button,
   MainSection,
   ProfileCard,
+  ProfilePic,
 } from "../../components/index.components";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
-import ProfilePic from "../../components/common/ProfilePic";
-import useConditionalRendering from "../../hooks/useConditionalRendering";
+import { useConditionalRendering } from "../../hooks/index.hooks.js";
 
 function Profile() {
   // As the details of the user have already been fetched by the header, I don't need to do it again

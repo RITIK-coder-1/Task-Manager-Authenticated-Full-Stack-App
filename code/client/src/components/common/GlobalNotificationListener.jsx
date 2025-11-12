@@ -1,13 +1,12 @@
 // /* ---------------------------------------------------------------------------
 // GlobalNotificationListener.jsx
-// This is a custom notifivation component for providing the status notification updates using react toasts
+// This is a custom notification component for providing the status notification updates using react toasts
 // ------------------------------------------------------------------------------ */
 
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
-import { toast } from "react-toastify";
+import { toast, Bounce } from "react-toastify";
 import useConditionalRendering from "../../hooks/useConditionalRendering";
-import { Bounce } from "react-toastify";
 
 function GlobalNotificationListener({ slice, clearStatus }) {
   const dispatch = useDispatch();

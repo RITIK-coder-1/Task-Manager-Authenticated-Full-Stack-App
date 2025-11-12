@@ -8,7 +8,7 @@ import { NavLink } from "react-router-dom";
 import { Logout, Delete, ProfilePic } from "../index.components";
 
 function Header() {
-  const [toggle, setToggle] = useState(false); // for displaying the logout button
+  const [toggle, setToggle] = useState(false); // for displaying the logout and the delete buttons
 
   return (
     // The header section

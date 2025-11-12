@@ -13,7 +13,7 @@ import {
 } from "../../components/index.components";
 import { useDispatch } from "react-redux";
 import { userUpdate } from "../../features/userSlice.js";
-import useConditionalRendering from "../../hooks/useConditionalRendering.js";
+import { useConditionalRendering } from "../../hooks/index.hooks.js";
 
 function UpdateDetails() {
   // ----------------------------------------------------------------------------------

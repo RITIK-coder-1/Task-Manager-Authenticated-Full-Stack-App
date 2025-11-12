@@ -5,10 +5,12 @@ This is the landing page where unauthenticated users land. It navigates to the r
 
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Button } from "../../components/index.components";
-import { HomeCard } from "../../components/index.components";
+import {
+  Button,
+  HomeCard,
+  MainSection,
+} from "../../components/index.components";
 import { useCards } from "../../hooks/index.hooks.js";
-import { MainSection } from "../../components/index.components";
 import { useDispatch } from "react-redux";
 import { resetAuthNav } from "../../features/authSlice.js";
 
