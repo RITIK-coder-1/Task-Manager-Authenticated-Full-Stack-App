@@ -5,7 +5,7 @@ This is the dashboad page where a logged in user lands at
 
 import React, { useEffect, useState } from "react";
 import { displayAll } from "../../features/taskSlice.js";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   Button,
   CreateTaskModal,

@@ -112,6 +112,7 @@ const userSlice = createSlice({
     status: "idle", // idle, pending, succeeded, failed
     error: null, // will hold any error message
     successMessage: null, // message on success
+    navigationStatus: "idle",
   },
   reducers: {
     // A reducer to reset the status/error after the notification is shown/closed
@@ -227,11 +228,14 @@ const userSlice = createSlice({
       state.status = "succeeded";
       state.user = null;
       state.successMessage = action.payload.data;
+      state.navigationStatus = "succeeded";
+      localStorage.removeItem("accessToken");
     });
 
     // the failure case
     builder.addCase(userDelete.rejected, (state, action) => {
       state.status = "failed";
+      state.navigationStatus = "failed";
       state.error = uxErrorMessage(action.payload);
     });
   },

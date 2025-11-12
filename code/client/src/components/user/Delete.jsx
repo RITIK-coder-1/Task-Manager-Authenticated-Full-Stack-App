@@ -3,7 +3,7 @@ Delete.jsx
 This button deletes a user
 ------------------------------------------------------------------------------ */
 
-import { logout, userDelete } from "../../features/index.features.js";
+import { userDelete } from "../../features/index.features.js";
 import { useDispatch } from "react-redux";
 import { useNavigation } from "../../hooks/index.hooks.js";
 
@@ -17,7 +17,7 @@ function Delete({ toDelete }) {
   // ----------------------------------------------------------------------------------
   // Once the user is deleted, they should automatically be navigated to the homepage
   // ----------------------------------------------------------------------------------
-  useNavigation("auth", "/");
+  useNavigation("users", "/");
 
   return (
     <>

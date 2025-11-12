@@ -50,6 +50,7 @@ function CreateTaskModal({ onClick }) {
           placeholder={"Title"}
           name={"title"}
           method={setTitle}
+          value={title}
         />
 
         {/* The additional notes */}
@@ -58,6 +59,7 @@ function CreateTaskModal({ onClick }) {
           placeholder={"Notes..."}
           name={"description"}
           method={setDescription}
+          value={description}
         />
 
         {/* The priority */}
@@ -88,6 +90,7 @@ function CreateTaskModal({ onClick }) {
           placeholder={"Category"}
           name={"category"}
           method={setCategory}
+          value={category}
         />
 
         {/* The completion */}

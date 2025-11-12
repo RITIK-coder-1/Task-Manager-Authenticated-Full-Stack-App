@@ -134,7 +134,7 @@ The function to delete a user
 
 const deleteUser = async () => {
   try {
-    const response = await userAxios.delete("/");
+    const response = await userAxios.delete("/delete");
     console.log("The user has been successfully deleted: ", response.data);
     return response.data;
   } catch (error) {

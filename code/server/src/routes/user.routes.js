@@ -40,7 +40,7 @@ userRouter.route("/login").post(loginUser); // login the user on the login path
 
 userRouter.route("/logout").post(verifyJWT, logoutUser); // log the user out on this path
 
-userRouter.route("/delete").post(verifyJWT, deleteUser); // delete the user
+userRouter.route("/delete").delete(verifyJWT, deleteUser); // delete the user
 
 userRouter.route("/me").get(verifyJWT, getCurrentUser); // getting the current user (User profile)
 
