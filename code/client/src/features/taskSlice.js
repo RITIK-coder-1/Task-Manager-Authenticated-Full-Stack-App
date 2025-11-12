@@ -207,20 +207,16 @@ const taskSlice = createSlice({
 
     // the pending case
     builder.addCase(displayAll.pending, (state) => {
-      state.status = "pending";
       state.error = null; // clear previous errors
     });
 
     // the success case
     builder.addCase(displayAll.fulfilled, (state, action) => {
-      state.status = "succeeded";
       state.tasks = action.payload.message;
-      state.successMessage = action.payload.data;
     });
 
     // the failure case
     builder.addCase(displayAll.rejected, (state, action) => {
-      state.status = "failed";
       state.error = uxErrorMessage(action.payload);
     });
 

@@ -128,20 +128,16 @@ const userSlice = createSlice({
 
     // the pending case
     builder.addCase(get.pending, (state) => {
-      state.status = "pending";
       state.error = null; // clear previous errors
     });
 
     // the success case
     builder.addCase(get.fulfilled, (state, action) => {
-      state.status = "succeeded";
       state.user = action.payload.message;
-      state.successMessage = action.payload.data;
     });
 
     // the failure case
     builder.addCase(get.rejected, (state, action) => {
-      state.status = "failed";
       state.error = uxErrorMessage(action.payload);
       state.user = null; // clear data on failure
     });
