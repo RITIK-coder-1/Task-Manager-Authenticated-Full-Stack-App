@@ -55,6 +55,7 @@ function Login() {
           name={"credentials"}
           method={setCredential}
           placeholder={"Username/Email"}
+          value={credential}
         />
 
         {/* The password */}
@@ -64,6 +65,7 @@ function Login() {
           method={setPassword}
           placeholder={"Password"}
           type={"password"}
+          value={password}
         />
 
         {/* The button to submit the data */}

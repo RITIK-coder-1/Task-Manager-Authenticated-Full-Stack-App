@@ -103,6 +103,7 @@ function Register() {
             placeholder={"Enter first name"}
             name={"firstname"}
             method={setFirstName}
+            value={firstName}
           >
             <Input
               placeholder={"Enter last name"}
@@ -111,6 +112,7 @@ function Register() {
                 const value = e.target.value;
                 setLastName(value);
               }}
+              value={lastName}
             />
           </InputCard>
 
@@ -120,6 +122,7 @@ function Register() {
             placeholder={"Min 3 characters"}
             name={"username"}
             method={setUsername}
+            value={username}
           />
 
           {/* The email */}
@@ -128,6 +131,7 @@ function Register() {
             placeholder={"example@gmail.com"}
             name={"email"}
             method={setEmail}
+            value={email}
           />
 
           {/* The password */}
@@ -137,6 +141,7 @@ function Register() {
             name={"password"}
             method={setPassword}
             type={"password"}
+            value={password}
           />
 
           {/* The button to submit the data */}

@@ -18,7 +18,9 @@ const jsonlimit = "16kb"; // setting the limit of accepting data
 const allowedOrigins = [
   "http://localhost:5173", // My React App's current development server
   "http://localhost:3000", // The origin the server was previously allowing
-  "http://127.0.0.1:5173", // A good practice for comprehensive localhost coverage
+  "http://127.0.0.1:5173", // Comprehensive localhost coverage
+  "http://localhost:5174",
+  "http://127.0.0.1:5174",
 ];
 
 app.use(
