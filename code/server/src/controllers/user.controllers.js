@@ -14,6 +14,7 @@ import asyncHandler from "../utils/asyncHandler.js";
 import generateRandomTokenString from "../utils/generateRandomTokenString.js";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
+import Task from "../models/tasks.model.js";
 
 // ----------------------------------------------
 // Function to generate access and refresh tokens on logging in and logging out
@@ -474,6 +475,10 @@ const updatePasswordFunction = async (req, res) => {
 const updateFileFunction = async (req, res) => {
   const user = await User.findById(req.user?._id);
 
+  if (!user) {
+    throw new ApiError(400, "Invalid User!");
+  }
+
   const oldProfile = user.profilePic; // the old profile pic to delete
 
   // getting the path of the file
@@ -522,6 +527,49 @@ const updateFileFunction = async (req, res) => {
   return res
     .status(200)
     .json(new ApiResponse(200, foundUser, "The file has been updated!"));
+};
+
+// ----------------------------------------------
+// Function to delete the user
+// ----------------------------------------------
+const deleteUserFunction = async (req, res) => {
+  const user = await User.findById(req.user?._id);
+
+  if (!user) {
+    throw new ApiError(400, "Invalid User!");
+  }
+
+  const { profilePic } = user;
+
+  // deleting the user document and the associated task documents
+  const deletedUser = await User.deleteOne({ _id: user._id });
+  const deletedTasks = await Task.deleteMany({ owner: user._id });
+
+  // checking if the deletion was successful or not
+  if (deletedUser.deletedCount === 1) {
+    console.log("User successfully deleted.");
+    console.log(`${deletedTasks.deletedCount} Task were deleted!`);
+  } else {
+    throw new ApiError(400, "The documents couldn't be deleted!");
+  }
+
+  // deleting the user profile pic
+  const publicId = profilePic.slice(-24, -4); // only the public id has to be given and not the full cloudinary link. I used these specific numbers because the public id is of 20 characters and it ends with ".png". We only need the public id excluding the extension
+  try {
+    await deleteFromCloudinary(publicId); // Utility function runs and handles error internally
+  } catch (error) {
+    console.error("Non-critical cleanup failure:", error);
+  }
+
+  return res
+    .status(200)
+    .json(
+      new ApiResponse(
+        200,
+        null,
+        `The user has been successfully deleted and ${deletedTasks.deletedCount} Task were deleted!`
+      )
+    );
 };
 
 // ----------------------------------------------
