@@ -567,7 +567,7 @@ const deleteUserFunction = async (req, res) => {
       new ApiResponse(
         200,
         null,
-        `The user has been successfully deleted and ${deletedTasks.deletedCount} Task were deleted!`
+        `The user has been successfully deleted and ${deletedTasks.deletedCount} tasks were deleted!`
       )
     );
 };

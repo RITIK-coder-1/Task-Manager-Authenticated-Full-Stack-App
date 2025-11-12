@@ -144,7 +144,7 @@ const taskSlice = createSlice({
     // the success case
     builder.addCase(create.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.tasks += action.payload.message;
+      state.tasks.push(action.payload.message);
       state.successMessage = action.payload.data;
     });
 
