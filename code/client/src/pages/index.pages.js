@@ -13,6 +13,7 @@ import UpdateAppearance from "./users/UpdateAppearance";
 import Dashboard from "./ui/Dashboard";
 import TaskDetails from "./tasks/TaskDetails";
 import Home from "./ui/Home";
+import NotFound from "./notFoundPage/NotFound";
 
 export {
   Register,
@@ -25,4 +26,5 @@ export {
   Dashboard,
   TaskDetails,
   Home,
+  NotFound,
 };

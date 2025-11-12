@@ -14,10 +14,10 @@ import {
   Dashboard,
   TaskDetails,
   Home,
+  NotFound,
 } from "./pages/index.pages";
 import { Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./utils/ProtectedRoute.jsx";
-import NotFound from "./pages/notFoundPage/NotFound.jsx";
 
 function App() {
   return (
