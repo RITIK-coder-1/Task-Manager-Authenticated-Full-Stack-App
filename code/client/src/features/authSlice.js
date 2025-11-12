@@ -69,6 +69,7 @@ const handleAuthFulfilled = (state, action) => {
   state.accessToken = token;
   state.isAuthenticated = true;
   state.navigationStatus = "succeeded";
+  state.successMessage = action.payload.data;
 };
 
 /* ---------------------------------------------------------------------------
@@ -107,6 +108,7 @@ const authSlice = createSlice({
     isAuthenticated: !!localStorage.getItem("accessToken"),
     status: "idle", // for every non-navigation related status updates (idle, pending, succeeded, failed)
     error: null,
+    successMessage: null,
     navigationStatus: "idle", // this is a unqiue status that is for navigation related status updates only (idle, succeeded, failed)
   },
   reducers: {

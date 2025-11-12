@@ -27,7 +27,7 @@ function ProfilePic({
   return (
     <>
       {/* If the pic exists, display it or display a dummy image */}
-      {user?.message?.profilePic === "" ? (
+      {user?.profilePic === "" ? (
         <div
           className={`flex justify-center items-center rounded-full ${dummyStyles}`}
         >
@@ -39,7 +39,7 @@ function ProfilePic({
         </div>
       ) : (
         <img
-          src={`${user?.message?.profilePic}`}
+          src={`${user?.profilePic}`}
           alt="Profile"
           title={title}
           className={profileStyles}

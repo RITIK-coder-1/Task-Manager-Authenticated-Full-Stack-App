@@ -11,6 +11,11 @@ import { store } from "./store/store.js";
 import { BrowserRouter } from "react-router-dom";
 import { GlobalNotificationListener } from "../src/components/index.components.js";
 import { ToastContainer } from "react-toastify";
+import {
+  clearAuthStatus,
+  clearTaskStatus,
+  clearUserStatus,
+} from "./features/index.features.js";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -18,7 +23,18 @@ createRoot(document.getElementById("root")).render(
       <Provider store={store}>
         <App />
         <ToastContainer />
-        <GlobalNotificationListener />
+        <GlobalNotificationListener
+          slice={"auth"}
+          clearStatus={clearAuthStatus}
+        />
+        <GlobalNotificationListener
+          slice={"users"}
+          clearStatus={clearUserStatus}
+        />
+        <GlobalNotificationListener
+          slice={"tasks"}
+          clearStatus={clearTaskStatus}
+        />
       </Provider>
     </BrowserRouter>
   </StrictMode>

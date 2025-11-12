@@ -30,8 +30,11 @@ function TaskDetails() {
   // ----------------------------------------------------------------------------------
   // All the variables
   // ----------------------------------------------------------------------------------
-  const task = useSelector((state) => state.tasks.specificTask.message); // the task data
-  const { status, error } = useConditionalRendering("tasks");
+  const {
+    status,
+    error,
+    specificTask: task,
+  } = useConditionalRendering("tasks");
 
   const [title, setTitle] = useState(null); // the title of the task
   const [modifyTitle, setModifyTitle] = useState(false);

@@ -21,8 +21,7 @@ function UpdateDetails() {
   // ----------------------------------------------------------------------------------
 
   // As the details of the user have already been fetched by the header, I don't need to do it again
-  const { status, error, user: userData } = useConditionalRendering("users");
-  const user = userData?.message;
+  const { status, error, user } = useConditionalRendering("users");
   const [firstName, setFirstName] = useState(null);
   const [lastName, setLastName] = useState(null);
   const [email, setEmail] = useState(null);

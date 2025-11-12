@@ -16,6 +16,7 @@ import {
   userUpdate,
   passwordUpdate,
   profileUpdate,
+  clearUserStatus,
 } from "./userSlice.js";
 
 import {
@@ -25,6 +26,7 @@ import {
   displayAll,
   get as getTask,
   resetNav,
+  clearTaskStatus,
 } from "./taskSlice.js";
 
 import {
@@ -43,11 +45,13 @@ export {
   userUpdate,
   passwordUpdate,
   profileUpdate,
+  clearUserStatus,
   create,
   update,
   remove,
   displayAll,
   getTask,
+  clearTaskStatus,
   resetNav,
   register,
   login,

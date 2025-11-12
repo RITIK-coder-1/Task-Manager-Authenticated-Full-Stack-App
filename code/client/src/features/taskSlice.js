@@ -116,12 +116,18 @@ const taskSlice = createSlice({
     specificTask: {}, // it will display only a single task at the moment
     status: "idle", // "idle", "pending", "succeeded", "rejected"
     error: null, // the error message,
+    successMessage: null, // message on success
     navigationStatus: "idle", // it's a special status used for automatic navigation upon task deletion
   },
   reducers: {
     // it resets the navigation status upon task deletion
     resetNav: (state) => {
       state.navigationStatus = "idle";
+    },
+    // A reducer to reset the status/error after the notification is shown/closed
+    clearTaskStatus: (state) => {
+      state.status = "idle";
+      state.error = null;
     },
   },
   extraReducers: (builder) => {
@@ -138,7 +144,8 @@ const taskSlice = createSlice({
     // the success case
     builder.addCase(create.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.tasks += action.payload;
+      state.tasks += action.payload.message;
+      state.successMessage = action.payload.data;
     });
 
     // the failure case
@@ -160,7 +167,8 @@ const taskSlice = createSlice({
     // the success case
     builder.addCase(update.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.specificTask = action.payload;
+      state.specificTask = action.payload.message;
+      state.successMessage = action.payload.data;
     });
 
     // the failure case
@@ -183,6 +191,7 @@ const taskSlice = createSlice({
     builder.addCase(remove.fulfilled, (state, action) => {
       state.status = "succeeded";
       state.navigationStatus = "succeeded";
+      state.successMessage = action.payload.data;
     });
 
     // the failure case
@@ -205,7 +214,8 @@ const taskSlice = createSlice({
     // the success case
     builder.addCase(displayAll.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.tasks = action.payload;
+      state.tasks = action.payload.message;
+      state.successMessage = action.payload.data;
     });
 
     // the failure case
@@ -227,7 +237,8 @@ const taskSlice = createSlice({
     // the success case
     builder.addCase(get.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.specificTask = action.payload;
+      state.specificTask = action.payload.message;
+      state.successMessage = action.payload.data;
     });
 
     // the failure case
@@ -238,7 +249,7 @@ const taskSlice = createSlice({
   },
 });
 
-export const { resetNav } = taskSlice.actions; // synchronous actions
+export const { resetNav, clearTaskStatus } = taskSlice.actions; // synchronous actions
 
 export { create, update, remove, displayAll, get };
 

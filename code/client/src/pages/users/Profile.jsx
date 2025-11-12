@@ -16,8 +16,7 @@ import useConditionalRendering from "../../hooks/useConditionalRendering";
 
 function Profile() {
   // As the details of the user have already been fetched by the header, I don't need to do it again
-  const { user: userData } = useConditionalRendering("users");
-  const user = userData?.message;
+  const { user } = useConditionalRendering("users");
 
   const userDetails = () => {
     return (

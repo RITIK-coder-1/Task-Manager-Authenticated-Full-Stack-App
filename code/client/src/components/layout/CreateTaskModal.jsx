@@ -3,6 +3,7 @@ CreateTaskModal.jsx
 This is the modal to create a task on the dashboard
 ------------------------------------------------------------------------------ */
 
+import { useState } from "react";
 import { AuthCard, Button, InputCard } from "../index.components";
 import { useDispatch } from "react-redux";
 import { create } from "../../features/taskSlice.js";

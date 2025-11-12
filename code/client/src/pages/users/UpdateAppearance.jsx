@@ -45,7 +45,7 @@ function UpdateAppearance() {
         >
           {/* The current profile pic */}
           <h1 className="text-lg font-semibold text-gray-800 md:text-2xl lg:text-3xl">
-            {user?.message?.profilePic === ""
+            {user?.profilePic === ""
               ? "No Profile Pic"
               : "Your current profile pic:"}
           </h1>

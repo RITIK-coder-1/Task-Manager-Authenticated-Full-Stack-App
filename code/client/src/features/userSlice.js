@@ -95,10 +95,13 @@ const userSlice = createSlice({
     user: null, // will hold the fetched data
     status: "idle", // idle, pending, succeeded, failed
     error: null, // will hold any error message
+    successMessage: null, // message on success
   },
   reducers: {
-    resetStatus: (state) => {
+    // A reducer to reset the status/error after the notification is shown/closed
+    clearUserStatus: (state) => {
       state.status = "idle";
+      state.error = null;
     },
   },
   extraReducers: (builder) => {
@@ -115,7 +118,8 @@ const userSlice = createSlice({
     // the success case
     builder.addCase(get.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.user = action.payload;
+      state.user = action.payload.message;
+      state.successMessage = action.payload.data;
     });
 
     // the failure case
@@ -138,7 +142,8 @@ const userSlice = createSlice({
     // the success case
     builder.addCase(userUpdate.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.user = action.payload;
+      state.user = action.payload.message;
+      state.successMessage = action.payload.data;
     });
 
     // the failure case
@@ -166,7 +171,6 @@ const userSlice = createSlice({
     builder.addCase(passwordUpdate.rejected, (state, action) => {
       state.status = "failed";
       state.error = uxErrorMessage(action.payload);
-      state.user = null; // clear data on failure
     });
 
     /* ---------------------------------------------------------------------------
@@ -182,7 +186,8 @@ const userSlice = createSlice({
     // the success case
     builder.addCase(profileUpdate.fulfilled, (state, action) => {
       state.status = "succeeded";
-      state.user = action.payload;
+      state.user = action.payload.message;
+      state.successMessage = action.payload.data;
     });
 
     // the failure case
@@ -193,7 +198,7 @@ const userSlice = createSlice({
   },
 });
 
-export const { resetStatus } = userSlice.actions; // synchronous actions
+export const { clearUserStatus } = userSlice.actions; // synchronous actions
 
 export { get, userUpdate, passwordUpdate, profileUpdate };
 

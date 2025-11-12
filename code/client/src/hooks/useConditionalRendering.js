@@ -12,11 +12,34 @@ function useConditionalRendering(slice) {
   // Check if the slice exists before accessing properties
   if (!sliceState) {
     console.error(`Redux slice with name '${slice}' not found.`);
-    return { status: "idle", error: null, user: null }; // Fallback
+    return {
+      status: "idle",
+      error: null,
+      user: null,
+      successMessage: null,
+      tasks: null,
+      specificTask: null,
+    }; // Fallback
   }
 
-  const { status, error, user, navigationStatus } = sliceState; // deconstructing the state object for immediate access
-  return { status, error, user, navigationStatus };
+  const {
+    status,
+    error,
+    successMessage,
+    user,
+    navigationStatus,
+    specificTask,
+    tasks,
+  } = sliceState; // deconstructing the state object for immediate access
+  return {
+    status,
+    error,
+    successMessage,
+    user,
+    navigationStatus,
+    specificTask,
+    tasks,
+  };
 }
 
 export default useConditionalRendering;

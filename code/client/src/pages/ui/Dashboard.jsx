@@ -26,8 +26,7 @@ function Dashboard() {
   // ----------------------------------------------------------------------------------
   // All the variables of the script
   // ----------------------------------------------------------------------------------
-  const tasks = useSelector((state) => state.tasks.tasks?.message);
-  const { status, error } = useConditionalRendering("tasks");
+  const { status, error, tasks } = useConditionalRendering("tasks");
   const [isModalOpen, setIsModalOpen] = useState(false); // the condition for opening the create task modal
 
   // ----------------------------------------------------------------------------------
