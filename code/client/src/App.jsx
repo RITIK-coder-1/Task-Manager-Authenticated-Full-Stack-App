@@ -17,6 +17,7 @@ import {
 } from "./pages/index.pages";
 import { Route, Routes } from "react-router-dom";
 import ProtectedRoute from "./utils/ProtectedRoute.jsx";
+import NotFound from "./pages/notFoundPage/NotFound.jsx";
 
 function App() {
   return (
@@ -46,7 +47,7 @@ function App() {
         </Route>
 
         {/* FALLBACK */}
-        <Route path="*" element={<h1>404 Not Found</h1>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );
