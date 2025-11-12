@@ -354,6 +354,18 @@ const updateAccountFunction = async (req, res) => {
     throw new ApiError(400, "All Fields Are Required!");
   }
 
+  // checking if all the data equal to the existing values!
+  const currentUser = await User.findById(userId);
+
+  if (
+    currentUser.fullName.firstName === fullName.firstName &&
+    currentUser.fullName.lastName === fullName.lastName &&
+    currentUser.username === username &&
+    currentUser.email === email
+  ) {
+    throw new ApiError(400, "Please enter any updated value!");
+  }
+
   // The user may have entered a new username or email that is already acquired by some other user
 
   const existingEmail = await User.findOne({

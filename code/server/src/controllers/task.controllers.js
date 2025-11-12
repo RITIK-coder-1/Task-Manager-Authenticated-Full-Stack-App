@@ -181,6 +181,17 @@ const updateTaskFunction = async (req, res) => {
     }
   }
 
+  // checking if all the data equal to the existing values!
+  if (
+    existingTask.title === title &&
+    existingTask.description === description &&
+    existingTask.priority === priority &&
+    existingTask.isCompleted === isCompleted &&
+    existingTask.category === category
+  ) {
+    throw new ApiError(400, "Please enter any updated value!");
+  }
+
   // updating the entire task
   const updatedTask = {};
 
