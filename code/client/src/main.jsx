@@ -22,7 +22,7 @@ createRoot(document.getElementById("root")).render(
     <BrowserRouter>
       <Provider store={store}>
         <App />
-        <ToastContainer />
+        {/* <ToastContainer /> */}
         <GlobalNotificationListener
           slice={"auth"}
           clearStatus={clearAuthStatus}

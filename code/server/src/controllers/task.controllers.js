@@ -97,7 +97,11 @@ const displayAllTasksFunction = async (req, res) => {
   return res
     .status(200)
     .json(
-      new ApiResponse(200, task, "The tasks have been retrieved successfully!")
+      new ApiResponse(
+        200,
+        task,
+        "All the tasks have been retrieved successfully!"
+      )
     );
 };
 
@@ -121,7 +125,11 @@ const retrieveTaskFunction = async (req, res) => {
   return res
     .status(200)
     .json(
-      new ApiResponse(200, task, "The task has been retrieved successfully!")
+      new ApiResponse(
+        200,
+        task,
+        `${task?.title} has been fetched successfully!`
+      )
     );
 };
 
