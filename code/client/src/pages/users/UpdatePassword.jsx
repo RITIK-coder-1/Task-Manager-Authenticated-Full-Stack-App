@@ -45,6 +45,7 @@ function UpdatePassword() {
             method={setOldPassword}
             placeholder="Old Password"
             type="password"
+            value={oldPassword}
           />
 
           {/* The new password */}
@@ -54,6 +55,7 @@ function UpdatePassword() {
             method={setNewPassword}
             placeholder="New Password"
             type="password"
+            value={newPassword}
           />
 
           {/* The update button */}

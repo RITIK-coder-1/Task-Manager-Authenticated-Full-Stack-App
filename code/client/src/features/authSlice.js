@@ -166,12 +166,13 @@ const authSlice = createSlice({
     });
 
     // the success case
-    builder.addCase(logout.fulfilled, (state) => {
+    builder.addCase(logout.fulfilled, (state, action) => {
       state.status = "succeeded";
       state.accessToken = null;
       state.isAuthenticated = false;
       localStorage.removeItem("accessToken"); // removing the access token for credentials
       state.navigationStatus = "succeeded";
+      state.successMessage = action.payload.data;
     });
 
     // the failure case
