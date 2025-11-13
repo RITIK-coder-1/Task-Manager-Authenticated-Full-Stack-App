@@ -203,6 +203,17 @@ https://github.com/RITIK-coder-1/Task-Manager-Authenticated-Full-Stack-App/tree/
 
 ---
 
+---
+
+## 🛠️ Setup & Installation  
+
+Follow these steps to run **Task&Habit** locally on your system 👇  
+
+### 1️⃣ Clone the repository  
+```git clone <your-repository-url>```
+
+---
+
 ## 🙌 Author  
 
 **Ritik Mahapatra**  
