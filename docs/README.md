@@ -68,36 +68,36 @@ It supports secure authentication, dynamic CRUD operations, and cloud-based file
 Follow these steps to run **Task&Habit** locally on your system 👇  
 
 ### Clone the repository and Run these commands
-```git clone https://github.com/RITIK-coder-1/Task-Manager-Authenticated-Full-Stack-App.git```
-```cd Task-Manager-Authenticated-Full-Stack-App```
+- ```git clone https://github.com/RITIK-coder-1/Task-Manager-Authenticated-Full-Stack-App.git```
+- ```cd Task-Manager-Authenticated-Full-Stack-App```
 
 ### Set up the Client
-```cd code/client```
-```npm install```
-```touch .env```
-#### Now add this line to your .env file 👇
-``` VITE_API_URL="https://task-manager-authenticated-full-stack-app.onrender.com/api/v1"```
-#### Once done, start the client:
-```npm run dev```
+- ```cd code/client```
+- ```npm install```
+- ```touch .env```
+##### Now add this line to your .env file 👇
+- ``` VITE_API_URL="https://task-manager-authenticated-full-stack-app.onrender.com/api/v1"```
+##### Once done, start the client:
+- ```npm run dev```
 
 ### Set up the Server
-```cd ../server```
-```npm install```
-```touch .env```
-#### Now add these lines to your .env file (Make sure to include the actual values based on your mongodb database and cloudinary cloud)👇
-```MONGO_URI=""```
-```PORT=3000```
-```DB_NAME=""```
-```ACCESS_TOKEN_SECRET=""```
-```REFRESH_TOKEN_SECRET=""```
-```ACCESS_TOKEN_EXPIRY="1h"```
-```REFRESH_TOKEN_EXPIRY="10d"```
-```CLOUDINARY_CLOUD_NAME=""``` 
-```CLOUDINARY_API_KEY=""```
-```CLOUDINARY_API_SECRET=""```
-```PORT=3000```
-#### Once done, start the server:
-```npm run dev```
+- ```cd ../server```
+- ```npm install```
+- ```touch .env```
+##### Now add these lines to your .env file (Make sure to include the actual values based on your mongodb database and cloudinary cloud)👇
+- ```MONGO_URI=""```
+- ```PORT=3000```
+- ```DB_NAME=""```
+- ```ACCESS_TOKEN_SECRET=""```
+- ```REFRESH_TOKEN_SECRET=""```
+- ```ACCESS_TOKEN_EXPIRY="1h"```
+- ```REFRESH_TOKEN_EXPIRY="10d"```
+- ```CLOUDINARY_CLOUD_NAME=""``` 
+- ```CLOUDINARY_API_KEY=""```
+- ```CLOUDINARY_API_SECRET=""```
+- ```PORT=3000```
+##### Once done, start the server:
+- ```npm run dev```
 
 ---
 
