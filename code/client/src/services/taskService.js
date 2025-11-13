@@ -6,7 +6,7 @@ This script handles all the API calls using axios for task related queries
 import axios from "axios";
 
 const taskAxios = axios.create({
-  baseURL: "http://0.0.0.0:3000/api/v1/users/me/dashboard",
+  baseURL: `${import.meta.env.VITE_API_URL}/users/me/dashboard`,
   timeout: 5000,
   headers: {
     "Content-Type": "application/json",

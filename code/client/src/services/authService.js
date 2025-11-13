@@ -6,7 +6,7 @@ This script handles all the API calls using axios for authentication
 import axios from "axios";
 
 const authAxios = axios.create({
-  baseURL: "http://0.0.0.0:3000/api/v1/users",
+  baseURL: `${import.meta.env.VITE_API_URL}/users`,
   timeout: 5000,
   headers: {
     "Content-Type": "application/json",
