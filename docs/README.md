@@ -97,6 +97,104 @@ Here are some of the major challenges I faced and how I tackled them:
 
 ---
 
+## 🖼️ App Preview
+
+### 🏠 Home Page
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><strong>Laptop View</strong></td>
+      <td align="center"><strong>Mobile View</strong></td>
+    </tr>
+    <tr>
+      <td><img src="./assets/HomePage (Laptop).png" width="100%" alt="Home Page Laptop View" /></td>
+      <td><img src="./assets/HomePage (Mobile).png" width="50%" alt="Home Page Mobile View" /></td>
+    </tr>
+  </table>
+</div>
+
+---
+
+### 📝 Register Page
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><strong>Laptop View</strong></td>
+      <td align="center"><strong>Mobile View</strong></td>
+    </tr>
+    <tr>
+      <td><img src="./assets/RegisterPage (Laptop).png" width="100%" alt="Register Page Laptop View" /></td>
+      <td><img src="./assets/Register (Mobile).png" width="50%" alt="Register Page Mobile View" /></td>
+    </tr>
+  </table>
+</div>
+
+---
+
+### 🔐 Login Page
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><strong>Laptop View</strong></td>
+      <td align="center"><strong>Mobile View</strong></td>
+    </tr>
+    <tr>
+      <td><img src="./assets/LoginPage (Laptop).png" width="100%" alt="Login Page Laptop View" /></td>
+      <td><img src="./assets/LoginPage (Mobile).png" width="50%" alt="Login Page Mobile View" /></td>
+    </tr>
+  </table>
+</div>
+
+---
+
+### 📋 Dashboard
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><strong>Laptop View</strong></td>
+      <td align="center"><strong>Mobile View</strong></td>
+    </tr>
+    <tr>
+      <td><img src="./assets/Dashboard (Laptop).png" width="100%" alt="Dashboard Laptop View" /></td>
+      <td><img src="./assets/Dashboard (Mobile).png" width="50%" alt="Dashboard Mobile View" /></td>
+    </tr>
+  </table>
+</div>
+
+---
+
+### 👤 Profile Page
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><strong>Laptop View</strong></td>
+      <td align="center"><strong>Mobile View</strong></td>
+    </tr>
+    <tr>
+      <td><img src="./assets/Profile (Laptop)" width="100%" alt="Profile Page Laptop View" /></td>
+      <td><img src="./assets/Profile (Mobile)" width="50%" alt="Profile Page Mobile View" /></td>
+    </tr>
+  </table>
+</div>
+
+---
+
+### 🗂️ Task Details
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><strong>Laptop View</strong></td>
+      <td align="center"><strong>Mobile View</strong></td>
+    </tr>
+    <tr>
+      <td><img src="./assets/TaskDetails (Laptop).png" width="100%" alt="Task Details Laptop View" /></td>
+      <td><img src="./assets/TaskDetails (Mobile).png" width="50%" alt="Task Details Mobile View" /></td>
+    </tr>
+  </table>
+</div>
+
+---
+
 ## 🙌 Author  
 
 **Ritik Mahapatra**  
