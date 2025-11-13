@@ -195,6 +195,14 @@ Here are some of the major challenges I faced and how I tackled them:
 
 ---
 
+## 🎥 Demo Video  
+
+Check out the full walkthrough of **Task&Habit** in action 👇  
+
+https://github.com/RITIK-coder-1/Task-Manager-Authenticated-Full-Stack-App/code/client/assets/Task&Habit.mp4
+
+---
+
 ## 🙌 Author  
 
 **Ritik Mahapatra**  
