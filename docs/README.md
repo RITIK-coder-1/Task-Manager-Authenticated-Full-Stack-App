@@ -108,7 +108,7 @@ Here are some of the major challenges I faced and how I tackled them:
     </tr>
     <tr>
       <td><img src="../code/client/src/assets/HomePage (Laptop).png" width="100%" alt="Home Page Laptop View" /></td>
-      <td><img src="../code/client/src/assets/HomePage (Mobile).png" width="50%" alt="Home Page Mobile View" /></td>
+      <td><img src="../code/client/src/assets/HomePage (Mobile).png" width="100%" alt="Home Page Mobile View" /></td>
     </tr>
   </table>
 </div>
@@ -124,7 +124,7 @@ Here are some of the major challenges I faced and how I tackled them:
     </tr>
     <tr>
       <td><img src="../code/client/src/assets/RegisterPage (Laptop).png" width="100%" alt="Register Page Laptop View" /></td>
-      <td><img src="../code/client/src/assets/RegisterPage (Mobile).png" width="50%" alt="Register Page Mobile View" /></td>
+      <td><img src="../code/client/src/assets/Register (Mobile).png" width="50%" alt="Register Page Mobile View" /></td>
     </tr>
   </table>
 </div>
@@ -140,7 +140,7 @@ Here are some of the major challenges I faced and how I tackled them:
     </tr>
     <tr>
       <td><img src="../code/client/src/assets/LoginPage (Laptop).png" width="100%" alt="Login Page Laptop View" /></td>
-      <td><img src="../code/client/src/assets/LoginPage (Mobile).png" width="50%" alt="Login Page Mobile View" /></td>
+      <td><img src="../code/client/src/assets/Login (Mobile).png" width="50%" alt="Login Page Mobile View" /></td>
     </tr>
   </table>
 </div>
