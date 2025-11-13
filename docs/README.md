@@ -89,7 +89,7 @@ Here are some of the major challenges I faced and how I tackled them:
 - 🧱 **Error handling and stability:**  
   Prevented critical app crashes by catching async errors both in the frontend and backend, displaying fallback UI and messages.
 
-- ☁️ **File Updates**
+- ☁️ **File Updates:**
   Connected Cloudinary & Multer for real-time image uploads.  
 
 - 💻 **Responsive UI:**  
@@ -97,4 +97,12 @@ Here are some of the major challenges I faced and how I tackled them:
 
 ---
 
+## 🙌 Author  
+
+**Ritik Mahapatra**  
+🎯 Full Stack Web Application Developer  
+
+- 💼 [GitHub](https://github.com/RITIK-coder-1)
+- 💼 [LinkedIn](https://www.linkedin.com/in/ritik-mahapatra/)
+- ✉️ [Email](mailto:ritikprofessional111@gmail.com)
 
