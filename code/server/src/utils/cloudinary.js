@@ -19,7 +19,7 @@ const deleteLocalFile = async (filepath) => {
   if (!filepath) return; // If the file doesn't exist
 
   try {
-    await fs.unlink(filepath, (err) => {
+    await fs.promises.unlink(filepath, (err) => {
       if (err) {
         console.error("Could not delete local file:", err.message);
       } else {

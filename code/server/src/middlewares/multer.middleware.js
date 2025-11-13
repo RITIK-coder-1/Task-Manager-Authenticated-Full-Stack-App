@@ -9,6 +9,12 @@ import path from "path";
 
 const tempDirectory = path.join(path.resolve(), "public", "temp"); // creating an absolute path for the temp directory to store static files
 
+// Ensure the directory exists on Render (deployment) or locally
+if (!fs.existsSync(tempDirectory)) {
+  fs.mkdirSync(tempDirectory, { recursive: true });
+  console.log("Temp directory created:", tempDirectory);
+}
+
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
     callback(null, tempDirectory); // the destination where the files should be stored
