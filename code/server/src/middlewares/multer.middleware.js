@@ -6,6 +6,7 @@
 import multer from "multer";
 import { v4 as uuid } from "uuid";
 import path from "path";
+import fs from "fs";
 
 const tempDirectory = path.join(path.resolve(), "public", "temp"); // creating an absolute path for the temp directory to store static files
 
