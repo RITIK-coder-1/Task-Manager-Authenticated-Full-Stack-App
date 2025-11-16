@@ -4,14 +4,14 @@ This is the landing page where unauthenticated users land. It navigates to the r
 ------------------------------------------------------------------------------ */
 
 import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import {
   Button,
   HomeCard,
   MainSection,
 } from "../../components/index.components";
 import { useCards } from "../../hooks/index.hooks.js";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux"; //
 import { resetAuthNav } from "../../features/authSlice.js";
 
 function Home() {
@@ -20,6 +20,12 @@ function Home() {
   useEffect(() => {
     dispatch(resetAuthNav());
   }, [dispatch]);
+
+  // if the user is authenticated, they should be redirected to the dashboard automatically
+  const { isAuthenticated } = useSelector((state) => state.auth);
+  if (isAuthenticated) {
+    return <Navigate to="/users/me/dashboard" replace />;
+  }
 
   const homeCards = useCards(); // importing the component cards
 
