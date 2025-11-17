@@ -27,6 +27,7 @@ function Dashboard() {
   // All the variables of the script
   // ----------------------------------------------------------------------------------
   const { status, tasks } = useConditionalRendering("tasks");
+  const { user } = useConditionalRendering("users");
   const [isModalOpen, setIsModalOpen] = useState(false); // the condition for opening the create task modal
 
   // ----------------------------------------------------------------------------------
@@ -97,26 +98,32 @@ function Dashboard() {
 
       {/* The main section */}
       <MainSection styles="pt-24 pb-16">
-        <section className="w-full h-full flex flex-wrap justify-center gap-4 px-3 sm:px-6 md:px-10">
-          {status === "pending" ? (
-            <span className="text-5xl">Loading Data...</span>
-          ) : !tasks || tasks?.length === 0 ? (
-            <span className="text-gray-600 italic">No tasks to display!</span> // conditional message if there is no task
-          ) : (
-            displayTasks()
-          )}
+        {user ? (
+          <section className="w-full h-full flex flex-wrap justify-center gap-4 px-3 sm:px-6 md:px-10">
+            {status === "pending" ? (
+              <span className="text-5xl">Loading Data...</span>
+            ) : !tasks || tasks?.length === 0 ? (
+              <span className="text-gray-600 italic">No tasks to display!</span> // conditional message if there is no task
+            ) : (
+              displayTasks()
+            )}
 
-          {/* The button to create a task */}
-          <div className="w-full h-full flex items-end justify-end pr-4">
-            <Button
-              content={"+"}
-              styles="fixed h-18 rounded-full text-4xl bottom-24 right-6 z-100 sm:h-22 sm:text-5xl"
-              width="w-18 sm:w-22"
-              onClick={openModal}
-              title={"Add Task"}
-            />
-          </div>
-        </section>
+            {/* The button to create a task */}
+            <div className="w-full h-full flex items-end justify-end pr-4">
+              <Button
+                content={"+"}
+                styles="fixed h-18 rounded-full text-4xl bottom-24 right-6 z-100 sm:h-22 sm:text-5xl"
+                width="w-18 sm:w-22"
+                onClick={openModal}
+                title={"Add Task"}
+              />
+            </div>
+          </section>
+        ) : (
+          <span className="text-xl italic text-center sm:ml-15">
+            Your session expired. Please <strong>Login</strong> again.
+          </span>
+        )}
       </MainSection>
     </>
   );

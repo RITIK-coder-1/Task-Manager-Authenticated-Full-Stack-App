@@ -89,8 +89,8 @@ function Profile() {
             </div>
           </section>
         ) : (
-          <span className="text-xl italic text-center sm:ml-15">
-            You're unauthorized!
+          <span className="text-xl italic text-center mt-4 sm:ml-15">
+            Your session expired. Please <strong>Login</strong> again.
           </span>
         )}
       </MainSection>
