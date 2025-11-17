@@ -90,7 +90,13 @@ function Profile() {
           </section>
         ) : (
           <span className="text-xl italic text-center mt-4 sm:ml-15">
-            Your session expired. Please <strong>Login</strong> again.
+            Your session expired. Please restart the app and{" "}
+            <Link to="/users/login">
+              <strong className="underline hover:text-blue-900" title="login">
+                Login
+              </strong>
+            </Link>{" "}
+            again.
           </span>
         )}
       </MainSection>

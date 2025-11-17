@@ -15,17 +15,21 @@ import { useDispatch, useSelector } from "react-redux"; //
 import { resetAuthNav } from "../../features/authSlice.js";
 
 function Home() {
+  // ------------------------------------------------------------------------------------------------
+  // I'M CURRENTLY TESTING IT
+
+  // if the user is authenticated, they should be redirected to the dashboard automatically
+  // const { isAuthenticated } = useSelector((state) => state.auth);
+  // if (isAuthenticated) {
+  //   return <Navigate to="/users/me/dashboard" replace />;
+  // }
+  // ------------------------------------------------------------------------------------------------
+
   // for safety, I'm resetting the auth navigation status to "idle" as soon as the homepage loads so that the auth navigation success after logging out has no effect to the login and register pages. The login and register pages won't re-direct to the homepage.
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(resetAuthNav());
   }, [dispatch]);
-
-  // if the user is authenticated, they should be redirected to the dashboard automatically
-  const { isAuthenticated } = useSelector((state) => state.auth);
-  if (isAuthenticated) {
-    return <Navigate to="/users/me/dashboard" replace />;
-  }
 
   const homeCards = useCards(); // importing the component cards
 

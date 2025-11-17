@@ -206,7 +206,7 @@ const logoutFunction = async (req, res) => {
   const userId = req.user?._id;
 
   if (!userId) {
-    throw new ApiError(400, "Invalid user id!");
+    throw new ApiError(400, "Invalid user!");
   }
 
   const user = await User.findByIdAndUpdate(
@@ -220,6 +220,10 @@ const logoutFunction = async (req, res) => {
       new: true, // it returns the updated document
     }
   );
+
+  if (!user) {
+    throw new ApiError(400, "The user couldn't be logged out!");
+  }
 
   // cookie security options
   const options = {
