@@ -11,7 +11,7 @@ import {
   ProfilePic,
 } from "../../components/index.components";
 import { useDispatch } from "react-redux";
-import { profileUpdate } from "../../features/userSlice.js";
+import { deletePic, profileUpdate } from "../../features/userSlice.js";
 import { useConditionalRendering } from "../../hooks/index.hooks.js";
 
 function UpdateAppearance() {
@@ -25,7 +25,7 @@ function UpdateAppearance() {
   const [profile, setProfile] = useState(null);
 
   // ----------------------------------------------------------------------------------
-  // The function to dispatch the action
+  // The function to update the profile pic
   // ----------------------------------------------------------------------------------
   const handleSubmit = (e) => {
     e.preventDefault(); // prevent page reload
@@ -33,6 +33,13 @@ function UpdateAppearance() {
     payload.append("profilePic", profile);
 
     dispatch(profileUpdate(payload));
+  };
+
+  // ----------------------------------------------------------------------------------
+  // The function to delete the profile pic
+  // ----------------------------------------------------------------------------------
+  const deletePicFunction = () => {
+    dispatch(deletePic());
   };
 
   return (
@@ -72,6 +79,11 @@ function UpdateAppearance() {
             content={"Update"}
             onClick={handleSubmit}
             styles="text-xl rounded-3xl p-5 bg-blue-900 hover:bg-blue-800 mt-2 md:text-2xl md:p-6"
+          />
+          <Button
+            content={"Delete"}
+            onClick={deletePicFunction}
+            styles="text-xl rounded-3xl p-5 bg-red-900 hover:bg-red-800 mt-2 md:text-2xl md:p-6"
           />
         </ProfileCard>
       </MainSection>

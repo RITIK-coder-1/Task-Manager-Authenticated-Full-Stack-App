@@ -15,6 +15,7 @@ import {
   newAccessToken,
   getCurrentUser,
   deleteUser,
+  deleteProfilePic,
 } from "../controllers/user.controllers.js";
 import verifyJWT from "../middlewares/auth.middleware.js";
 
@@ -25,11 +26,13 @@ const userRouter = Router(); // express router
 // - Register
 // - Log in
 // - Log Out
+// - Delete the current user
 // - Getting the current user
 // - New Access Token
 // - Update Details
 // - Update Password
 // - Update Profile
+// - Delete Profile Pic
 // ----------------------------------------------
 
 userRouter.route("/register").post(upload.single("profilePic"), registerUser); // register the user on the register path
@@ -52,6 +55,7 @@ userRouter.route("/me/password").patch(verifyJWT, updatePassword); // to update 
 
 userRouter
   .route("/me/appearance")
-  .patch(verifyJWT, upload.single("profilePic"), updateFile); // to update the profie image
+  .patch(verifyJWT, upload.single("profilePic"), updateFile) // to update the profile image
+  .delete(verifyJWT, deleteProfilePic); // to delete the profile pic
 
 export default userRouter; // exporting as default

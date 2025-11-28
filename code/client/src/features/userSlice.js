@@ -10,6 +10,7 @@ import {
   updatePassword,
   updatePic,
   deleteUser,
+  deleteProfilePic,
 } from "../services/index.services.js";
 
 /* ---------------------------------------------------------------------------
@@ -81,6 +82,21 @@ const userDelete = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await deleteUser();
+      return response; // the response sent by the backend
+    } catch (error) {
+      return rejectWithValue(error.response?.data?.message || error.message);
+    }
+  }
+);
+
+/* ---------------------------------------------------------------------------
+The function to delete the profile pic
+------------------------------------------------------------------------------ */
+const deletePic = createAsyncThunk(
+  "users/deletePic",
+  async (_, { rejectWithValue }) => {
+    try {
+      const response = await deleteProfilePic();
       return response; // the response sent by the backend
     } catch (error) {
       return rejectWithValue(error.response?.data?.message || error.message);
@@ -241,11 +257,41 @@ const userSlice = createSlice({
       state.navigationStatus = "failed";
       state.error = uxErrorMessage(action.payload);
     });
+
+    /* ---------------------------------------------------------------------------
+      All the cases for deleting the profile pic
+    ------------------------------------------------------------------------------ */
+
+    // the pending case
+    builder.addCase(deletePic.pending, (state) => {
+      state.status = "pending";
+      state.error = null; // clear previous errors
+    });
+
+    // the success case
+    builder.addCase(deletePic.fulfilled, (state, action) => {
+      state.status = "succeeded";
+      state.user = action.payload.message;
+      state.successMessage = action.payload.data;
+    });
+
+    // the failure case
+    builder.addCase(deletePic.rejected, (state, action) => {
+      state.status = "failed";
+      state.error = uxErrorMessage(action.payload);
+    });
   },
 });
 
 export const { clearUserStatus, resetUserNav } = userSlice.actions; // synchronous actions
 
-export { get, userUpdate, passwordUpdate, profileUpdate, userDelete };
+export {
+  get,
+  userUpdate,
+  passwordUpdate,
+  profileUpdate,
+  userDelete,
+  deletePic,
+};
 
 export default userSlice.reducer;

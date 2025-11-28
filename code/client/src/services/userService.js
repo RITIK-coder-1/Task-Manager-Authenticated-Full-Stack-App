@@ -149,4 +149,36 @@ const deleteUser = async () => {
   }
 };
 
-export { getUser, updateUser, updatePassword, updatePic, deleteUser };
+/* ---------------------------------------------------------------------------
+The function to delete the profile pic
+------------------------------------------------------------------------------ */
+
+const deleteProfilePic = async () => {
+  try {
+    const response = await userAxios.delete("/me/appearance", {
+      timeout: 30000, // custom timeout for image deletion
+    });
+    console.log(
+      "The profile pic has been successfully deleted: ",
+      response.data
+    );
+    return response.data;
+  } catch (error) {
+    console.error(
+      "There was an error while deleting the profile pic : ",
+      error.response?.data?.message || error.message,
+      "Status:",
+      error.response?.status
+    );
+    throw error;
+  }
+};
+
+export {
+  getUser,
+  updateUser,
+  updatePassword,
+  updatePic,
+  deleteUser,
+  deleteProfilePic,
+};

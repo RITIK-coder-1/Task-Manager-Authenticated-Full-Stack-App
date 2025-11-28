@@ -589,6 +589,60 @@ const deleteUserFunction = async (req, res) => {
 };
 
 // ----------------------------------------------
+// Function to delete the profile pic
+// ----------------------------------------------
+const deleteProfilePicFunction = async (req, res) => {
+  const user = req.user;
+
+  if (!user) {
+    throw new ApiError(400, "Invalid User!");
+  }
+
+  // extracting the profile pic
+  const { profilePic } = user;
+
+  // deleting the user profile pic
+  const publicId = profilePic.slice(-24, -4); // only the public id has to be given and not the full cloudinary link. I used these specific numbers because the public id is of 20 characters and it ends with ".png". We only need the public id excluding the extension
+  try {
+    await deleteFromCloudinary(publicId); // Utility function runs and handles error internally
+  } catch (error) {
+    console.error("Non-critical cleanup failure:", error);
+  }
+
+  // updating the user database
+  const updatedUser = await User.findByIdAndUpdate(
+    user._id,
+    {
+      $set: {
+        profilePic: "",
+      },
+    },
+    {
+      new: true,
+    }
+  );
+
+  console.log(updatedUser);
+
+  if (!updatedUser) {
+    throw new ApiError(
+      400,
+      "The profile pic couldn't be updated in the database"
+    );
+  }
+
+  return res
+    .status(200)
+    .json(
+      new ApiResponse(
+        200,
+        updatedUser,
+        "The profile pic has been successfully deleted"
+      )
+    );
+};
+
+// ----------------------------------------------
 // Error Handling
 // ----------------------------------------------
 const registerUser = asyncHandler(registerUserFunction);
@@ -600,6 +654,7 @@ const updateAccount = asyncHandler(updateAccountFunction);
 const updatePassword = asyncHandler(updatePasswordFunction);
 const updateFile = asyncHandler(updateFileFunction);
 const deleteUser = asyncHandler(deleteUserFunction);
+const deleteProfilePic = asyncHandler(deleteProfilePicFunction);
 
 export {
   registerUser,
@@ -611,4 +666,5 @@ export {
   updatePassword,
   updateFile,
   deleteUser,
+  deleteProfilePic,
 };

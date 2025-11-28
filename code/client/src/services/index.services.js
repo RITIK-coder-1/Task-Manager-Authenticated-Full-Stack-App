@@ -4,23 +4,26 @@ This script exports all the auth, user and task related API calls from a single 
 ------------------------------------------------------------------------------ */
 
 // auth API calls
-import { registerUser } from "./authService";
-import { loginUser } from "./authService";
-import { logoutUser } from "./authService";
+import { registerUser, loginUser, logoutUser } from "./authService";
 
 // user API calls
-import { getUser } from "./userService";
-import { updateUser } from "./userService";
-import { updatePassword } from "./userService";
-import { updatePic } from "./userService";
-import { deleteUser } from "./userService";
+import {
+  getUser,
+  updatePassword,
+  updatePic,
+  updateUser,
+  deleteUser,
+  deleteProfilePic,
+} from "./userService";
 
 // task API calls
-import { createTask } from "./taskService";
-import { displayAllTasks } from "./taskService";
-import { updateTask } from "./taskService";
-import { deleteTask } from "./taskService";
-import { getTask } from "./taskService";
+import {
+  createTask,
+  displayAllTasks,
+  updateTask,
+  deleteTask,
+  getTask,
+} from "./taskService";
 
 export {
   registerUser,
@@ -30,6 +33,7 @@ export {
   updateUser,
   updatePassword,
   updatePic,
+  deleteProfilePic,
   createTask,
   displayAllTasks,
   updateTask,

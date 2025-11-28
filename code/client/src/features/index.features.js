@@ -19,6 +19,7 @@ import {
   clearUserStatus,
   userDelete,
   resetUserNav,
+  deletePic,
 } from "./userSlice.js";
 
 import {
@@ -49,6 +50,7 @@ export {
   profileUpdate,
   clearUserStatus,
   userDelete,
+  deletePic,
   resetUserNav,
   create,
   update,
