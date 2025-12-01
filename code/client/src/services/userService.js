@@ -6,8 +6,8 @@ This script handles all the API calls using axios for user related queries
 import axios from "axios";
 
 const userAxios = axios.create({
-  baseURL: `${import.meta.env.VITE_API_URL}/users`,
-  // baseURL: "http://0.0.0.0:3000/api/v1/users", // ONLY FOR TESTING PURPOSES
+  // baseURL: `${import.meta.env.VITE_API_URL}/users`,
+  baseURL: "http://0.0.0.0:3000/api/v1/users", // ONLY FOR TESTING PURPOSES
   timeout: 5000,
   headers: {
     "Content-Type": "application/json",
@@ -39,10 +39,14 @@ userAxios.interceptors.request.use(
 The axios response interceptor for refreshing on token expiry
 ------------------------------------------------------------------------------ */
 
+// (IT'S CURRENTLY IN DEVELOPMENT!!!)
+
 userAxios.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
+
+    console.log("error");
 
     // Token expired (401/403) AND I haven't retried before
     if (
