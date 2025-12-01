@@ -284,12 +284,11 @@ const newAccessTokenFunction = async (req, res) => {
     // updating the cookies and sending a JSON API response
     return res
       .status(200)
-      .cookie("accessToken", newAccessToken, options)
       .cookie("refreshToken", newRefreshToken, options)
       .json(
         new ApiResponse(
           200,
-          { accessToken: newAccessToken, refreshToken: newRefreshToken },
+          { accessToken: newAccessToken },
           "Access Token Refreshed!"
         )
       );
