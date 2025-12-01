@@ -282,7 +282,7 @@ const newAccessTokenFunction = async (req, res) => {
     const { newAccessToken, newRefreshToken } = await generateTokens(user._id);
 
     // updating the cookies and sending a JSON API response
-    res
+    return res
       .status(200)
       .cookie("accessToken", newAccessToken, options)
       .cookie("refreshToken", newRefreshToken, options)
