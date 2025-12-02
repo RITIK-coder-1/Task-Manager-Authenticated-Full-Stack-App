@@ -36,54 +36,6 @@ userAxios.interceptors.request.use(
 );
 
 /* ---------------------------------------------------------------------------
-The axios response interceptor for refreshing on token expiry
------------------------------------------------------------------------------- */
-
-// (IT'S CURRENTLY IN DEVELOPMENT!!!)
-
-userAxios.interceptors.response.use(
-  (response) => response,
-  async (error) => {
-    const originalRequest = error.config;
-
-    console.log("error");
-
-    // Token expired (401/403) AND I haven't retried before
-    if (
-      (error.response?.status === 401 || error.response?.status === 403) &&
-      !originalRequest._retry
-    ) {
-      originalRequest._retry = true;
-
-      try {
-        // Calling the refresh token controller
-        const refreshRes = await userAxios.get("me/token", {
-          withCredentials: true,
-        });
-
-        const newAccessToken = refreshRes.data.accessToken;
-
-        // Saving the new token for future requests
-        localStorage.setItem("accessToken", newAccessToken);
-
-        // Attaching token to the ORIGINAL failed request
-        originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
-
-        // Retring the original request with new token
-        return userAxios(originalRequest);
-      } catch (refreshError) {
-        // If refresh failed then clear tokens and logout
-        localStorage.removeItem("accessToken");
-        window.location.href = "/login";
-      }
-    }
-
-    // If not token issue, reject normally
-    return Promise.reject(error);
-  }
-);
-
-/* ---------------------------------------------------------------------------
 The function to fetch a user's details
 ------------------------------------------------------------------------------ */
 
