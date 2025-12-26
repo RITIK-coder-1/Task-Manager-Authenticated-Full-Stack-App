@@ -3,37 +3,7 @@ taskService.js
 This script handles all the API calls using axios for task related queries
 ------------------------------------------------------------------------------ */
 
-import axios from "axios";
-
-const taskAxios = axios.create({
-  baseURL: `${import.meta.env.VITE_API_URL}/users/me/dashboard`,
-  // baseURL: "http://0.0.0.0:3000/api/v1/users/me/dashboard", // ONLY FOR TESTING PURPOSES
-  timeout: 5000,
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
-
-/* ---------------------------------------------------------------------------
-The axios request interceptor for credentials
------------------------------------------------------------------------------- */
-
-taskAxios.interceptors.request.use(
-  (config) => {
-    const accessToken = localStorage.getItem("accessToken");
-
-    // If the token exists, attach it to the Headers
-    if (accessToken) {
-      config.headers.Authorization = `Bearer ${accessToken}`;
-    }
-
-    return config;
-  },
-  // Error handling if the request config fails
-  (error) => {
-    return Promise.reject(error);
-  }
-);
+import api from "./axiosInstance";
 
 /* ---------------------------------------------------------------------------
 The function to create a task
@@ -41,7 +11,7 @@ The function to create a task
 
 const createTask = async (formData) => {
   try {
-    const response = await taskAxios.post("/", formData);
+    const response = await api.post("/me/dashboard", formData);
     console.log("Task successfully created!: ", response.data);
     return response.data; // the response sent by the backend
   } catch (error) {
@@ -59,8 +29,9 @@ The function to display all the tasks
 
 const displayAllTasks = async () => {
   try {
-    const response = await taskAxios.get("/");
+    const response = await api.get("/me/dashboard");
     console.log("Tasks successfully retrieved!: ", response.data);
+
     return response.data;
   } catch (error) {
     console.error(
@@ -77,7 +48,7 @@ The function to get a specific task
 
 const getTask = async (taskId) => {
   try {
-    const response = await taskAxios.get(`/${taskId}`);
+    const response = await api.get(`/me/dashboard/${taskId}`);
     console.log(
       `${response.data.message.title} has been fetched successfully!`,
       response.data
@@ -98,7 +69,7 @@ The function to update a task
 
 const updateTask = async (taskId, formData) => {
   try {
-    const response = await taskAxios.patch(`/${taskId}`, formData);
+    const response = await api.patch(`/me/dashboard/${taskId}`, formData);
     console.log("Task successfully updated!: ", response.data);
     return response.data;
   } catch (error) {
@@ -116,7 +87,7 @@ The function to delete a task
 
 const deleteTask = async (taskId) => {
   try {
-    const response = await taskAxios.delete(`/${taskId}`);
+    const response = await api.delete(`/me/dashboard/${taskId}`);
     console.log("Task successfully deleted!: ", response.data);
     return response.data;
   } catch (error) {

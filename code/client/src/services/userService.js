@@ -3,37 +3,7 @@ userService.js
 This script handles all the API calls using axios for user related queries
 ------------------------------------------------------------------------------ */
 
-import axios from "axios";
-
-const userAxios = axios.create({
-  baseURL: `${import.meta.env.VITE_API_URL}/users`,
-  // baseURL: "http://0.0.0.0:3000/api/v1/users", // ONLY FOR TESTING PURPOSES
-  timeout: 5000,
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
-
-/* ---------------------------------------------------------------------------
-The axios request interceptor for credentials
------------------------------------------------------------------------------- */
-
-userAxios.interceptors.request.use(
-  (config) => {
-    const accessToken = localStorage.getItem("accessToken");
-
-    // If the token exists, attach it to the Headers
-    if (accessToken) {
-      config.headers.Authorization = `Bearer ${accessToken}`;
-    }
-
-    return config;
-  },
-  // Error handling if the request config fails
-  (error) => {
-    return Promise.reject(error);
-  }
-);
+import api from "./axiosInstance";
 
 /* ---------------------------------------------------------------------------
 The function to fetch a user's details
@@ -41,7 +11,7 @@ The function to fetch a user's details
 
 const getUser = async () => {
   try {
-    const response = await userAxios.get("/me");
+    const response = await api.get("/me");
     console.log("The user has been successfully fetched! :", response.data);
     return response.data;
   } catch (error) {
@@ -59,7 +29,7 @@ The function to update a user's details
 
 const updateUser = async (updatedData) => {
   try {
-    const response = await userAxios.patch("/me/details", updatedData);
+    const response = await api.patch("/me/details", updatedData);
     console.log(
       "The details of the user has been successfully updated! :",
       response.data
@@ -80,7 +50,7 @@ The function to update a user's password
 
 const updatePassword = async (updatedData) => {
   try {
-    const response = await userAxios.patch("/me/password", updatedData);
+    const response = await api.patch("/me/password", updatedData);
     console.log(
       "The password of the user has been successfully updated! :",
       response.data
@@ -101,7 +71,7 @@ The function to update a user's profile pic
 
 const updatePic = async (profileFormData) => {
   try {
-    const response = await userAxios.patch(
+    const response = await api.patch(
       "/me/appearance",
       profileFormData, // The file data payload
       {
@@ -135,7 +105,9 @@ The function to delete a user
 
 const deleteUser = async () => {
   try {
-    const response = await userAxios.delete("/delete");
+    const response = await api.delete(
+      `${import.meta.env.VITE_API_URL}/users/delete` // overriding the base URL with this specific route
+    );
     console.log("The user has been successfully deleted: ", response.data);
     return response.data;
   } catch (error) {
@@ -155,9 +127,13 @@ The function to delete the profile pic
 
 const deleteProfilePic = async () => {
   try {
-    const response = await userAxios.delete("/me/appearance", {
-      timeout: 30000, // custom timeout for image deletion
-    });
+    const response = await api.delete(
+      "/me/appearance",
+      {},
+      {
+        timeout: 30000, // custom timeout for image deletion
+      }
+    );
     console.log(
       "The profile pic has been successfully deleted: ",
       response.data

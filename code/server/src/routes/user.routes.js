@@ -39,6 +39,8 @@ userRouter.route("/register").post(upload.single("profilePic"), registerUser); /
 
 userRouter.route("/login").post(loginUser); // login the user on the login path
 
+userRouter.route("/token").post(newAccessToken); // to issue a new access token end point
+
 // SECURED ROUTES (User should be logged in to access these)
 
 userRouter.route("/logout").post(verifyJWT, logoutUser); // log the user out on this path
@@ -46,8 +48,6 @@ userRouter.route("/logout").post(verifyJWT, logoutUser); // log the user out on 
 userRouter.route("/delete").delete(verifyJWT, deleteUser); // delete the user
 
 userRouter.route("/me").get(verifyJWT, getCurrentUser); // getting the current user (User profile)
-
-userRouter.route("/me/token").get(verifyJWT, newAccessToken); // to issue a new access token end point
 
 userRouter.route("/me/details").patch(verifyJWT, updateAccount); // to update the user details
 

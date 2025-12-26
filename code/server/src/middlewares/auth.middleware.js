@@ -11,8 +11,8 @@ import ApiError from "../utils/apiError.js";
 const verifyJwtFunction = async (req, _, next) => {
   // the client can send a cookie or a custom header
   const token =
-    req.cookies?.accessToken ||
-    req.header("Authorization")?.replace("Bearer ", ""); // replace "Bearer <token>" to "<token>"
+    req.header("Authorization")?.replace("Bearer ", "") || // replace "Bearer <token>" to "<token>"
+    req.cookies?.accessToken;
 
   if (!token) {
     throw new ApiError(401, "Unauthorized request");

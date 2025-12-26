@@ -95,9 +95,20 @@ app.use((req, res, next) => {
 app.use((error, _req, res, _next) => {
   // we're only using error and res here
 
-  res.status(error.status || 500).json({
+  // Check if the error coming in is a JWT error
+  if (error.name === "TokenExpiredError") {
+    error = new ApiError(403, "Token has expired");
+  }
+  if (error.name === "JsonWebTokenError") {
+    error = new ApiError(401, "Token is invalid");
+  }
+
+  const statusCode = error.statusCode || 500;
+  const message = error.message || "Internal Server Error";
+
+  res.status(statusCode).json({
     success: false,
-    message: error.message || "Internal Server Error",
+    message,
     error: process.env.NODE_ENV === "development" ? error : undefined, // Full error object for debugging (only in development)
   });
 

@@ -12,7 +12,6 @@ import connectDB from "./config/db.js"; // The database connection function
 // ----------------------------------------------
 
 const port = process.env.PORT || 3000; // Port number for the server to listen on
-const hostname = process.env.HOST || "0.0.0.0"; // Hostname
 
 // ----------------------------------------------
 // Server Startup and Database Connection
@@ -23,7 +22,7 @@ connectDB()
     // Start the server and listen on the defined port if the database connected properly
     // Logs a message to confirm successful startup
     app.listen(port, () => {
-      console.log(`Server is running at http://${hostname}:${port}/api/v1`);
+      console.log(`Server is running at http://localhost:${port}/api/v1`);
     });
   })
   .catch((err) => {

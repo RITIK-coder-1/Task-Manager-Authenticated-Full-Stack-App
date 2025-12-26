@@ -179,6 +179,8 @@ const loginFunction = async (req, res) => {
   const options = {
     httpOnly: true, // cookie can't be manipulated by the client
     secure: true, // cookie is only sent over HTTPS
+    sameSite: "Lax",
+    path: "/", // ensuring the cookie is sent to all routes
   };
 
   return res
@@ -246,8 +248,7 @@ const logoutFunction = async (req, res) => {
 const newAccessTokenFunction = async (req, res) => {
   try {
     // Getting our refresh token from the cookies or request body alternatively
-    const incomingRefreshToken =
-      req.cookies?.refreshToken || req.body?.refreshToken;
+    const incomingRefreshToken = req.cookies?.refreshToken;
 
     if (!incomingRefreshToken) {
       throw new ApiError(401, "Unauthorized Request"); // throw an error if the refresh token is unauthorized
@@ -274,24 +275,19 @@ const newAccessTokenFunction = async (req, res) => {
     // the cookie options
     const options = {
       httpOnly: true,
-      secure: true,
+      secure: false,
       sameSite: "Lax",
+      path: "/",
     };
 
     // getting the new access and the refresh tokens
-    const { newAccessToken, newRefreshToken } = await generateTokens(user._id);
+    const { accessToken, refreshToken } = await generateTokens(user._id);
 
     // updating the cookies and sending a JSON API response
     return res
       .status(200)
-      .cookie("refreshToken", newRefreshToken, options)
-      .json(
-        new ApiResponse(
-          200,
-          { accessToken: newAccessToken },
-          "Access Token Refreshed!"
-        )
-      );
+      .cookie("refreshToken", refreshToken, options)
+      .json(new ApiResponse(200, { accessToken }, "Access Token Refreshed!"));
   } catch (error) {
     // JWT errors (like signature mismatch or simple expiration)
     if (

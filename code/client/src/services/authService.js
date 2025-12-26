@@ -3,44 +3,14 @@ authService.js
 This script handles all the API calls using axios for authentication
 ------------------------------------------------------------------------------ */
 
-import axios from "axios";
-
-const authAxios = axios.create({
-  baseURL: `${import.meta.env.VITE_API_URL}/users`,
-  // baseURL: "http://0.0.0.0:3000/api/v1/users", // ONLY FOR TESTING PURPOSES
-  timeout: 5000,
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
-
-/* ---------------------------------------------------------------------------
-The axios request interceptor for credentials
------------------------------------------------------------------------------- */
-
-authAxios.interceptors.request.use(
-  (config) => {
-    const accessToken = localStorage.getItem("accessToken");
-
-    // If the token exists, attach it to the Headers
-    if (accessToken) {
-      config.headers.Authorization = `Bearer ${accessToken}`;
-    }
-
-    return config;
-  },
-  // Error handling if the request config fails
-  (error) => {
-    return Promise.reject(error);
-  }
-);
+import api from "./axiosInstance";
 
 /* ---------------------------------------------------------------------------
 The function to register a user
 ------------------------------------------------------------------------------ */
 const registerUser = async (userData) => {
   try {
-    const response = await authAxios.post(
+    const response = await api.post(
       "/register",
       userData, // The file data payload
       {
@@ -67,7 +37,7 @@ const registerUser = async (userData) => {
   ------------------------------------------------------------------------------ */
 const loginUser = async (userData) => {
   try {
-    const response = await authAxios.post("/login", userData);
+    const response = await api.post("/login", userData);
     console.log("User successfully logged in!", response.data);
     return response.data;
   } catch (error) {
@@ -85,7 +55,7 @@ const loginUser = async (userData) => {
 
 const logoutUser = async () => {
   try {
-    const response = await authAxios.post("/logout");
+    const response = await api.post("/logout");
     console.log("The user has been successfully logged out: ", response.data);
     return response.data;
   } catch (error) {
