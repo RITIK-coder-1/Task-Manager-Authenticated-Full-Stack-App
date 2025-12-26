@@ -10,8 +10,8 @@ The axios instance
 ------------------------------------------------------------------------------ */
 
 const api = axios.create({
-  //   baseURL: `${import.meta.env.VITE_API_URL}/users`,
-  baseURL: "http://localhost:3000/api/v1/users", // ONLY FOR TESTING PURPOSES
+  baseURL: `${import.meta.env.VITE_API_URL}/users`,
+  // baseURL: "http://localhost:3000/api/v1/users", // ONLY FOR TESTING PURPOSES
   timeout: 5000,
   headers: {
     "Content-Type": "application/json",
