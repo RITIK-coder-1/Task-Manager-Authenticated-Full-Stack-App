@@ -60,6 +60,7 @@ It supports secure authentication, dynamic CRUD operations, and cloud-based file
 - User credentials are validated and JWT tokens are generated.  
 - Protected routes ensure only authenticated users can access tasks and profile details.  
 - It prevents unauthorized access after token expiration.
+- It automatically refreshes the access token on expiry so that the user doesn't have to log in again and again.
 
 ---
 
@@ -119,7 +120,7 @@ Here are some of the major challenges I faced and how I tackled them:
   Managed complex routing logic for pages with dynamic parameters and nested layouts in React Router.  
 
 - 🔐 **Authenticating task controllers:**  
-  Added middleware for validating users and securing all task-related routes with JWT.  
+  Added middleware for validating users and securing all task-related routes with JWT. Refreshing the access token automatically on expiry.
 
 - 🔁 **Automated navigation flow:**  
   Designed logic to automatically navigate users based on their actions — such as successful login, logout, or task creation.  
