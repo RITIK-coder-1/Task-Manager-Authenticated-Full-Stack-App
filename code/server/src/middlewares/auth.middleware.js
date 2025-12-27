@@ -9,10 +9,8 @@ import User from "../models/User.model.js";
 import ApiError from "../utils/apiError.js";
 
 const verifyJwtFunction = async (req, _, next) => {
-  // the client can send a cookie or a custom header
-  const token =
-    req.header("Authorization")?.replace("Bearer ", "") || // replace "Bearer <token>" to "<token>"
-    req.cookies?.accessToken;
+  // I'm sending the access token only through headers, not cookies
+  const token = req.header("Authorization")?.replace("Bearer ", ""); // replace "Bearer <token>" to "<token>"
 
   if (!token) {
     throw new ApiError(401, "Unauthorized request");
