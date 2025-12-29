@@ -146,7 +146,7 @@ Here are some of the major challenges I faced and how I tackled them:
       <td align="center"><strong>Mobile View</strong></td>
     </tr>
     <tr>
-      <td><img src="../client/src/assets/HomePage (Laptop).png" width="100%" alt="Home Page Laptop View" /></td>
+      <td><img src="./client/src/assets/HomePage (Laptop).png" width="100%" alt="Home Page Laptop View" /></td>
       <td><img src="../client/src/assets/HomePage (Mobile).png" width="100%" alt="Home Page Mobile View" /></td>
     </tr>
   </table>
