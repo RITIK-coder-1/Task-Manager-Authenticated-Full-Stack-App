@@ -238,7 +238,7 @@ Here are some of the major challenges I faced and how I tackled them:
 
 Check out the full walkthrough of **Task&Habit** in action 👇  
 
-https://github.com/RITIK-coder-1/Task-Manager-Authenticated-Full-Stack-App/tree/main/code/client/src/assets/Task&Habit.mp4
+https://github.com/RITIK-coder-1/Task-Manager-Authenticated-Full-Stack-App/tree/main/client/src/assets/Task&Habit.mp4
 
 ---
 
