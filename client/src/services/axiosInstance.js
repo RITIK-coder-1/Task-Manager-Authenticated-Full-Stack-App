@@ -44,25 +44,25 @@ api.interceptors.request.use(
 The axios response interceptor for refreshing the access token on expiration
 ------------------------------------------------------------------------------ */
 
-let isRefreshing = false;
-let failedQueue = [];
+let isRefreshing = false; // if a request is already refreshing the token
+let failedQueue = []; // to store pending network requests
 
 // Helper function to process the waiting room
 const processQueue = (error, token = null) => {
   failedQueue.forEach((prom) => {
     if (error) {
-      prom.reject(error);
+      prom.reject(error); // if the token is corrupted, all the requests are rejected
     } else {
-      prom.resolve(token);
+      prom.resolve(token); // if the token is valid, it's served to each request
     }
   });
-  failedQueue = [];
+  failedQueue = []; // clear the requests
 };
 
 api.interceptors.response.use(
   (response) => response,
   async (error) => {
-    const originalRequest = error.config;
+    const originalRequest = error.config; // the original request to retry later
 
     // handling Server Meltdown (500)
     if (error.response?.status === 500) {
@@ -103,7 +103,8 @@ api.interceptors.response.use(
           .catch((err) => Promise.reject(err));
       }
 
-      originalRequest._retry = true;
+      // the first failed request to renew the tokens
+      originalRequest._retry = true; // this request is getting executed currently
       isRefreshing = true; // lock the door
 
       try {
