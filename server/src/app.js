@@ -78,7 +78,7 @@ app.use("/api/v1/users", userRouter);
 app.use("/api/v1/users/me/dashboard", taskRouter);
 
 // ping route for uptimerobot
-app.get("/ping", (req, res) => {
+app.get("/api/v1/ping", (req, res) => {
   res.send("Pong");
 });
 
