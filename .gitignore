@@ -1,67 +1,81 @@
-# ---------------------------------
-# 1. Dependencies (Global)
-# ---------------------------------
-node_modules/
-package-lock.json   
+# ==========================================================
+# 📦 GLOBAL SETTINGS
+# ==========================================================
 
-# ---------------------------------
-# 2. Environment Variables (CRITICAL)
-# ---------------------------------
+# OS-specific files
+.DS_Store
+Thumbs.db
 
-.env
-.env.test
-.env.production
-.env.local
-.env.*.local
+# IDE / Editor settings
+.vscode/
+.idea/
 
-# ---------------------------------
-# 3. Client (Frontend) Specifics
-# ---------------------------------
-# Production build output
-client/dist/
-client/build/
-
-# Testing coverage
-client/coverage/
-
-# Vite temporary files
-client/*.local
-
-# ---------------------------------
-# 4. Server (Backend) Specifics
-# ---------------------------------
-
-server/dist/
-
-# Logs
-server/logs/
+# Log files
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
-# Runtime data
-pids
+# Environment variables (both client & server)
+.env
+.env.local
+.env.*.local
+**/.env
+**/.env.*
+!**/.env.example   # Allow example envs to stay
+
+# Cache & temp files
+.cache/
+tmp/
+*.cache
 *.pid
 *.seed
 *.pid.lock
 
-# Coverage directory used by tools like istanbul
+# Root Modules (if I install packages at root)
+node_modules/
+package-lock.json
+
+# ==========================================================
+# ⚙️ SERVER (Backend)
+# ==========================================================
+
+server/node_modules/
+server/dist/
+server/logs/
 server/coverage/
-
-# ---------------------------------
-# 5. Media & Uploads (Local Testing)
-# ---------------------------------
-# Even though I use Cloudinary, I might test local uploads temporarily.
+server/.nyc_output/
 server/uploads/
-server/public/temp/
-.DS_Store           # macOS specific
-Thumbs.db           # Windows specific
+server/package-lock.json
 
-# ---------------------------------
-# 6. IDE / Editor Settings
-# ---------------------------------
-.idea/
-.vscode/
+# ==========================================================
+# 🎨 CLIENT (Frontend)
+# ==========================================================
+
+client/node_modules/
+client/dist/
+client/build/
+client/.vite/
+client/coverage/
+client/.eslintcache
+client/package-lock.json
+
+# ==========================================================
+# 🧰 MISC / TOOLING
+# ==========================================================
+
+# Lock and backup files
 *.swp
-*.swo
+*.bak
+*.tmp
+*.orig
+
+# ==========================================================
+# 🧪 TESTING / CI
+# ==========================================================
+
+coverage/
+.nyc_output/
+jest-test-results.json
+test-support.json
