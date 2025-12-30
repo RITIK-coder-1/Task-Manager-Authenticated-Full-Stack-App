@@ -34,25 +34,25 @@ tmp/
 # ⚙️ SERVER (Backend)
 # ==========================================================
 
-code/server/node_modules/
-code/server/dist/
-code/server/logs/
-code/server/coverage/
-code/server/.nyc_output/
-code/server/package-lock.json
+server/node_modules/
+server/dist/
+server/logs/
+server/coverage/
+server/.nyc_output/
+server/package-lock.json
 
 # ==========================================================
 # 🎨 CLIENT (Frontend)
 # ==========================================================
 
-code/client/node_modules/
-code/client/dist/
-code/client/build/
-code/client/.vite/
-code/client/.next/
-code/client/coverage/
-code/client/.eslintcache
-code/client/package-lock.json
+client/node_modules/
+client/dist/
+client/build/
+client/.vite/
+client/.next/
+client/coverage/
+client/.eslintcache
+client/package-lock.json
 
 # ==========================================================
 # 🧰 MISC / TOOLING
