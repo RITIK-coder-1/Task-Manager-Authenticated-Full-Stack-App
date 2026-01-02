@@ -1,6 +1,6 @@
 // ----------------------------------------------
 // auth.middleware.js
-// This middleware verifies the access token of users before logging them out
+// This middleware verifies the access token of the users for each secured request
 // ----------------------------------------------
 
 import asyncHandler from "../utils/asyncHandler.js";
