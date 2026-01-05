@@ -17,17 +17,15 @@ import bcrypt from "bcrypt";
 import Task from "../models/Task.model.js";
 
 // ----------------------------------------------
-// Function to generate access and refresh tokens on logging in and logging out
+// Function to generate access and refresh tokens on logging in
 // ----------------------------------------------
 
 const generateTokens = async (userId) => {
-  const randomString = generateRandomTokenString(); // this random set of strings is used with the refresh token to validate the user
+  const randomString = generateRefreshTokenString(); // this random set of strings is used with the refresh token to validate the user
   try {
-    const user = await User.findByIdAndUpdate(userId, {
-      $set: {
-        refreshTokenString: randomString, // saving the random string for security purposes
-      },
-    });
+    const user = await User.findById(userId);
+    user.refreshTokenString = randomString; // refresh token string for security purposes
+
     const accessToken = user.generateAccessToken();
     const refreshToken = user.generateRefreshToken(randomString);
 
