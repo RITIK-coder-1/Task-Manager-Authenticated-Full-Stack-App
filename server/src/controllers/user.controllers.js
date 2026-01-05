@@ -190,7 +190,6 @@ const loginFunction = async (req, res) => {
         {
           user: loggedInUser,
           accessToken,
-          refreshToken,
         },
         "The user has successfully logged in!"
       )
