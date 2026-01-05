@@ -243,7 +243,7 @@ const logoutFunction = async (req, res) => {
 
 const newAccessTokenFunction = async (req, res) => {
   try {
-    // Getting our refresh token from the cookies or request body alternatively
+    // Getting our refresh token from the cookies alternatively
     const incomingRefreshToken = req.cookies?.refreshToken;
 
     if (!incomingRefreshToken) {
