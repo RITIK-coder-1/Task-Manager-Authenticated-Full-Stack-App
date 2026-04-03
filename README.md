@@ -9,6 +9,9 @@ A full-stack authenticated task management web app that helps users organize the
 🔗 **Frontend:** [https://task-manager-authenticated.vercel.app/]  
 🔗 **Backend API:** [https://task-manager-authenticated-full-stack-app.onrender.com/api/v1/]  
 
+> [!IMPORTANT]
+> Cold Start Notice: This project is hosted on a free-tier instance (Render). If the site hasn't been visited recently, the initial request may take up to 50 seconds to spin up the server. Please allow a moment for the data to populate.
+
 ---
 
 ## 🧩 Overview  
