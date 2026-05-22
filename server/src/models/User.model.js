@@ -155,6 +155,6 @@ userSchema.methods.generateRefreshToken = function (uniqueTokenString) {
 // Creating the User model based on "userSchema"
 // ----------------------------------------------
 
-const User = new mongoose.model("User", userSchema);
+const User = mongoose.model("User", userSchema);
 
 export default User; // exporting the model as default
