@@ -11,7 +11,6 @@ The axios instance
 
 const api = axios.create({
   baseURL: `${import.meta.env.VITE_API_URL}/users`,
-  // baseURL: "http://localhost:3000/api/v1/users", // ONLY FOR TESTING PURPOSES
   timeout: 5000,
   headers: {
     "Content-Type": "application/json",
@@ -66,7 +65,6 @@ api.interceptors.response.use(
 
     // handling Server Meltdown (500)
     if (error.response?.status === 500) {
-      console.error("Server Error: Something went wrong on the backend.");
       return Promise.reject(error);
     }
 

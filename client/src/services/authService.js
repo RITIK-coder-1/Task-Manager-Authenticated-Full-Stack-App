@@ -21,13 +21,8 @@ const registerUser = async (userData) => {
         timeout: 30000, // custom timeout for file related operations
       }
     );
-    console.log("User successfully registered!", response.data);
     return response.data; // the response sent by the backend
   } catch (error) {
-    console.log(
-      "Registration Failed: ",
-      error.response?.data?.message || error.message
-    );
     throw error;
   }
 };
@@ -38,13 +33,8 @@ const registerUser = async (userData) => {
 const loginUser = async (userData) => {
   try {
     const response = await api.post("/login", userData);
-    console.log("User successfully logged in!", response.data);
     return response.data;
   } catch (error) {
-    console.log(
-      "Login Failed: ",
-      error.response?.data?.message || error.message
-    );
     throw error;
   }
 };
@@ -56,13 +46,8 @@ const loginUser = async (userData) => {
 const logoutUser = async () => {
   try {
     const response = await api.post("/logout");
-    console.log("The user has been successfully logged out: ", response.data);
     return response.data;
   } catch (error) {
-    console.error(
-      "There was a problem while logging the user out: ",
-      error.response?.data?.message || error.message
-    );
     throw error;
   }
 };

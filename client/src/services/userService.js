@@ -12,13 +12,9 @@ The function to fetch a user's details
 const getUser = async () => {
   try {
     const response = await api.get("/me");
-    console.log("The user has been successfully fetched! :", response.data);
     return response.data;
   } catch (error) {
-    console.error(
-      "There was an error while fetching the user's details : ",
-      error.response?.data?.message || error.message
-    );
+
     throw error;
   }
 };
@@ -30,16 +26,10 @@ The function to update a user's details
 const updateUser = async (updatedData) => {
   try {
     const response = await api.patch("/me/details", updatedData);
-    console.log(
-      "The details of the user has been successfully updated! :",
-      response.data
-    );
+
     return response.data;
   } catch (error) {
-    console.error(
-      "There was an error while updating the user's details : ",
-      error.response?.data?.message || error.message
-    );
+
     throw error;
   }
 };
@@ -51,16 +41,10 @@ The function to update a user's password
 const updatePassword = async (updatedData) => {
   try {
     const response = await api.patch("/me/password", updatedData);
-    console.log(
-      "The password of the user has been successfully updated! :",
-      response.data
-    );
+
     return response.data;
   } catch (error) {
-    console.error(
-      "There was an error while updating the user's password : ",
-      error.response?.data?.message || error.message
-    );
+
     throw error;
   }
 };
@@ -83,18 +67,10 @@ const updatePic = async (profileFormData) => {
       }
     );
 
-    console.log(
-      "The profile pic of the user has been successfully updated! :",
-      response.data
-    );
+
     return response.data;
   } catch (error) {
-    console.error(
-      "There was an error while updating the user's profile : ",
-      error.response?.data?.message || error.message,
-      "Status:",
-      error.response?.status
-    );
+
     throw error;
   }
 };
@@ -108,15 +84,9 @@ const deleteUser = async () => {
     const response = await api.delete(
       `${import.meta.env.VITE_API_URL}/users/delete` // overriding the base URL with this specific route
     );
-    console.log("The user has been successfully deleted: ", response.data);
     return response.data;
   } catch (error) {
-    console.error(
-      "There was an error while deleting the user : ",
-      error.response?.data?.message || error.message,
-      "Status:",
-      error.response?.status
-    );
+
     throw error;
   }
 };
