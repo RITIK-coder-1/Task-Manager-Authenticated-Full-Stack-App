@@ -21,7 +21,7 @@ import Task from "../models/Task.model.js";
 // ----------------------------------------------
 
 const generateTokens = async (userId) => {
-  const randomString = generateRefreshTokenString(); // this random set of strings is used with the refresh token to validate the user
+  const randomString = generateRandomTokenString(); // this random set of strings is used with the refresh token to validate the user
   try {
     const user = await User.findById(userId);
     user.refreshTokenString = randomString; // refresh token string for security purposes
